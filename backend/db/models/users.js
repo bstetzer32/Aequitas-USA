@@ -23,6 +23,29 @@ module.exports = (sequelize, DataTypes) => {
         len: [3, 256]
       },
     },
+    addressLineOne: {
+      allowNull: false,
+      type: DataTypes.STRING(100),
+    },
+    addressLineTwo: {
+      type: DataTypes.STRING(100),
+    },
+    city: {
+      allowNull: false,
+      type: DataTypes.STRING(100),
+    },
+    state: {
+      allowNull: false,
+      type: DataTypes.STRING(2),
+    },
+    zipCode: {
+      allowNull: false,
+      type: DataTypes.STRING(5),
+    },
+    authenticated: {
+      allowNull: false,
+      type: DataTypes.BOOLEAN
+    },
     hashedPassword: {
       type: DataTypes.STRING.BINARY,
       allowNull: false,

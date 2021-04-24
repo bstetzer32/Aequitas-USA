@@ -18,6 +18,30 @@ module.exports = {
         type: Sequelize.STRING(256),
         unique: true
       },
+      addressLineOne: {
+        allowNull: false,
+        type: Sequelize.STRING(100),
+      },
+      addressLineTwo: {
+        type: Sequelize.STRING(100),
+      },
+      city: {
+        allowNull: false,
+        type: Sequelize.STRING(100),
+      },
+      state: {
+        allowNull: false,
+        type: Sequelize.STRING(2),
+      },
+      zipCode: {
+        allowNull: false,
+        type: Sequelize.STRING(5),
+      },
+      authenticated: {
+        allowNull: false,
+        type: Sequelize.BOOLEAN,
+        defaultValue: true,
+      },
       hashedPassword: {
         allowNull: false,
         type: Sequelize.STRING.BINARY
