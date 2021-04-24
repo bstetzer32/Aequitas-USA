@@ -1,21 +1,39 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Regions', {
+    return queryInterface.createTable('Leaderships', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      name: {
+      citizen_id: {
         allowNull: false,
-        type: Sequelize.STRING(100),
-        unique: true
+        type: Sequelize.INTEGER,
+        references: {
+          model: {
+            tableName: "Users"
+          }
+        }
       },
-      level: {
+      office_id: {
         allowNull: false,
-        type: Sequelize.STRING(100)
+        type: Sequelize.INTEGER,
+        references: {
+          model: {
+            tableName: "Offices"
+          }
+        }
+      },
+      leader_id: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        references: {
+          model: {
+            tableName: "Leaderships"
+          }
+        }
       },
       createdAt: {
         allowNull: false,
@@ -30,6 +48,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Regions');
+    return queryInterface.dropTable('Leaderships');
   }
 };

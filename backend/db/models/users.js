@@ -81,6 +81,18 @@ module.exports = (sequelize, DataTypes) => {
   };
   User.associate = function(models) {
     // associations can be defined here
+    User.hasMany(models.Leaderships, {
+      foreignkey: "citizen_id",
+      as: "citizen"
+    })
+    User.hasMany(models.Leaderships, {
+      foreignkey: "leader_id",
+      as: "leader"
+    })
+    User.hasMany(models.Offices, {
+      foreignkey: "incumbant_id",
+      as: "incumbant"
+    })
   };
   User.login = async function ({ credential, password }) {
     const { Op } = require('sequelize');

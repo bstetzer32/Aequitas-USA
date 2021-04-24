@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Topics', {
+    return queryInterface.createTable('Offices', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -12,6 +12,24 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING(100),
         unique: true
+      },
+      incumbant_id: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        references: {
+          model: {
+            tableName: "Users"
+          }
+        }
+      },
+      region_id: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        references: {
+          model: {
+            tableName: "Regions"
+          }
+        }
       },
       createdAt: {
         allowNull: false,
@@ -26,6 +44,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Topics');
+    return queryInterface.dropTable('Offices');
   }
 };
