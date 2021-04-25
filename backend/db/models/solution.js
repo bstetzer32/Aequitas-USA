@@ -42,6 +42,10 @@ module.exports = (sequelize, DataTypes) => {
       foreignkey: "problem_id",
       as: "problem"
     })
+    Solution.hasMany(models.Vote, {
+      foreignkey: "solution_id",
+      as: "solution"
+    })
   };
   return Solution;
 };
