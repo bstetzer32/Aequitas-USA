@@ -1,6 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const Offices = sequelize.define('Offices', {
+  const Office = sequelize.define('Office', {
       name: {
         allowNull: false,
         type: DataTypes.STRING(100)
@@ -14,15 +14,15 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.INTEGER
       }
   }, {});
-  Offices.associate = function(models) {
-    Offices.belongsTo(models.Regions, {
+  Office.associate = function(models) {
+    Office.belongsTo(models.Region, {
       foreignkey: "region_id",
       as: "region"
     });
-    Offices.belongsTo(models.Users, {
+    Office.belongsTo(models.User, {
       foreignkey: "incumbant_id",
       as: "incumbant"
     })
   };
-  return Offices;
+  return Office;
 };
