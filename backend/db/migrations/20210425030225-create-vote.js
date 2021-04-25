@@ -12,7 +12,7 @@ module.exports = {
         allowNull: false,
         type: Sequelize.BOOLEAN
       },
-      citizen_id: {
+      citizenId: {
         allowNull: false,
         type: Sequelize.INTEGER,
         references: {
@@ -21,7 +21,7 @@ module.exports = {
           }
         }
       },
-      solution_id: {
+      solutionId: {
         allowNull: false,
         type: Sequelize.INTEGER,
         references: {

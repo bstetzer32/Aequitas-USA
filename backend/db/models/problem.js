@@ -24,15 +24,15 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.BOOLEAN,
       defaultValue: false
     },
-    citizen_id: {
+    citizenId: {
       allowNull: false,
       type: DataTypes.INTEGER
     },
-    region_id: {
+    regionId: {
       allowNull: false,
       type: DataTypes.INTEGER
     },
-    topic_id: {
+    topicId: {
       allowNull: false,
       type: DataTypes.INTEGER
     },
@@ -40,23 +40,23 @@ module.exports = (sequelize, DataTypes) => {
   Problem.associate = function(models) {
     // associations can be defined here
     Problem.belongsTo(models.User, {
-      foreignkey: "citizen_id",
+      foreignkey: "citizenId",
       as: "citizen"
     })
     Problem.belongsTo(models.Region, {
-      foreignkey: "region_id",
+      foreignkey: "regionId",
       as: "region"
     })
     Problem.belongsTo(models.Topic, {
-      foreignkey: "topics_id",
+      foreignkey: "topicsId",
       as: "topics"
     })
     Problem.hasMany(models.Commitee, {
-      foreignkey: "problem_id",
+      foreignkey: "problemId",
       as: "problem"
     })
     Problem.hasMany(models.Solution, {
-      foreignkey: "problem_id",
+      foreignkey: "problemId",
       as: "problem"
     })
   };

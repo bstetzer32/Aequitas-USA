@@ -5,30 +5,30 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       type: DataTypes.STRING(100)
     },
-    incumbant_id: {
+    incumbantId: {
       allowNull: false,
       type: DataTypes.INTEGER
     },
-    region_id: {
+    regionId: {
       allowNull: false,
       type: DataTypes.INTEGER
     }
   }, {});
   Office.associate = function(models) {
     Office.belongsTo(models.Region, {
-      foreignkey: "region_id",
+      foreignkey: "regionId",
       as: "region"
     });
     Office.belongsTo(models.User, {
-      foreignkey: "incumbant_id",
+      foreignkey: "incumbantId",
       as: "incumbant"
     })
     Office.hasMany(models.Leadership, {
-      foreignkey: "office_id",
+      foreignkey: "officeId",
       as: "office"
     })
     Office.hasMany(models.Commitee, {
-      foreignkey: "office_id",
+      foreignkey: "officeId",
       as: "office"
     })
   };

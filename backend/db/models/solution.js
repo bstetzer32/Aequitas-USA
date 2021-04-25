@@ -23,11 +23,11 @@ module.exports = (sequelize, DataTypes) => {
       references: {
         type: Sequelize.ARRAY(Sequelize.STRING(100))
       },
-      citizen_id: {
+      citizenId: {
         allowNull: false,
         type: Sequelize.INTEGER
       },
-      problem_id: {
+      problemId: {
         allowNull: false,
         type: Sequelize.INTEGER
       },
@@ -35,15 +35,15 @@ module.exports = (sequelize, DataTypes) => {
   Solution.associate = function(models) {
     // associations can be defined here
     Solution.belongsTo(models.User, {
-      foreignkey: "citizen_id",
+      foreignkey: "citizenId",
       as: "citizen"
     })
     Solution.belongsTo(models.Problem, {
-      foreignkey: "problem_id",
+      foreignkey: "problemId",
       as: "problem"
     })
     Solution.hasMany(models.Vote, {
-      foreignkey: "solution_id",
+      foreignkey: "solutionId",
       as: "solution"
     })
   };

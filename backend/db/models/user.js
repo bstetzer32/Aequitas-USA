@@ -20,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [3, 256]
+        len: [5, 256]
       },
     },
     addressLineOne: {
@@ -82,27 +82,27 @@ module.exports = (sequelize, DataTypes) => {
   User.associate = function(models) {
     // associations can be defined here
     User.hasMany(models.Leadership, {
-      foreignkey: "citizen_id",
+      foreignkey: "citizenId",
       as: "citizen"
     })
     User.hasMany(models.Leadership, {
-      foreignkey: "leader_id",
+      foreignkey: "leaderId",
       as: "leader"
     })
     User.hasMany(models.Office, {
-      foreignkey: "incumbant_id",
+      foreignkey: "incumbantId",
       as: "incumbant"
     })
     User.hasMany(models.Problem, {
-      foreignkey: "citizen_id",
+      foreignkey: "citizenId",
       as: "citizen"
     })
     User.hasMany(models.Solution, {
-      foreignkey: "citizen_id",
+      foreignkey: "citizenId",
       as: "citizen"
     })
     User.hasMany(models.Vote, {
-      foreignkey: "citizen_id",
+      foreignkey: "citizenId",
       as: "citizen"
     })
   };

@@ -30,7 +30,7 @@ module.exports = {
       references: {
         type: Sequelize.ARRAY(Sequelize.STRING(100))
       },
-      citizen_id: {
+      citizenId: {
         allowNull: false,
         type: Sequelize.INTEGER,
         references: {
@@ -39,7 +39,7 @@ module.exports = {
           }
         }
       },
-      problem_id: {
+      problemId: {
         allowNull: false,
         type: Sequelize.INTEGER,
         references: {

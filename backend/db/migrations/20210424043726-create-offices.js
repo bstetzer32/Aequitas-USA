@@ -13,7 +13,7 @@ module.exports = {
         type: Sequelize.STRING(100),
         unique: true
       },
-      incumbant_id: {
+      incumbantId: {
         allowNull: false,
         type: Sequelize.INTEGER,
         references: {
@@ -22,7 +22,7 @@ module.exports = {
           }
         }
       },
-      region_id: {
+      regionId: {
         allowNull: false,
         type: Sequelize.INTEGER,
         references: {

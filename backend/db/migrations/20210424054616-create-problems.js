@@ -35,7 +35,7 @@ module.exports = {
         type: Sequelize.BOOLEAN,
         defaultValue: false
       },
-      citizen_id: {
+      citizenId: {
         allowNull: false,
         type: Sequelize.INTEGER,
         references: {
@@ -44,7 +44,7 @@ module.exports = {
           }
         }
       },
-      region_id: {
+      regionId: {
         allowNull: false,
         type: Sequelize.INTEGER,
         references: {
@@ -53,7 +53,7 @@ module.exports = {
           }
         }
       },
-      topic_id: {
+      topicId: {
         allowNull: false,
         type: Sequelize.INTEGER,
         references: {

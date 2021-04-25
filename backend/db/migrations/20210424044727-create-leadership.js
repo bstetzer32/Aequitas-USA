@@ -8,7 +8,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      citizen_id: {
+      citizenId: {
         allowNull: false,
         type: Sequelize.INTEGER,
         references: {
@@ -17,7 +17,7 @@ module.exports = {
           }
         }
       },
-      office_id: {
+      officeId: {
         allowNull: false,
         type: Sequelize.INTEGER,
         references: {
@@ -26,7 +26,7 @@ module.exports = {
           }
         }
       },
-      leader_id: {
+      leaderId: {
         allowNull: false,
         type: Sequelize.INTEGER,
         references: {

@@ -1,11 +1,11 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const Commitee = sequelize.define('Commitee', {
-    office_id: {
+    officeId: {
       allowNull: false,
       type: Sequelize.INTEGER
     },
-    problem_id: {
+    problemId: {
       allowNull: false,
       type: Sequelize.INTEGER
     },
@@ -13,11 +13,11 @@ module.exports = (sequelize, DataTypes) => {
   Commitee.associate = function(models) {
     // associations can be defined here
     Commitee.belongsTo(models.Office, {
-      foreignkey: "office_id",
+      foreignkey: "officeId",
       as: "office"
     })
     Commitee.belongsTo(models.Problem, {
-      foreignkey: "problem_id",
+      foreignkey: "problemId",
       as: "problem"
     })
   };

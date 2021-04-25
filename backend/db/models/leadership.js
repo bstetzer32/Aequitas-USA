@@ -1,15 +1,15 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const Leadership = sequelize.define('Leadership', {
-    citizen_id: {
+    citizenId: {
       allowNull: false,
       type: Sequelize.INTEGER,
     },
-    office_id: {
+    officeId: {
       allowNull: false,
       type: Sequelize.INTEGER,
     },
-    leader_id: {
+    leaderId: {
       allowNull: false,
       type: Sequelize.INTEGER,
     }
@@ -17,15 +17,15 @@ module.exports = (sequelize, DataTypes) => {
   Leadership.associate = function(models) {
     // associations can be defined here
     Leadership.belongsTo(models.User, {
-      foreignkey: "citizen_id",
+      foreignkey: "citizenId",
       as: "citizen"
     })
     Leadership.belongsTo(models.User, {
-      foreignkey: "citizen_id",
+      foreignkey: "citizenId",
       as: "leader"
     })
     Leadership.belongsTo(models.Office, {
-      foreignkey: "office_id",
+      foreignkey: "officeId",
       as: "office"
     })
   };

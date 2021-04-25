@@ -5,11 +5,11 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       type: Sequelize.BOOLEAN
     },
-    citizen_id: {
+    citizenId: {
       allowNull: false,
       type: Sequelize.INTEGER
     },
-    solution_id: {
+    solutionId: {
       allowNull: false,
       type: Sequelize.INTEGER
     },
@@ -17,11 +17,11 @@ module.exports = (sequelize, DataTypes) => {
   Vote.associate = function(models) {
     // associations can be defined here
     Vote.belongsTo(models.User, {
-      foreignkey: "citizen_id",
+      foreignkey: "citizenId",
       as: "citizen"
     })
     Vote.belongsTo(models.Solution, {
-      foreignkey: "solution_id",
+      foreignkey: "solutionId",
       as: "solution"
     })
   };
