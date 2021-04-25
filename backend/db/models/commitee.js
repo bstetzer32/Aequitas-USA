@@ -2,9 +2,11 @@
 module.exports = (sequelize, DataTypes) => {
   const Commitee = sequelize.define('Commitee', {
     office_id: {
+      allowNull: false,
       type: Sequelize.INTEGER
     },
     problem_id: {
+      allowNull: false,
       type: Sequelize.INTEGER
     },
   }, {});
@@ -16,7 +18,7 @@ module.exports = (sequelize, DataTypes) => {
     })
     Commitee.belongsTo(models.Problem, {
       foreignkey: "problem_id",
-      as: "problem"
+      as: "problem_"
     })
   };
   return Commitee;

@@ -25,12 +25,15 @@ module.exports = (sequelize, DataTypes) => {
       defaultValue: false
     },
     citizen_id: {
+      allowNull: false,
       type: DataTypes.INTEGER
     },
     region_id: {
+      allowNull: false,
       type: DataTypes.INTEGER
     },
     topic_id: {
+      allowNull: false,
       type: DataTypes.INTEGER
     },
   }, {});
@@ -49,6 +52,10 @@ module.exports = (sequelize, DataTypes) => {
       as: "topics"
     })
     Problem.hasMany(models.Commitee, {
+      foreignkey: "problem_id",
+      as: "problem"
+    })
+    Problem.hasMany(models.Solution, {
       foreignkey: "problem_id",
       as: "problem"
     })

@@ -1,19 +1,41 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('commitees', {
+    return queryInterface.createTable('Solutions', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      office_id: {
+      thesis: {
+        allowNull: false,
+        type: Sequelize.STRING,
+        validate: {
+          max: 100,
+          min:10
+        }
+      },
+      proposal: {
+        allowNull: false,
+        type: Sequelize.STRING,
+        validate: {
+          max: 10000,
+          min:10
+        }
+      },
+      images: {
+        type: Sequelize.ARRAY(Sequelize.STRING(100))
+      },
+      references: {
+        type: Sequelize.ARRAY(Sequelize.STRING(100))
+      },
+      citizen_id: {
         allowNull: false,
         type: Sequelize.INTEGER,
         references: {
           model: {
-            tableName: "Offices"
+            tableName: "Users"
           }
         }
       },
@@ -39,6 +61,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('commitees');
+    return queryInterface.dropTable('Solutions');
   }
 };

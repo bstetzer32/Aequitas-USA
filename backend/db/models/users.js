@@ -97,6 +97,10 @@ module.exports = (sequelize, DataTypes) => {
       foreignkey: "citizen_id",
       as: "citizen"
     })
+    User.hasMany(models.Solution, {
+      foreignkey: "citizen_id",
+      as: "citizen"
+    })
   };
   User.login = async function ({ credential, password }) {
     const { Op } = require('sequelize');
