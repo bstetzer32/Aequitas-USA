@@ -1,28 +1,19 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Commitees', {
+    return queryInterface.createTable('SolutionSubscriptions', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      officeId: {
+      solutionId: {
         allowNull: false,
         type: Sequelize.INTEGER,
         references: {
           model: {
-            tableName: "Offices"
-          }
-        }
-      },
-      problemId: {
-        allowNull: false,
-        type: Sequelize.INTEGER,
-        references: {
-          model: {
-            tableName: "Problems"
+            tableName: "Solutions"
           }
         }
       },
@@ -39,6 +30,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Commitees');
+    return queryInterface.dropTable('SolutionSubscriptions');
   }
 };

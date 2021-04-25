@@ -16,19 +16,19 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Office.associate = function(models) {
     Office.belongsTo(models.Region, {
-      foreignkey: "regionId",
+      foreignKey: "regionId",
       as: "region"
     });
     Office.belongsTo(models.User, {
-      foreignkey: "incumbantId",
+      foreignKey: "incumbantId",
       as: "incumbant"
     })
     Office.hasMany(models.Leadership, {
-      foreignkey: "officeId",
+      foreignKey: "officeId",
       as: "office"
     })
     Office.hasMany(models.Commitee, {
-      foreignkey: "officeId",
+      foreignKey: "officeId",
       as: "office"
     })
   };

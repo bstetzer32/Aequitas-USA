@@ -40,23 +40,23 @@ module.exports = (sequelize, DataTypes) => {
   Problem.associate = function(models) {
     // associations can be defined here
     Problem.belongsTo(models.User, {
-      foreignkey: "citizenId",
+      foreignKey: "citizenId",
       as: "citizen"
     })
     Problem.belongsTo(models.Region, {
-      foreignkey: "regionId",
+      foreignKey: "regionId",
       as: "region"
     })
     Problem.belongsTo(models.Topic, {
-      foreignkey: "topicsId",
+      foreignKey: "topicsId",
       as: "topics"
     })
     Problem.hasMany(models.Commitee, {
-      foreignkey: "problemId",
+      foreignKey: "problemId",
       as: "problem"
     })
     Problem.hasMany(models.Solution, {
-      foreignkey: "problemId",
+      foreignKey: "problemId",
       as: "problem"
     })
   };

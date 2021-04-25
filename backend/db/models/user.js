@@ -82,29 +82,65 @@ module.exports = (sequelize, DataTypes) => {
   User.associate = function(models) {
     // associations can be defined here
     User.hasMany(models.Leadership, {
-      foreignkey: "citizenId",
+      foreignKey: "citizenId",
       as: "citizen"
     })
     User.hasMany(models.Leadership, {
-      foreignkey: "leaderId",
+      foreignKey: "leaderId",
       as: "leader"
     })
     User.hasMany(models.Office, {
-      foreignkey: "incumbantId",
+      foreignKey: "incumbantId",
       as: "incumbant"
     })
     User.hasMany(models.Problem, {
-      foreignkey: "citizenId",
+      foreignKey: "citizenId",
       as: "citizen"
     })
     User.hasMany(models.Solution, {
-      foreignkey: "citizenId",
+      foreignKey: "citizenId",
       as: "citizen"
     })
     User.hasMany(models.Vote, {
-      foreignkey: "citizenId",
+      foreignKey: "citizenId",
       as: "citizen"
     })
+    User.belongsToMany(models.OfficeSubscription, {
+      otherKey: "officeSubscriptionId",
+      as: "OfficeSubscription",
+      through: "Subscriptions",
+      foreignKey: "subscriberId",
+    });
+    User.belongsToMany(models.ProblemSubscription, {
+      otherKey: "problemSubscriptionId",
+      as: "ProblemSubscription",
+      through: "Subscriptions",
+      foreignKey: "subscriberId",
+    });
+    User.belongsToMany(models.RegionSubscription, {
+      otherKey: "regionSubscriptionId",
+      as: "RegionSubscription",
+      through: "Subscriptions",
+      foreignKey: "subscriberId",
+    });
+    User.belongsToMany(models.SolutionSubscription, {
+      otherKey: "solutionSubscriptionId",
+      as: "SolutionSubscription",
+      through: "Subscriptions",
+      foreignKey: "subscriberId",
+    });
+    User.belongsToMany(models.TopicSubscription, {
+      otherKey: "topicSubscriptionId",
+      as: "TopicSubscription",
+      through: "Subscriptions",
+      foreignKey: "subscriberId",
+    });
+    User.belongsToMany(models.UserSubscription, {
+      otherKey: "userSubscriptionId",
+      as: "UserSubscription",
+      through: "Subscriptions",
+      foreignKey: "subscriberId",
+    });
   };
   User.login = async function ({ credential, password }) {
     const { Op } = require('sequelize');

@@ -13,11 +13,11 @@ module.exports = (sequelize, DataTypes) => {
   Region.associate = function(models) {
     // associations can be defined here
     Region.hasMany(models.Office, {
-      foreignkey: "regionId",
+      foreignKey: "regionId",
       as: "region"
     })
     Region.hasMany(models.Problem, {
-      foreignkey: "regionId",
+      foreignKey: "regionId",
       as: "region"
     })
   };
