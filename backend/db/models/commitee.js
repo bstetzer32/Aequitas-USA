@@ -18,7 +18,7 @@ module.exports = (sequelize, DataTypes) => {
     })
     Commitee.belongsTo(models.Problem, {
       foreignkey: "problem_id",
-      as: "problem_"
+      as: "problem"
     })
   };
   return Commitee;
