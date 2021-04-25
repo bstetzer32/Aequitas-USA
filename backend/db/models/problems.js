@@ -1,6 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const Problems = sequelize.define('Problems', {
+  const Problem = sequelize.define('Problem', {
     title: {
       allowNull: false,
       type: DataTypes.STRING(100)
@@ -34,20 +34,24 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER
     },
   }, {});
-  Problems.associate = function(models) {
+  Problem.associate = function(models) {
     // associations can be defined here
-    Problems.belongsTo(models.User, {
+    Problem.belongsTo(models.User, {
       foreignkey: "citizen_id",
       as: "citizen"
     })
-    Problems.belongsTo(models.Region, {
+    Problem.belongsTo(models.Region, {
       foreignkey: "region_id",
       as: "region"
     })
-    Problems.belongsTo(models.Topic, {
+    Problem.belongsTo(models.Topic, {
       foreignkey: "topics_id",
       as: "topics"
     })
+    Problem.hasMany(models.Commitee, {
+      foreignkey: "problem_id",
+      as: "problem"
+    })
   };
-  return Problems;
+  return Problem;
 };
