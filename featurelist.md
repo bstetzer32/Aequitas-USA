@@ -1,14 +1,16 @@
 ## - Accounts
 - Users can sign up, log in, and log out
-- Once signed up, users can verify their account by entering personal details including name, address, and government issued photo ID number (BONUS: upload photo of ID using camera to verify information, photo will only be analyzed and not saved).
+- Once signed up, a user will be directed to a private profile page where they can view and manage their subscriptions.
+- Users can verify their account by entering personal details including name, address, and government issued photo ID number 
+- (BONUS: upload photo of ID using camera to verify information, photo will only be analyzed and not saved).
 ## - Citizens
-- Once verified as a citizen, a user will be directed to a profile page where they will select what information will be publicly visible, if any at all.
-- While on their profile page, the user will be able to see a list of all subscriptions and a list of all of their leaders.
+- Once verified as a citizen, a user will be asked to select what information will be publicly visible, if any at all.
+- While on their (or anothers) profile page, the user will be able to see a list of all subscriptions and a list of all of their leaders as well as problems or solutions proposed and items voted on/highlighted (subject to privacy settings).
 ## - Leaders
 - When a citizen is verified, an account will be created and assign to its respective offices for each of the citizens leaders with an email sent to the office email (if the account for the leader does not already exist, dummy email for POC purposes) asking them to sign up to be able to interact with their constituents.
 ## - Regions
 - Whenever an office is created, a region will be created for that office if it does not already exist.
-- Users are able to view problems by region.
+- Users are able to view problems and offices by region.
 ## - Offices
 - When a citizen is verified, an office will be created for each of its leaders and their respective office.
 - Upon creation, an email will be sent to the office email asking them to verify their account by replying (if the office does not already exist). 

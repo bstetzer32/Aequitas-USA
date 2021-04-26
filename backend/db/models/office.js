@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     verified: {
       allowNull: false,
-      type: Sequelize.BOOLEAN,
+      type: DataTypes.BOOLEAN,
     },
     incumbantId: {
       allowNull: false,
@@ -19,22 +19,18 @@ module.exports = (sequelize, DataTypes) => {
     }
   }, {});
   Office.associate = function(models) {
-    Office.belongsTo(models.Region, {
-      foreignKey: "regionId",
-      as: "region"
-    });
-    Office.belongsTo(models.User, {
-      foreignKey: "incumbantId",
-      as: "incumbant"
-    })
-    Office.hasMany(models.Leadership, {
-      foreignKey: "officeId",
-      as: "office"
-    })
-    Office.hasMany(models.Commitee, {
-      foreignKey: "officeId",
-      as: "office"
-    })
+    // Office.belongsTo(models.Region, {
+    //   foreignKey: "regionId"
+    // });
+    // Office.belongsTo(models.User, {
+    //   foreignKey: "incumbantId"
+    // })
+    // Office.hasMany(models.Leadership, {
+    //   foreignKey: "officeId"
+    // })
+    // Office.hasMany(models.Commitee, {
+    //   foreignKey: "officeId"
+    // })
   };
   return Office;
 };

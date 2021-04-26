@@ -3,31 +3,28 @@ module.exports = (sequelize, DataTypes) => {
   const Leadership = sequelize.define('Leadership', {
     citizenId: {
       allowNull: false,
-      type: Sequelize.INTEGER,
+      type: DataTypes.INTEGER,
     },
     officeId: {
       allowNull: false,
-      type: Sequelize.INTEGER,
+      type: DataTypes.INTEGER,
     },
     leaderId: {
       allowNull: false,
-      type: Sequelize.INTEGER,
+      type: DataTypes.INTEGER,
     }
   }, {});
   Leadership.associate = function(models) {
     // associations can be defined here
-    Leadership.belongsTo(models.User, {
-      foreignKey: "citizenId",
-      as: "citizen"
-    })
-    Leadership.belongsTo(models.User, {
-      foreignKey: "citizenId",
-      as: "leader"
-    })
-    Leadership.belongsTo(models.Office, {
-      foreignKey: "officeId",
-      as: "office"
-    })
+    // Leadership.belongsTo(models.User, {
+    //   foreignKey: "citizenId"
+    // })
+    // Leadership.belongsTo(models.User, {
+    //   foreignKey: "citizenId"
+    // })
+    // Leadership.belongsTo(models.Office, {
+    //   foreignKey: "officeId"
+    // })
   };
   return Leadership;
 };

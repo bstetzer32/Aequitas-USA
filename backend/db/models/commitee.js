@@ -3,23 +3,21 @@ module.exports = (sequelize, DataTypes) => {
   const Commitee = sequelize.define('Commitee', {
     officeId: {
       allowNull: false,
-      type: Sequelize.INTEGER
+      type: DataTypes.INTEGER
     },
     problemId: {
       allowNull: false,
-      type: Sequelize.INTEGER
+      type: DataTypes.INTEGER
     },
   }, {});
   Commitee.associate = function(models) {
     // associations can be defined here
-    Commitee.belongsTo(models.Office, {
-      foreignKey: "officeId",
-      as: "office"
-    })
-    Commitee.belongsTo(models.Problem, {
-      foreignKey: "problemId",
-      as: "problem"
-    })
+    // Commitee.belongsTo(models.Office, {
+    //   foreignKey: "officeId"
+    // })
+    // Commitee.belongsTo(models.Problem, {
+    //   foreignKey: "problemId"
+    // })
   };
   return Commitee;
 };

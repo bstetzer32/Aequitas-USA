@@ -8,12 +8,11 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   OfficeSubscription.associate = function(models) {
     // associations can be defined here
-    OfficeSubscription.belongsToMany(models.User, {
-      otherKey: "subscriberId",
-      as: "Subscriber",
-      through: "Subscriptions",
-      foreignKey: "officeSubscriptionId",
-    });
+    // OfficeSubscription.belongsToMany(models.User, {
+    //   otherKey: "subscriberId",
+    //   through: "Subscriptions",
+    //   foreignKey: "officeSubscriptionId",
+    // });
   };
   return OfficeSubscription;
 };

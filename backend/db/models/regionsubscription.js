@@ -8,12 +8,11 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   RegionSubscription.associate = function(models) {
     // associations can be defined here
-    RegionSubscription.belongsToMany(models.User, {
-      otherKey: "subscriberId",
-      as: "Subscriber",
-      through: "Subscriptions",
-      foreignKey: "regionSubscriptionId",
-    });
+    // RegionSubscription.belongsToMany(models.User, {
+    //   otherKey: "subscriberId",
+    //   through: "Subscriptions",
+    //   foreignKey: "regionSubscriptionId",
+    // });
   };
   return RegionSubscription;
 };

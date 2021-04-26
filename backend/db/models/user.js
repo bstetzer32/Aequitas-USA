@@ -23,23 +23,25 @@ module.exports = (sequelize, DataTypes) => {
         len: [5, 256]
       },
     },
+    firstName: {
+      type: DataTypes.STRING(100),
+    },
+    lastName: {
+      type: DataTypes.STRING(100),
+    },
     addressLineOne: {
-      allowNull: false,
       type: DataTypes.STRING(100),
     },
     addressLineTwo: {
       type: DataTypes.STRING(100),
     },
     city: {
-      allowNull: false,
       type: DataTypes.STRING(100),
     },
     state: {
-      allowNull: false,
       type: DataTypes.STRING(2),
     },
     zipCode: {
-      allowNull: false,
       type: DataTypes.STRING(5),
     },
     authenticated: {
@@ -48,16 +50,13 @@ module.exports = (sequelize, DataTypes) => {
     },
     hashedPassword: {
       type: DataTypes.STRING.BINARY,
-      allowNull: false,
-      validate: {
-        len: [60, 60]
-      },
+      allowNull: false
     },
   }, 
    {
     defaultScope: {
       attributes: {
-        exclude: ['hashedPassword', 'email', 'createdAt', 'updatedAt'],
+        exclude: ['hashedPassword', 'email', 'createdAt', 'updatedAt', 'addressLineOne', 'addressLineTwo', 'city', 'state', 'zipCode', 'firstName', 'lastName'],
       },
     },
     scopes: {
@@ -81,70 +80,57 @@ module.exports = (sequelize, DataTypes) => {
   };
   User.associate = function(models) {
     // associations can be defined here
-    User.hasMany(models.Leadership, {
-      foreignKey: "citizenId",
-      as: "citizen"
-    })
-    User.hasMany(models.Leadership, {
-      foreignKey: "leaderId",
-      as: "leader"
-    })
-    User.hasMany(models.Office, {
-      foreignKey: "incumbantId",
-      as: "incumbant"
-    })
-    User.hasMany(models.Problem, {
-      foreignKey: "citizenId",
-      as: "citizen"
-    })
-    User.hasMany(models.Solution, {
-      foreignKey: "citizenId",
-      as: "citizen"
-    })
-    User.hasMany(models.Vote, {
-      foreignKey: "citizenId",
-      as: "citizen"
-    })
-    User.hasMany(models.Highlight, {
-      foreignKey: "citizenId",
-      as: "citizen"
-    })
-    User.belongsToMany(models.OfficeSubscription, {
-      otherKey: "officeSubscriptionId",
-      as: "OfficeSubscription",
-      through: "Subscriptions",
-      foreignKey: "subscriberId",
-    });
-    User.belongsToMany(models.ProblemSubscription, {
-      otherKey: "problemSubscriptionId",
-      as: "ProblemSubscription",
-      through: "Subscriptions",
-      foreignKey: "subscriberId",
-    });
-    User.belongsToMany(models.RegionSubscription, {
-      otherKey: "regionSubscriptionId",
-      as: "RegionSubscription",
-      through: "Subscriptions",
-      foreignKey: "subscriberId",
-    });
-    User.belongsToMany(models.SolutionSubscription, {
-      otherKey: "solutionSubscriptionId",
-      as: "SolutionSubscription",
-      through: "Subscriptions",
-      foreignKey: "subscriberId",
-    });
-    User.belongsToMany(models.TopicSubscription, {
-      otherKey: "topicSubscriptionId",
-      as: "TopicSubscription",
-      through: "Subscriptions",
-      foreignKey: "subscriberId",
-    });
-    User.belongsToMany(models.UserSubscription, {
-      otherKey: "userSubscriptionId",
-      as: "UserSubscription",
-      through: "Subscriptions",
-      foreignKey: "subscriberId",
-    });
+    // User.hasMany(models.Leadership, {
+    //   foreignKey: "citizenId",
+    // })
+    // User.hasMany(models.Leadership, {
+    //   foreignKey: "leaderId",
+    // })
+    // User.hasMany(models.Office, {
+    //   foreignKey: "incumbantId",
+    // })
+    // User.hasMany(models.Problem, {
+    //   foreignKey: "citizenId",
+    // })
+    // User.hasMany(models.Solution, {
+    //   foreignKey: "citizenId",
+    // })
+    // User.hasMany(models.Vote, {
+    //   foreignKey: "citizenId",
+    // })
+    // User.hasMany(models.Highlight, {
+    //   foreignKey: "citizenId",
+    // })
+    // User.belongsToMany(models.OfficeSubscription, {
+    //   otherKey: "officeSubscriptionId",
+    //   through: "Subscriptions",
+    //   foreignKey: "subscriberId",
+    // });
+    // User.belongsToMany(models.ProblemSubscription, {
+    //   otherKey: "problemSubscriptionId",
+    //   through: "Subscriptions",
+    //   foreignKey: "subscriberId",
+    // });
+    // User.belongsToMany(models.RegionSubscription, {
+    //   otherKey: "regionSubscriptionId",
+    //   through: "Subscriptions",
+    //   foreignKey: "subscriberId",
+    // });
+    // User.belongsToMany(models.SolutionSubscription, {
+    //   otherKey: "solutionSubscriptionId",
+    //   through: "Subscriptions",
+    //   foreignKey: "subscriberId",
+    // });
+    // User.belongsToMany(models.TopicSubscription, {
+    //   otherKey: "topicSubscriptionId",
+    //   through: "Subscriptions",
+    //   foreignKey: "subscriberId",
+    // });
+    // User.belongsToMany(models.UserSubscription, {
+    //   otherKey: "userSubscriptionId",
+    //   through: "Subscriptions",
+    //   foreignKey: "subscriberId",
+    // });
   };
   User.login = async function ({ credential, password }) {
     const { Op } = require('sequelize');

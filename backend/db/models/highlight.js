@@ -20,14 +20,12 @@ module.exports = (sequelize, DataTypes) => {
   });
   Highlight.associate = function(models) {
     // associations can be defined here
-    Highlight.belongsTo(models.User, {
-      foreignKey: "citizenId",
-      as: "citizen"
-    })
-    Highlight.belongsTo(models.Problem, {
-      foreignKey: "problemId",
-      as: "problem"
-    })
+    // Highlight.belongsTo(models.User, {
+    //   foreignKey: "citizenId"
+    // })
+    // Highlight.belongsTo(models.Problem, {
+    //   foreignKey: "problemId"
+    // })
   };
   return Highlight;
 };
