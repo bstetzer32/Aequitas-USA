@@ -26,12 +26,31 @@ const validateSignup = [
   handleValidationErrors,
 ];
 
+const validateVerify = [
+  
+]
+
 
 const router = express.Router();
 
 router.post(
   '',
   validateSignup,
+  asyncHandler(async (req, res) => {
+    const { email, password, username } = req.body;
+    const user = await User.signup({ email, username, password });
+
+    await setTokenCookie(res, user);
+
+    return res.json({
+      user,
+    });
+  }),
+);
+
+router.post(
+  '/:id/verify',
+  validateVerify,
   asyncHandler(async (req, res) => {
     const { email, password, username } = req.body;
     const user = await User.signup({ email, username, password });
