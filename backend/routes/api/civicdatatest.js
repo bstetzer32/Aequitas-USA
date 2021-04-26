@@ -91,7 +91,7 @@ fetchData(testAddress)
                 lastName,
                 username,
                 email,
-                hashedPassword: password,
+                password,
                 authenticated: false
             }) 
         });
@@ -103,15 +103,17 @@ fetchData(testAddress)
         //         databaseRegions.push(databaseRegion)
         //     }
         // });
-        leaders.forEach(async leader => {
-            try {
-                const user = await User.create(leader);
-                console.log(user)
-            } catch (error) {
-                console.log(error)
-            }
+        const databaseLeaders = [];
+        // leaders.forEach(async leader => {
+        //     try {
+        //         const user = await User.signup(leader);
+        //         console.log(user)
+        //         databaseLeaders.push(user)
+        //     } catch (error) {
+        //         console.log(error)
+        //     }
 
-        });
-        console.log(databaseRegions)
+        // });
+        console.log(leaders)
         
     })

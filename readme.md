@@ -1,14 +1,11 @@
-MVPs:
-Problems (stories)
-Solutions(comments)
-Leadership
-Subscriptions and feed
-Up/down votes
-regions/topics
-Bonus: google maps
-Bonus: photo id authentication
-
-
-
-
--Ability to see number of times a problem/solution has been edited in feed
+## MVPs:
+- Accounts/Citizens
+- Leaders/Automated Leader Signup & Email Invite
+- Offices/Automated Office Creation
+- Regions/Automated Region Creation
+- Problems/Highlights/Commitees
+- Solutions/Up-Down Vote
+- Subscriptions/Feed
+- Bonus: Google maps
+- Bonus: Webcam Functionality (Photo Authentication)
+- Bonus: Content Analysis Filter (Cloudmersive NLP API)
