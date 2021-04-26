@@ -105,6 +105,10 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: "citizenId",
       as: "citizen"
     })
+    User.hasMany(models.Highlight, {
+      foreignKey: "citizenId",
+      as: "citizen"
+    })
     User.belongsToMany(models.OfficeSubscription, {
       otherKey: "officeSubscriptionId",
       as: "OfficeSubscription",

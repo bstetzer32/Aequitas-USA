@@ -1,16 +1,12 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Votes', {
+    return queryInterface.createTable('Highlights', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
-      },
-      value: {
-        allowNull: false,
-        type: Sequelize.BOOLEAN
       },
       citizenId: {
         allowNull: false,
@@ -22,13 +18,13 @@ module.exports = {
           }
         }
       },
-      solutionId: {
+      problemId: {
         allowNull: false,
         type: Sequelize.INTEGER,
         unique: 'actionsUnique',
         references: {
           model: {
-            tableName: "Solutions"
+            tableName: "Problems"
           }
         }
       },
@@ -46,12 +42,12 @@ module.exports = {
     {
       uniqueKeys: {
         actionsUnique: {
-          fields: ['citizenId', 'solutionId']
+          fields: ['citizenId', 'problemId']
         }
       }
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Votes');
+    return queryInterface.dropTable('Highlights');
   }
 };

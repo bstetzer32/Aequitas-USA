@@ -13,6 +13,11 @@ module.exports = {
         type: Sequelize.STRING(100),
         unique: true
       },
+      verified: {
+        allowNull: false,
+        type: Sequelize.BOOLEAN,
+        defaultValue: false
+      },
       incumbantId: {
         allowNull: false,
         type: Sequelize.INTEGER,

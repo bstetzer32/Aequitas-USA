@@ -13,7 +13,15 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       type: Sequelize.INTEGER
     },
-  }, {});
+  },
+  {
+    indexes: [
+      {
+        unique: true,
+        fields: ['citizenId', 'solutionId'] 
+      }
+    ]
+  });
   Vote.associate = function(models) {
     // associations can be defined here
     Vote.belongsTo(models.User, {

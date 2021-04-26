@@ -59,6 +59,10 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: "problemId",
       as: "problem"
     })
+    Problem.hasMany(models.Highlight, {
+      foreignKey: "problemId",
+      as: "problem"
+    })
   };
   return Problem;
 };

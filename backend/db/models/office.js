@@ -5,6 +5,10 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       type: DataTypes.STRING(100)
     },
+    verified: {
+      allowNull: false,
+      type: Sequelize.BOOLEAN,
+    },
     incumbantId: {
       allowNull: false,
       type: DataTypes.INTEGER
