@@ -6,12 +6,14 @@ module.exports = {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        unique: true
       },
       name: {
         allowNull: false,
         type: Sequelize.STRING(100),
-        unique: true
+        unique: true,
+        primaryKey: true,
       },
       verified: {
         allowNull: false,
@@ -27,13 +29,14 @@ module.exports = {
           }
         }
       },
-      regionId: {
+      region: {
         allowNull: false,
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING(100),
         references: {
           model: {
-            tableName: "Regions"
-          }
+            tableName: "Regions",
+          },
+          key: "name"
         }
       },
       createdAt: {

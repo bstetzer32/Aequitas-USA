@@ -8,10 +8,6 @@ module.exports = (sequelize, DataTypes) => {
     officeId: {
       allowNull: false,
       type: DataTypes.INTEGER,
-    },
-    leaderId: {
-      allowNull: false,
-      type: DataTypes.INTEGER,
     }
   }, {});
   Leadership.associate = function(models) {

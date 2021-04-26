@@ -26,15 +26,6 @@ module.exports = {
           }
         }
       },
-      leaderId: {
-        allowNull: false,
-        type: Sequelize.INTEGER,
-        references: {
-          model: {
-            tableName: "Leaderships"
-          }
-        }
-      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

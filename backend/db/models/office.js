@@ -13,9 +13,9 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       type: DataTypes.INTEGER
     },
-    regionId: {
+    region: {
       allowNull: false,
-      type: DataTypes.INTEGER
+      type: DataTypes.STRING(100)
     }
   }, {});
   Office.associate = function(models) {

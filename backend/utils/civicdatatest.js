@@ -1,20 +1,19 @@
 const fetch = require('node-fetch')
 const faker =  require('faker')
 const bcrypt = require('bcryptjs');
-const { User, Office, Leadership, Region } = require('../../db/models');
+const { User, Office, Leadership, Region } = require('../db/models');
 
 const testAddress = {addressLineOne: '434 Emerald Drive', city:'Pittsburgh', state: 'PA', zip: '15237'}
-async function fetchData(address) {
-    const civicDataFetch = await fetch(`https://www.googleapis.com/civicinfo/v2/representatives?key=AIzaSyDkAj7-ZbjTU2-pLN5bJed7Jph_1LmlsW8&address=${address.addressLineOne}${address.city}${address.state}${address.zip}`)
-    const civicData = await civicDataFetch.json()
-    return civicData
-}
 
-fetchData(testAddress)
-    .then(res => {
-        const {divisions, offices: positions, officials} = res;
-        const state = testAddress.state
-        const regions = []
+function fetchOfficialData () {
+    const citizenId = 1
+    async function fetchData(address) {
+        const civicDataFetch = await fetch(`https://www.googleapis.com/civicinfo/v2/representatives?key=AIzaSyDkAj7-ZbjTU2-pLN5bJed7Jph_1LmlsW8&address=${address.addressLineOne}${address.city}${address.state}${address.zip}`)
+        const civicData = await civicDataFetch.json()
+   
+        const {divisions, offices: positions, officials} = civicData;
+        const state = address.state
+        let regions = []
         const offices = {}
         const leaders = []
         for (const division in divisions) {
@@ -27,8 +26,9 @@ fetchData(testAddress)
             if (region.officeIndices) {
                 region.level = positions[region.officeIndices[0]].levels[0];
                 if (region.level === 'administrativeArea2') {
+                    region.name = region.name + ' ' + state
                     region.officeIndices.forEach(officeIndex => {
-                        positions[officeIndex].region = region.name + ' ' + state
+                        positions[officeIndex].region = region.name
                         delete positions[officeIndex].levels 
                         delete positions[officeIndex].divisionId
                         delete positions[officeIndex].roles 
@@ -97,28 +97,55 @@ fetchData(testAddress)
                 authenticated: false
             }) 
         });
+        regions = regions.filter(region => region.level !== undefined)
         const officeArray = Object.values(offices)
-        let databaseRegions = []
-        // regions.forEach(async region => {
-        //     if (region.name && region.level) {
-        //         const databaseRegion = await Region.create(region)
-        //         databaseRegions.push(databaseRegion)
-        //     }
-        // });
-        const databaseLeaders = [];
-        async () => {
-            for (let i = 0; i < leaders.length; i++) {
-                const leader = leaders[i];
-                console.log(leader)
-                try {
-                    // const user = await User.create(leader);
-                    // databaseLeaders.push(user)
-                } catch (error) {
-                    console.log(error)
-                }
-            }
-            console.log(databaseLeaders)
+            // officeArray.forEach((office) => {
+            //     officeRegion = regions.filter(region => region.name === office.region)
+            //     office.regionId = officeRegion.id
+            //     delete office.region
+            // });
+        // console.log(regions)
+        // console.log(officeArray)
+        let dataReturn = {};
+        try {
+            var databaseRegions = await Region.bulkCreate(regions, {updateOnDuplicate: ["name"], returning: true})
+            dataReturn.regions = databaseRegions
+        } catch (error) {
+            // console.log(error)
         }
-    
-        
-    })
+        try {
+            var databaseLeaders = await User.bulkCreate(leaders);
+            dataReturn.leaders = databaseLeaders
+            officeArray.forEach((office, i) => {
+                office.incumbantId = databaseLeaders[i].dataValues.id
+            });
+        } catch (error) {
+            // console.log(error)
+        }
+        try {
+            var databaseOffices = await Office.bulkCreate(officeArray)
+            dataReturn.offices = databaseOffices
+        } catch (error) {
+            console.log(error)
+        } 
+        try {
+            var leaderships = []
+            databaseOffices.forEach(office => {
+                leaderships.push({citizenId: citizenId, officeId: office.id })
+            });
+            console.log(leaderships)
+            var databaseLeaders = await Leadership.bulkCreate(leaderships) 
+            dataReturn.leaderships = databaseLeaders
+        } catch (error) {
+            console.log(error)
+        } finally {
+        console.log(officeArray)
+        return dataReturn
+
+        }
+    }
+    const fetchOfficialDataReturn = fetchData(testAddress)
+    return fetchOfficialDataReturn
+}
+
+    module.exports = {fetchOfficialData}

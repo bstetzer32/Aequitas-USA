@@ -4,7 +4,8 @@ const asyncHandler = require('express-async-handler');
 const { setTokenCookie, requireAuth } = require('../../utils/auth');
 const { User } = require('../../db/models');
 const { check } = require('express-validator');
-const { handleValidationErrors } = require('../../utils/validation')
+const { handleValidationErrors } = require('../../utils/validation');
+const { fetchOfficialData } = require('../../utils/civicdatatest');
 
 const validateSignup = [
   check('email')
@@ -48,19 +49,16 @@ router.post(
   }),
 );
 
-// router.post(
-//   '/:id/verify',
-//   validateVerify,
-//   asyncHandler(async (req, res) => {
-//     const { email, password, username } = req.body;
-//     const user = await User.signup({ email, username, password });
-
-//     await setTokenCookie(res, user);
-
-//     return res.json({
-//       user,
-//     });
-//   }),
-// );
+router.get(
+  '/verify',
+  asyncHandler(async (req, res) => {
+    // console.log(req)
+    const data = await fetchOfficialData()
+    // console.log(data)
+    return res.json({
+      data,
+    });
+  }),
+);
 
 module.exports = router;
