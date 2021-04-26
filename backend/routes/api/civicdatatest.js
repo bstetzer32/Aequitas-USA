@@ -1,5 +1,6 @@
 const fetch = require('node-fetch')
 const faker =  require('faker')
+const bcrypt = require('bcryptjs');
 const { User, Office, Leadership, Region } = require('../../db/models');
 
 const testAddress = {addressLineOne: '434 Emerald Drive', city:'Pittsburgh', state: 'PA', zip: '15237'}
@@ -77,6 +78,7 @@ fetchData(testAddress)
                 email = `${randomNumber}@fake-email.com`
             }
             const password = faker.internet.password()
+            const hashedPassword = bcrypt.hashSync(password)
             const name = official.name.split(' ')
             const firstName = name[0]
             let lastName
@@ -91,7 +93,7 @@ fetchData(testAddress)
                 lastName,
                 username,
                 email,
-                password,
+                hashedPassword,
                 authenticated: false
             }) 
         });
@@ -104,16 +106,19 @@ fetchData(testAddress)
         //     }
         // });
         const databaseLeaders = [];
-        // leaders.forEach(async leader => {
-        //     try {
-        //         const user = await User.signup(leader);
-        //         console.log(user)
-        //         databaseLeaders.push(user)
-        //     } catch (error) {
-        //         console.log(error)
-        //     }
-
-        // });
-        console.log(leaders)
+        async () => {
+            for (let i = 0; i < leaders.length; i++) {
+                const leader = leaders[i];
+                console.log(leader)
+                try {
+                    // const user = await User.create(leader);
+                    // databaseLeaders.push(user)
+                } catch (error) {
+                    console.log(error)
+                }
+            }
+            console.log(databaseLeaders)
+        }
+    
         
     })
