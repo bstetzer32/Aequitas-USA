@@ -1,18 +1,25 @@
 .landing-page-container {
     display: flex;
     flex-direction: column;
-    margin-top: 2em;
+    align-items: center;
 }
 
 .landing-page-container__splash, .splash {
-    padding: 0 2.5%;
     display: flex;
     justify-content: space-around;
-
-
+    align-items: center;
+    margin-top: 25px;
 }
 
 .col {
     background-color: #00e1ff;
-    width: 30%;
+    width: 400px;
+    height: 650px;
+    margin: 25px;
+}
+
+.col-main__img-main {
+    width: 400px;
+    height: 300px;
+    object-fit: fill;
 }

@@ -27,7 +27,7 @@ export default function DropdownMenu(props) {
   return (
       <div className="menu-container">
       <button onClick={onClick} className="menu-trigger">
-          <i class={`${props.buttonClass}`}></i>
+          <i className={`${props.buttonClass}`}></i>
       </button>
       <nav ref={dropdownRef} className={`menu ${isActive ? 'active' : 'inactive'}`}>
         <ul>
