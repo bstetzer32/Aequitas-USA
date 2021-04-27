@@ -12,15 +12,12 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Leadership.associate = function(models) {
     // associations can be defined here
-    // Leadership.belongsTo(models.User, {
-    //   foreignKey: "citizenId"
-    // })
-    // Leadership.belongsTo(models.User, {
-    //   foreignKey: "citizenId"
-    // })
-    // Leadership.belongsTo(models.Office, {
-    //   foreignKey: "officeId"
-    // })
+    Leadership.belongsTo(models.User, {
+      foreignKey: "citizenId"
+    })
+    Leadership.belongsTo(models.Office, {
+      foreignKey: "officeId"
+    })
   };
   return Leadership;
 };

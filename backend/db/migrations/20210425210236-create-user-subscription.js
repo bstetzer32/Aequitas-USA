@@ -8,9 +8,20 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      subscriberId: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        unique: 'actionsUnique',
+        references: {
+          model: {
+            tableName: "Users"
+          }
+        }
+      },
       userId: {
         allowNull: false,
         type: Sequelize.INTEGER,
+        unique: 'actionsUnique',
         references: {
           model: {
             tableName: "Users"

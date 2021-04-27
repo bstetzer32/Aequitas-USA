@@ -8,8 +8,19 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      subscriberId: {
+        allowNull: false,
+        unique: 'actionsUnique',
+        type: Sequelize.INTEGER,
+        references: {
+          model: {
+            tableName: "Users"
+          }
+        }
+      },
       problemId: {
         allowNull: false,
+        unique: 'actionsUnique',
         type: Sequelize.INTEGER,
         references: {
           model: {

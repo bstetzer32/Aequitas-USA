@@ -5,7 +5,12 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       type: DataTypes.INTEGER
     }
-  }, {});
+  }, {indexes: [
+      {
+        unique: true,
+        fields: ['subscriberId', 'problemId'] 
+      }
+    ]});
   ProblemSubscription.associate = function(models) {
     // associations can be defined here
     // ProblemSubscription.belongsToMany(models.User, {

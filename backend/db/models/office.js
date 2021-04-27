@@ -19,15 +19,15 @@ module.exports = (sequelize, DataTypes) => {
     }
   }, {});
   Office.associate = function(models) {
-    // Office.belongsTo(models.Region, {
-    //   foreignKey: "regionId"
-    // });
-    // Office.belongsTo(models.User, {
-    //   foreignKey: "incumbantId"
-    // })
-    // Office.hasMany(models.Leadership, {
-    //   foreignKey: "officeId"
-    // })
+    Office.belongsTo(models.Region, {
+      foreignKey: "region"
+    });
+    Office.belongsTo(models.User, {
+      foreignKey: "incumbantId"
+    })
+    Office.hasMany(models.Leadership, {
+      foreignKey: "officeId"
+    })
     // Office.hasMany(models.Commitee, {
     //   foreignKey: "officeId"
     // })
