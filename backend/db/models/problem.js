@@ -57,6 +57,12 @@ module.exports = (sequelize, DataTypes) => {
     // Problem.hasMany(models.Highlight, {
     //   foreignKey: "problemId"
     // })
+    Problem.hasMany(models.ProblemReference, {
+      foreignKey: "problemId"
+    })
+    Problem.hasMany(models.ProblemPhoto, {
+      foreignKey: "problemId"
+    })
   };
   return Problem;
 };

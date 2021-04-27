@@ -1,37 +1,12 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Solutions', {
+    return queryInterface.createTable('ProblemPhotos', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
-      },
-      thesis: {
-        allowNull: false,
-        type: Sequelize.STRING,
-        validate: {
-          max: 100,
-          min:10
-        }
-      },
-      proposal: {
-        allowNull: false,
-        type: Sequelize.STRING,
-        validate: {
-          max: 10000,
-          min:10
-        }
-      },
-      citizenId: {
-        allowNull: false,
-        type: Sequelize.INTEGER,
-        references: {
-          model: {
-            tableName: "Users"
-          }
-        }
       },
       problemId: {
         allowNull: false,
@@ -41,6 +16,10 @@ module.exports = {
             tableName: "Problems"
           }
         }
+      },
+      photoUrl: {
+        allowNull: false,
+        type: Sequelize.STRING(1000)
       },
       createdAt: {
         allowNull: false,
@@ -55,6 +34,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Solutions');
+    return queryInterface.dropTable('ProblemPhotos');
   }
 };

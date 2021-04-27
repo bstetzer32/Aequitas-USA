@@ -43,6 +43,12 @@ module.exports = (sequelize, DataTypes) => {
     // Solution.hasMany(models.Vote, {
     //   foreignKey: "solutionId"
     // })
+    Solution.hasMany(models.SolutionReference, {
+      foreignKey: "solutionId"
+    })
+    Solution.hasMany(models.SolutionPhoto, {
+      foreignKey: "solutionId"
+    })
   };
   return Solution;
 };

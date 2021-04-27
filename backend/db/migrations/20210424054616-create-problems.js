@@ -24,12 +24,6 @@ module.exports = {
           max: 5000
         }
       },
-      images: {
-        type: Sequelize.ARRAY(Sequelize.TEXT)
-      },
-      references: {
-        type: Sequelize.ARRAY(Sequelize.TEXT)
-      },
       status: {
         allowNull: false,
         type: Sequelize.BOOLEAN,
