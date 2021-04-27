@@ -1,0 +1,18 @@
+.landing-page-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 2em;
+}
+
+.landing-page-container__splash, .splash {
+    padding: 0 2.5%;
+    display: flex;
+    justify-content: space-around;
+
+
+}
+
+.col {
+    background-color: #00e1ff;
+    width: 30%;
+}

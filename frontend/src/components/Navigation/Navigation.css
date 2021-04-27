@@ -75,7 +75,7 @@
     flex-direction: row;
     justify-content: space-between;
     background-color: rgb(77, 77, 255);
-    height: 7em;
+    height: 6em;
     margin: 0;
     border-radius: 10px;
 }
@@ -94,6 +94,6 @@
 }
 
 .fas, .fa-user-circle, .fa-bars {
-    font-size: 50px;
+    font-size: 300%;
     background-color: rgba(145, 0, 0, 0);
 }
