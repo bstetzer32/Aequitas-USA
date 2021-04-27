@@ -1,5 +1,6 @@
 const fetch = require('node-fetch')
 const faker =  require('faker')
+const { Op } = require('sequelize')
 const bcrypt = require('bcryptjs');
 const { User, Office, Leadership, Region } = require('../db/models');
 
@@ -10,8 +11,16 @@ function fetchOfficialData () {
     async function fetchData(address) {
         const civicDataFetch = await fetch(`https://www.googleapis.com/civicinfo/v2/representatives?key=AIzaSyDkAj7-ZbjTU2-pLN5bJed7Jph_1LmlsW8&address=${address.addressLineOne}${address.city}${address.state}${address.zip}`)
         const civicData = await civicDataFetch.json()
-   
+        
         const {divisions, offices: positions, officials} = civicData;
+        // let existingOffices = await Office.findAll()
+        // existingOffices = existingOffices.map(office => )
+        // const existingUsers = await User.findAll({where: {
+        //     id: {
+        //         [Op.in]: a
+        //     }
+        // }})
+
         const state = address.state
         let regions = []
         const offices = {}
