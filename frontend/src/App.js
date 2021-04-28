@@ -13,13 +13,35 @@ function App() {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
   }, [dispatch]);
 
+  const home = ''
+  const problems = 'Problem '
+  const solutions = 'Solution '
+  const leaders = 'Leader '
+  const regions = 'Region '
+  const topics = 'Topic '
+
   return (
     <>
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
           <Route exact path="/">
-            <LandingPage />
+            <LandingPage type={home} />
+          </Route>
+          <Route path="/problems">
+            <LandingPage type={problems} />
+          </Route>
+          <Route path="/solutions">
+            <LandingPage type={solutions} />
+          </Route>
+          <Route path="/leaders">
+            <LandingPage type={leaders} />
+          </Route>
+          <Route path="/regions">
+            <LandingPage type={regions} />
+          </Route>
+          <Route path="/topics">
+            <LandingPage type={topics} />
           </Route>
           <Route path="/signup">
             <SignupFormPage />

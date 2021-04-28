@@ -14,12 +14,12 @@ const a = {
     img: 'https://i.stack.imgur.com/y9DpT.jpg'
 }
 
-export default function LandingPage () {
+export default function LandingPage ({type}) {
     return (
     <div className="landing-page-container">
         <div className="landing-page-container__splash splash">
-            <ColOne a={a}/>
-            <ColTwo a={a}/>
+            <ColOne type={type} a={a}/>
+            <ColTwo type={type} a={a}/>
             <div className= "col col-3">
                 column 3
             </div>

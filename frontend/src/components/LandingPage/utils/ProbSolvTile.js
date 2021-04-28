@@ -1,7 +1,7 @@
 import React from "react";
 import './ProbSolvTile.css'
 
-export default function ProbSolvTile({a}) {
+export default function ProbSolvTile({a, type}) {
     return (
             <div className="prob-solv-tile">
                 <div className="prob-solv-tile__info">
@@ -10,7 +10,7 @@ export default function ProbSolvTile({a}) {
                             <i className="fas fa-exclamation-circle"></i>
                         </div>
                         <div className="prob-solv-tile__info__title__text">
-                            Title Goes Here
+                            {type}{a.title}
                         </div>
                     </div>
                     <div className="prob-solv-tile__info__location">

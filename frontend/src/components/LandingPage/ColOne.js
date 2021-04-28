@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function ColOne({a}) {
+export default function ColOne({a, type}) {
     return (
         <div className="col col-1 col-main">
                 <div>
@@ -12,7 +12,7 @@ export default function ColOne({a}) {
                         id="tile-banner__main-icon"></i>
                     </div>
                     <div className='tile-banner__main-text'>
-                    {a.title}
+                    {type}{a.title}
                     </div>
                 </div>
                 <div className="main-description">
