@@ -4,7 +4,7 @@ module.exports = (sequelize, DataTypes) => {
     userId: {
       allowNull: false,
       type: DataTypes.INTEGER
-    }
+    },
   }, {indexes: [
       {
         unique: true,

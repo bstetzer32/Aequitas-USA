@@ -4,6 +4,10 @@ module.exports = (sequelize, DataTypes) => {
     officeId: {
       allowNull: false,
       type: DataTypes.INTEGER
+    },
+    subscriberId: {
+      allowNull: false,
+      type: DataTypes.INTEGER
     }
   }, {indexes: [
       {

@@ -4,6 +4,10 @@ module.exports = (sequelize, DataTypes) => {
     topicId: {
       allowNull: false,
       type: DataTypes.INTEGER
+    },
+    subscriberId: {
+      allowNull: false,
+      type: DataTypes.INTEGER
     }
   }, {indexes: [
       {
