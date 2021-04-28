@@ -4,8 +4,8 @@ const { Op } = require('sequelize')
 const bcrypt = require('bcryptjs');
 const { User, Office, RegionSubscription, Region } = require('../db/models');
 
-const testAddress = {addressLineOne: '434 Emerald Drive', city:'Pittsburgh', state: 'PA', zip: '15237'}
-const testAddress1 = {addressLineOne: '929 Main Street', city:'La Crosse', state: 'WI', zip: '54601'}
+const testAddress1 = {addressLineOne: '434 Emerald Drive', city:'Pittsburgh', state: 'PA', zip: '15237'}
+const testAddress2 = {addressLineOne: '929 Main Street', city:'La Crosse', state: 'WI', zip: '54601'}
 
 function fetchOfficialData () {
     const citizenId = 2
@@ -16,18 +16,22 @@ function fetchOfficialData () {
         const {divisions, offices: positions, officials} = civicData;
         const existingOffices = await Office.findAll()
         const existingLeaderIds = existingOffices.map(office => office.incumbantId)
+        const existingOfficeNames = existingOffices.map(office => office.name)
         const existingLeaders = await User.findAll({where: {
             id: {
                 [Op.in]: existingLeaderIds
             }
         }})
         const existingRegionIds = existingOffices.map(office => office.region)
+        // console.log(existingOffices)
         const existingRegions = await Region.findAll({where: {
             name: {
                 [Op.in]: existingRegionIds
             }
         }})
+        // console.log(existingOffices)
         const existingRegionNames = existingRegions.map(region => region.name)
+        // console.log(existingRegionNames)
         const existingLeaderNames = existingLeaders.map(leader => leader.username)
         const state = address.state
         let regions = []
@@ -91,20 +95,10 @@ function fetchOfficialData () {
                 return region
             }
         });
-        console.log(officials)
         let filteredOfficials = officials.filter(official => official.phones && official.phones[0])
+        // console.log(filteredOfficials)
         filteredOfficials.forEach(official => {
-            console.log(official.phones)
-            const userTag = official.phones[0].split(' ')[0]
-            const randomNumber = Math.floor(Math.random() * 1000000)
-            let email;
-            if (official.emails) {
-                email = official.emails[0]
-            } else {
-                email = `${userTag}@placeholder-email.com`
-            }
-            const password = faker.internet.password()
-            const hashedPassword = bcrypt.hashSync(password)
+            // console.log(official.phones)
             const name = official.name.split(' ')
             const firstName = name[0]
             let lastName
@@ -113,7 +107,20 @@ function fetchOfficialData () {
             } else {
                 lastName = name[name.length - 1]
             }
+            const phone = official.phones[0].split('')
+            const phoneNumber = phone.filter(num => ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'].includes(num))
+            const userTag = phoneNumber.join('')
             const username = firstName + lastName + userTag
+            // console.log(userTag)
+            const randomNumber = Math.floor(Math.random() * 1000000)
+            let email;
+            if (official.emails) {
+                email = official.emails[0]
+            } else {
+                email = `${username}@placeholder-email.com`
+            }
+            const password = faker.internet.password()
+            const hashedPassword = bcrypt.hashSync(password)
             leaders.push({ 
                 firstName,
                 lastName,
@@ -128,15 +135,19 @@ function fetchOfficialData () {
         regions.forEach(region => {
             subscriptionRegions.push(region.name)
         });
+        let regionOfficeCreate = [...regions]
+        regionOfficeCreate = regionOfficeCreate.map(region => region.name)
         regions = regions.filter(region => !existingRegionNames.includes(region.name))
+        // console.log(regions)
         const officeArray = Object.values(offices)
             // officeArray.forEach((office) => {
             //     officeRegion = regions.filter(region => region.name === office.region)
             //     office.regionId = officeRegion.id
             //     delete office.region
             // });
-        console.log(regions)
-        // console.log(officeArray)
+        // console.log(regions)
+        let officeArrayNames = officeArray.map(office => office.name)
+        // console.log(officeArrayNames)
         let dataReturn = {};
         try {
             var databaseRegions = await Region.bulkCreate(regions, {updateOnDuplicate: ["name"], returning: true})
@@ -144,17 +155,34 @@ function fetchOfficialData () {
         } catch (error) {
             console.log(error)
         }
-        leaders = leaders.filter(leader => existingLeaderNames.includes(leader.name))
+        // console.log(existingLeaderNames)
+        let leaderCreate = leaders.filter(leader => !existingLeaderNames.includes(leader.username))
+        // console.log(leaders)
         try {
-            var databaseLeaders = await User.bulkCreate(leaders);
+            var databaseLeaders = await User.bulkCreate(leaderCreate);
+            // console.log(databaseLeaders)
             dataReturn.leaders = databaseLeaders
-            officeArray.forEach((office, i) => {
-                office.incumbantId = databaseLeaders[i].dataValues.id
-            });
+
         } catch (error) {
-            // console.log(error)
+            console.log(error)
         }
-        const officeCreate = officeArray.filter(office => existingLeaderIds.includes(office.incumbantId))
+        // let b;
+        // try {
+        //     const a = await Office.findAll({where: {
+        //         name: {
+        //             [Op.in]: officeArrayNames
+        //         }
+        //     }})
+        //     b = a.map(a => a.dataValues.incumbantId)
+        //     console.log(b)
+        // } catch (error) {
+            
+        // }
+        const officeCreate = officeArray.filter(office => !existingOfficeNames.includes(office.name))
+        officeCreate.forEach((office, i) => {
+            office.incumbantId = databaseLeaders[i].dataValues.id
+        });
+        console.log(officeCreate)
         try {
             var databaseOffices = await Office.bulkCreate(officeCreate)
             dataReturn.offices = databaseOffices
@@ -163,8 +191,12 @@ function fetchOfficialData () {
         } 
         let existingRegions1
         try {
-            existingRegions1 = await Region.findAll()
-            console.log(existingRegions1)
+            existingRegions1 = await Region.findAll({where: {
+                name: {
+                    [Op.in]: subscriptionRegions
+                }
+            }})
+            // console.log(existingRegions1)
         } catch (error) {
             console.log(error)
         }
@@ -189,7 +221,7 @@ function fetchOfficialData () {
 
         }
     }
-    const fetchOfficialDataReturn = fetchData(testAddress1)
+    const fetchOfficialDataReturn = fetchData(testAddress2)
     return fetchOfficialDataReturn
 }
 

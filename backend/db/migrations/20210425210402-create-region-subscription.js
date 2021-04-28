@@ -8,9 +8,11 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      leader: {
+        type: Sequelize.BOOLEAN
+      },
       subscriberId: {
         allowNull: false,
-        unique: 'actionsUnique',
         type: Sequelize.INTEGER,
         references: {
           model: {
@@ -20,7 +22,6 @@ module.exports = {
       },
       regionId: {
         allowNull: false,
-        unique: 'actionsUnique',
         type: Sequelize.INTEGER,
         references: {
           model: {
@@ -38,7 +39,14 @@ module.exports = {
         type: Sequelize.DATE,
         defaultValue: Sequelize.fn('now')
       }
-    },  
+    },     
+    {
+      uniqueKeys: {
+        actionsUnique: {
+          fields: ['subscriberId', 'regionId']
+        }
+      }
+    }  
 );
   },
   down: (queryInterface, Sequelize) => {
@@ -46,10 +54,3 @@ module.exports = {
   }
 };
 
-    // {
-    //   uniqueKeys: {
-    //     actionsUnique: {
-    //       fields: ['subscriberId', 'regionId']
-    //     }
-    //   }
-    // }

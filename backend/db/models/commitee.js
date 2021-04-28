@@ -12,12 +12,12 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Commitee.associate = function(models) {
     // associations can be defined here
-    // Commitee.belongsTo(models.Office, {
-    //   foreignKey: "officeId"
-    // })
-    // Commitee.belongsTo(models.Problem, {
-    //   foreignKey: "problemId"
-    // })
+    Commitee.belongsTo(models.Office, {
+      foreignKey: "officeId"
+    })
+    Commitee.belongsTo(models.Problem, {
+      foreignKey: "problemId"
+    })
   };
   return Commitee;
 };
