@@ -9,7 +9,8 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       leader: {
-        type: Sequelize.BOOLEAN
+        type: Sequelize.BOOLEAN,
+        defaultValue: false
       },
       subscriberId: {
         allowNull: false,

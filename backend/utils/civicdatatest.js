@@ -8,7 +8,7 @@ const testAddress1 = {addressLineOne: '434 Emerald Drive', city:'Pittsburgh', st
 const testAddress2 = {addressLineOne: '929 Main Street', city:'La Crosse', state: 'WI', zip: '54601'}
 
 function fetchOfficialData () {
-    const citizenId = 2
+    const citizenId = 1
     async function fetchData(address) {
         const civicDataFetch = await fetch(`https://www.googleapis.com/civicinfo/v2/representatives?key=AIzaSyDkAj7-ZbjTU2-pLN5bJed7Jph_1LmlsW8&address=${address.addressLineOne}${address.city}${address.state}${address.zip}`)
         const civicData = await civicDataFetch.json()
@@ -206,7 +206,7 @@ function fetchOfficialData () {
             var arr = []
             
             existingRegions1.forEach(region => {
-                arr.push({subscriberId: citizenId, regionId: region.id})
+                arr.push({subscriberId: citizenId, regionId: region.id, leader: true})
             })
 
             var databaseLeaders = await RegionSubscription.bulkCreate(arr) 
@@ -221,7 +221,7 @@ function fetchOfficialData () {
 
         }
     }
-    const fetchOfficialDataReturn = fetchData(testAddress2)
+    const fetchOfficialDataReturn = fetchData(testAddress1)
     return fetchOfficialDataReturn
 }
 

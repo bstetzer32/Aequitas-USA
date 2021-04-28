@@ -1,6 +1,10 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const RegionSubscription = sequelize.define('RegionSubscription', {
+    leader: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
+    },
     regionId: {
       allowNull: false,
       type: DataTypes.INTEGER
