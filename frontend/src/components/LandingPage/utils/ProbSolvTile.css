@@ -1,29 +1,92 @@
-.prob-solv-tile {}
+.prob-solv-tile {
+    background-color: #00e1ff;
+    display: grid;
+    grid-template-columns: 5fr 3fr;
+    grid-template-rows: 1fr;
+    border: 1px solid red;
+    box-sizing: border-box;
+}
 
 .prob-solv-tile__info {}
 
-.prob-solv-tile__info__title {}
+.prob-solv-tile__info__title {
+    display: flex;
+    align-items: center;
+}
 
-.prob-solv-tile__info__title__icon {}
+.prob-solv-tile__info__title__icon {
+    margin: 7px;
+    font-size: 10px;
+}
 
-.prob-solv-tile__info__title__text {}
+.prob-solv-tile__info__title__text {
+    font-size: 16px;
+}
 
-.prob-solv-tile__info__location {}
+.prob-solv-tile__info__location {
+    display: flex;
+    align-items: center;
+}
 
-.prob-solv-tile__info__location__icon {}
+.prob-solv-tile__info__location__icon {
+    width: 25px;
+    margin: 7px;
+    font-size: 5px;
+}
 
-.prob-solv-tile__info__location__text {}
+.prob-solv-tile__info__location__text {
+    font-size: 14px;
+}
 
-.prob-solv-tile__info__topic {}
+.prob-solv-tile__info__topic {
+    display: flex;
+    align-items: center;
+}
 
-.prob-solv-tile__info__topic__icon {}
+.prob-solv-tile__info__topic__icon {
+    width: 25px;
+    margin: 7px;
+    font-size: 5px;
+}
 
-.prob-solv-tile__info__topic__text {}
+.prob-solv-tile__info__topic__text {
+    font-size: 14px;
+}
 
-.prob-solv-tile__info__topic {}
+.prob-solv-tile__info__highlight {
+    display: flex;
+    align-items: center;
+}
 
-.prob-solv-tile__info__topic__icon {}
+.prob-solv-tile__info__highlight__icon {
+    width: 25px;
+    margin: 7px;
+    font-size: 5px;
+}
 
-.prob-solv-tile__info__topic__text {}
+.prob-solv-tile__info__highlight__text {
+    font-size: 14px;
+}
 
-.prob-solv-tile__img {}
+.prob-solv-tile__info__date {
+    display: flex;
+    flex-direction: row-reverse;
+    /* justify-content: flex-end; */
+    align-items: center;
+}
+
+.prob-solv-tile__info__date__icon {
+    margin-right: 7px;
+    margin-left: 7px;
+    font-size: 5px;
+}
+
+.prob-solv-tile__info__date__text {
+    font-size: 12px;
+}
+
+.prob-solv-tile__img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+}

@@ -44,7 +44,7 @@ export default function ColOne({a}) {
                 </div>
                 <div className='date-banner'>
                     <div className='date-banner__text'>
-                        {a.date.toLocaleString('default', { day: 'numeric', month: 'long', year: 'numeric' })}
+                        {a.date}
                     </div>
                     <div className='date-banner__icon'>
                         <i class="fas fa-calendar-alt"></i>

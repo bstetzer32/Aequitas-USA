@@ -7,10 +7,10 @@ const date = new Date();
 const a = {
     title: 'Title Goes Here',
     summary: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In metus ligula, luctus vitae venenatis auctor, luctus sed justo. Curabitur convallis nunc eget lacinia aliquam.',
-    region: 'Region',
+    region: 'U.S.A.',
     topic: 'Community',
     highlight: 23,
-    date: date,
+    date: date.toLocaleString('default', { day: 'numeric', month: 'long', year: 'numeric' }),
     img: 'https://i.stack.imgur.com/y9DpT.jpg'
 }
 

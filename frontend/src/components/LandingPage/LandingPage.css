@@ -25,7 +25,13 @@ div {
 .col-main__img-main {
     width: 400px;
     height: 300px;
-    object-fit: fill;
+    object-fit: cover;
+}
+.col-2 {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .main-description {
