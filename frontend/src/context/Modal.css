@@ -21,4 +21,7 @@
 #modal-content {
     position: absolute;
     background-color: white;
+    border-radius: 90px;
+    filter: drop-shadow(0 0 1rem aqua);
 }
+

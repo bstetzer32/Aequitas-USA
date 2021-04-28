@@ -12,14 +12,17 @@ function ProfileButton({ user }) {
   };
 
   return (
-    <div className="menu-dropdown">
-        <ul className="profile-dropdown">
-          <li>{user.username}</li>
-          <li>{user.email}</li>
-          <li>
-            <button onClick={logout}>Log Out</button>
-          </li>
-        </ul>
+    <div id='profile-dropdown-logged'>
+      <li>
+        <h3>Your Info</h3>
+            <ul id="userInfo">
+                <li><b>Username:</b> {user.username}</li>
+                <li><b>Email:</b> {user.email}</li>
+                <li><b>Verified:</b> {user.authenticated.toString()}</li>
+            </ul>
+      </li>
+          <li onClick={logout}>Log Out</li>
+          <li><b>Verify Your Account</b></li>
       </div>
       
   )

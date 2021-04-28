@@ -28,15 +28,16 @@
     margin: 0;
 }
 
-.menu li  {
+.menu li {
     border-bottom: 1px solid #dddddd;
 }
 
-.menu li a, .menu a, .menu button {
+.menu li a, .menu a, .menu button, #log-in-div, #profile-dropdown-logged > li {
     text-decoration: none;
     color: #333333;
     padding: 15px 20px;
     display: block;
+    cursor: pointer;
 }
 
 .menu-trigger {
@@ -97,3 +98,5 @@
     font-size: 300%;
     background-color: rgba(145, 0, 0, 0);
 }
+
+.profile-dropdown-logged {}

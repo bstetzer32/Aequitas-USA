@@ -60,6 +60,17 @@ export const signup = (user) => async (dispatch) => {
   return response;
 };
 
+export const verify = (user) => async (dispatch) => {
+  const { id, addressLineOne, addressLineTwo, state, zip, password } = user;
+  const response = await csrfFetch("/api/users/verify", {
+    method: "PUT",
+    body: JSON.stringify({ citizenId: id, addressLineOne, addressLineTwo, state, zip, password }),
+  });
+  const data = await response.json();
+  dispatch(setUser(data.user));
+  return response;
+};
+
 const initialState = { user: null };
 
 const sessionReducer = (state = initialState, action) => {

@@ -5,6 +5,7 @@ import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
 import DropdownMenu from './DropdownMenu'
 import './Navigation.css';
+import SignupFormModal from '../SignupFormModal';
 
 function Navigation({ isLoaded }){
   const sessionUser = useSelector(state => state.session.user);
@@ -18,17 +19,19 @@ function Navigation({ isLoaded }){
     sessionLinks = (
       <>
         <LoginFormModal />
-        <NavLink to="/signup">Sign Up</NavLink>
+        <SignupFormModal />
       </>
     );
   }
+
+
 
   return (
     <div className='header-container'>
       <div className='logo-text'>Aequitas-USA</div>
       <div className='icon-container'>
         <DropdownMenu buttonClass='fas fa-user-circle'>
-          {isLoaded && sessionLinks}  
+          {isLoaded && sessionLinks} 
         </DropdownMenu>
         <DropdownMenu buttonClass='fas fa-bars'>
             <li><NavLink to="/problems">Problems</NavLink></li>

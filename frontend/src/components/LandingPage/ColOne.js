@@ -20,7 +20,7 @@ export default function ColOne({a, type}) {
                 </div>
                 <div className='tile-banner'>
                     <div className='tile-banner__secondary-icon'>
-                        <i class="fas fa-map-marked-alt"></i>
+                        <i className="fas fa-map-marked-alt"></i>
                     </div>
                     <div className='tile-banner__secondary-text'>
                     {a.region}
@@ -28,7 +28,7 @@ export default function ColOne({a, type}) {
                 </div>
                 <div className='tile-banner'>
                     <div className='tile-banner__secondary-icon'>
-                        <i class="fas fa-book"></i>
+                        <i className="fas fa-book"></i>
                     </div>
                     <div className='tile-banner__secondary-text'>
                     {a.topic}
@@ -36,7 +36,7 @@ export default function ColOne({a, type}) {
                 </div>
                 <div className='tile-banner'>
                     <div className='tile-banner__secondary-icon'>
-                        <i class="fas fa-highlighter"></i>
+                        <i className="fas fa-highlighter"></i>
                     </div>
                     <div className='tile-banner__secondary-text'>
                         {`${a.highlight}%`}
@@ -47,7 +47,7 @@ export default function ColOne({a, type}) {
                         {a.date}
                     </div>
                     <div className='date-banner__icon'>
-                        <i class="fas fa-calendar-alt"></i>
+                        <i className="fas fa-calendar-alt"></i>
                     </div>
                 </div>
             </div>
