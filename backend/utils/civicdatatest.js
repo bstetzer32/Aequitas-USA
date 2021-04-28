@@ -5,9 +5,10 @@ const bcrypt = require('bcryptjs');
 const { User, Office, RegionSubscription, Region } = require('../db/models');
 
 const testAddress = {addressLineOne: '434 Emerald Drive', city:'Pittsburgh', state: 'PA', zip: '15237'}
+const testAddress1 = {addressLineOne: '929 Main Street', city:'La Crosse', state: 'WI', zip: '54601'}
 
 function fetchOfficialData () {
-    const citizenId = 1
+    const citizenId = 2
     async function fetchData(address) {
         const civicDataFetch = await fetch(`https://www.googleapis.com/civicinfo/v2/representatives?key=AIzaSyDkAj7-ZbjTU2-pLN5bJed7Jph_1LmlsW8&address=${address.addressLineOne}${address.city}${address.state}${address.zip}`)
         const civicData = await civicDataFetch.json()
@@ -40,7 +41,12 @@ function fetchOfficialData () {
         }
         regions.map(region => {
             if (region.officeIndices) {
+                if (!positions[region.officeIndices[0]].levels) {
+                    delete region.officeIndices
+                    delete positions[region.officeIndices]
+                } else {
                 region.level = positions[region.officeIndices[0]].levels[0];
+                }
                 if (region.level === 'administrativeArea2') {
                     region.name = region.name + ' ' + state
                     region.officeIndices.forEach(officeIndex => {
@@ -61,7 +67,7 @@ function fetchOfficialData () {
                             delete positions[officeIndex].officialIndices
                         } 
                     });
-                } else {
+                } else if (region.officeIndices) {
                     region.officeIndices.forEach(officeIndex => {
                         positions[officeIndex].region = region.name   
                         delete positions[officeIndex].levels 
@@ -86,7 +92,9 @@ function fetchOfficialData () {
             }
         });
         console.log(officials)
-        officials.forEach(official => {
+        let filteredOfficials = officials.filter(official => official.phones && official.phones[0])
+        filteredOfficials.forEach(official => {
+            console.log(official.phones)
             const userTag = official.phones[0].split(' ')[0]
             const randomNumber = Math.floor(Math.random() * 1000000)
             let email;
@@ -120,22 +128,21 @@ function fetchOfficialData () {
         regions.forEach(region => {
             subscriptionRegions.push(region.name)
         });
-         console.log(regions.filter(region => existingRegionNames.includes(region.name)))
-        regions = regions.filter(region => existingRegionNames.includes(region.name))
+        regions = regions.filter(region => !existingRegionNames.includes(region.name))
         const officeArray = Object.values(offices)
             // officeArray.forEach((office) => {
             //     officeRegion = regions.filter(region => region.name === office.region)
             //     office.regionId = officeRegion.id
             //     delete office.region
             // });
-        // console.log(regions)
+        console.log(regions)
         // console.log(officeArray)
         let dataReturn = {};
         try {
             var databaseRegions = await Region.bulkCreate(regions, {updateOnDuplicate: ["name"], returning: true})
             dataReturn.regions = databaseRegions
         } catch (error) {
-            // console.log(error)
+            console.log(error)
         }
         leaders = leaders.filter(leader => existingLeaderNames.includes(leader.name))
         try {
@@ -154,27 +161,35 @@ function fetchOfficialData () {
         } catch (error) {
             console.log(error)
         } 
+        let existingRegions1
         try {
-            const arr = []
-            const userRegions = await Region.findAll({where:{
-                name:{
-                    [Op.in]: subscriptionRegions
-                }
-            }})
-            userRegions.forEach(region => {
-                arr.push({subscriberId: citizenId, regionId: region.id})
-            })
-            console.log(arr)
-            var databaseLeaders = await RegionSubscription.bulkCreate(arr) 
-            dataReturn.userRegions = userRegions
+            existingRegions1 = await Region.findAll()
+            console.log(existingRegions1)
         } catch (error) {
             console.log(error)
-        } finally {
+        }
+        try {
+
+            // console.log(userRegions)
+            var arr = []
+            
+            existingRegions1.forEach(region => {
+                arr.push({subscriberId: citizenId, regionId: region.id})
+            })
+
+            var databaseLeaders = await RegionSubscription.bulkCreate(arr) 
+            dataReturn.databaseLeaders = databaseLeaders
+        } catch (error) {
+            console.log(error)
+        } 
+
+        finally {
+            // console.log(subscriptionRegions)
         return dataReturn
 
         }
     }
-    const fetchOfficialDataReturn = fetchData(testAddress)
+    const fetchOfficialDataReturn = fetchData(testAddress1)
     return fetchOfficialDataReturn
 }
 

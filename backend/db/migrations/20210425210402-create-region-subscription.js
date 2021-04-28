@@ -38,9 +38,18 @@ module.exports = {
         type: Sequelize.DATE,
         defaultValue: Sequelize.fn('now')
       }
-    });
+    },  
+);
   },
   down: (queryInterface, Sequelize) => {
     return queryInterface.dropTable('RegionSubscriptions');
   }
 };
+
+    // {
+    //   uniqueKeys: {
+    //     actionsUnique: {
+    //       fields: ['subscriberId', 'regionId']
+    //     }
+    //   }
+    // }

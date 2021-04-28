@@ -9,12 +9,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       type: DataTypes.INTEGER
     }
-  }, {indexes: [
-      {
-        unique: true,
-        fields: ['subscriberId', 'regionId'] 
-      }
-    ]});
+  });
   RegionSubscription.associate = function(models) {
     // associations can be defined here
     // RegionSubscription.belongsToMany(models.User, {
