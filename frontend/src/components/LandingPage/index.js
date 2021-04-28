@@ -1,15 +1,25 @@
+import ColOne from './ColOne'
+import ColTwo from './ColTwo'
 import './LandingPage.css'
+
+
+const date = new Date();
+const a = {
+    title: 'Title Goes Here',
+    summary: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In metus ligula, luctus vitae venenatis auctor, luctus sed justo. Curabitur convallis nunc eget lacinia aliquam.',
+    region: 'Region',
+    topic: 'Community',
+    highlight: 23,
+    date: date,
+    img: 'https://i.stack.imgur.com/y9DpT.jpg'
+}
 
 export default function LandingPage () {
     return (
     <div className="landing-page-container">
         <div className="landing-page-container__splash splash">
-            <div className="col col-1 col-main">
-                <img className='col-main__img-main' alt='main' src='https://i.stack.imgur.com/y9DpT.jpg'></img>
-            </div>
-            <div className= "col col-2">
-                column 2
-            </div>
+            <ColOne a={a}/>
+            <ColTwo a={a}/>
             <div className= "col col-3">
                 column 3
             </div>

@@ -1,3 +1,7 @@
+div {
+    font-family: 'Open Sans', sans-serif;
+}
+
 .landing-page-container {
     display: flex;
     flex-direction: column;
@@ -22,4 +26,51 @@
     width: 400px;
     height: 300px;
     object-fit: fill;
+}
+
+.main-description {
+    margin: 10px;
+}
+
+.tile-banner {
+    display: flex;
+    align-items: center;
+    margin: 7px;
+}
+
+.tile-banner__main-text {
+    font-size: 30px;
+    margin: 5px;
+}
+
+#tile-banner__main-icon {
+    margin: 10px;
+    font-size: 40px;
+}
+
+.tile-banner__secondary-text {
+    font-size: 20px;
+    margin: 5px;
+}
+
+.tile-banner__secondary-icon {
+    margin: 5px;
+    font-size: 10px;
+}
+
+.date-banner {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 7px;
+}
+
+.date-banner__text {
+    margin: 5px;
+    font-size: 16px;
+}
+
+.date-banner__icon {
+    margin: 5px;
+    font-size: 7px;
 }
