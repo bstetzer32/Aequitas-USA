@@ -10,7 +10,7 @@ function VerifyFormModal() {
       <li id="log-in-div" onClick={() => setShowModal(true)}>Verify Your Account</li>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <VerifyForm />
+          <VerifyForm setModal={setShowModal}/>
         </Modal>
       )}
     </>

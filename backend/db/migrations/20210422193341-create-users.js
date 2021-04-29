@@ -10,7 +10,7 @@ module.exports = {
       },
       username: {
         allowNull: false,
-        type: Sequelize.STRING(30),
+        type: Sequelize.STRING,
         unique: true
       },
       email: {
@@ -19,19 +19,19 @@ module.exports = {
         unique: true
       },
       firstName: {
-        type: Sequelize.STRING(100),
+        type: Sequelize.STRING,
       },
       lastName: {
-        type: Sequelize.STRING(100),
+        type: Sequelize.STRING,
       },
       addressLineOne: {
-        type: Sequelize.STRING(100),
+        type: Sequelize.STRING,
       },
       addressLineTwo: {
-        type: Sequelize.STRING(100),
+        type: Sequelize.STRING,
       },
       city: {
-        type: Sequelize.STRING(100),
+        type: Sequelize.STRING,
       },
       state: {
         type: Sequelize.STRING(2),

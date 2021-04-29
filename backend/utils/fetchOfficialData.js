@@ -237,13 +237,25 @@ function fetchOfficialData ({citizenId, addressLineOne, city, state, zip}) {
 
             var databaseLeaders = await OfficeSubscription.bulkCreate(arr1) 
             dataReturn.databaseLeaders = databaseLeaders
+            try {
+                const user = await User.findByPk(citizenId)
+                user.addressLineOne = addressLineOne
+                user.city = city
+                user.state = state
+                user.zipCode = zip
+                user.authenticated = true
+                var authUser = await user.save()
+                return authUser
+            } catch (error) {
+                console.log(error)
+            }
         } catch (error) {
             console.log(error)
         } 
 
         finally {
             // console.log(subscriptionRegions)
-        return dataReturn
+            return dataReturn
 
         }
     }

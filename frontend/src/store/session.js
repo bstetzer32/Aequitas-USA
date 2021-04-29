@@ -76,8 +76,8 @@ export const verify = (user) => async (dispatch) => {
     method: "POST",
     body: JSON.stringify({ citizenId, addressLineOne, city, state, zip }),
   });
-  const data = await response.json();
-  dispatch(setUser(data.user));
+  dispatch(getSubscriptions({id: Number.parseInt(citizenId)}))
+  dispatch(restoreUser());
   return response;
 };
 
@@ -88,7 +88,6 @@ export const getSubscriptions = (subs) => async (dispatch) => {
   data.regionSubs = data.regionSubs?.map(sub => sub.id);
   data.officeSubs = data.officeSubs?.map(sub => sub.id);
   dispatch(setSubs(data));
-  console.log(data)
   return response;
 };
 

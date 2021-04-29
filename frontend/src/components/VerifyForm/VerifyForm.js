@@ -4,7 +4,7 @@ import { Redirect } from "react-router-dom";
 import * as sessionActions from "../../store/session";
 import './VerifyForm.css';
 
-function VerifyFormPage() {
+function VerifyFormPage({setModal}) {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const [addressLineOne, setAddressLineOne] = useState("");
@@ -24,6 +24,9 @@ function VerifyFormPage() {
     if (password === confirmPassword) {
       setErrors([]);
       return dispatch(sessionActions.verify(upload))
+      .then(() => {
+          setModal(false)
+      })
         .catch(async (res) => {
           const data = await res.json();
           if (data && data.errors) setErrors(data.errors);

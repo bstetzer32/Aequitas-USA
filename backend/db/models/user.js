@@ -68,8 +68,8 @@ module.exports = (sequelize, DataTypes) => {
     },
   });
   User.prototype.toSafeObject = function() { // remember, this cannot be an arrow function
-  const { id, username, email, authenticated, subscriptions } = this; // context will be the User instance
-  return { id, username, email, authenticated, subscriptions };
+  const { id, username, email, authenticated, addressLineOne, city, state, zipCode } = this; // context will be the User instance
+  return { id, username, email, authenticated, addressLineOne, city, state, zipCode };
   };
   User.prototype.validatePassword = function (password) {
     return bcrypt.compareSync(password, this.hashedPassword.toString());

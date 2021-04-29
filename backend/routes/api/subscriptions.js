@@ -8,7 +8,7 @@ const { handleValidationErrors } = require('../../utils/validation');
 
 const router = express.Router();
 
-router.get('/:userId', requireAuth, asyncHandler(async (req, res) => {
+router.get('/:userId', asyncHandler(async (req, res) => {
     
     const {userId} = req.params
     const subscriptionData = await User.scope('loginUser').findAll({
