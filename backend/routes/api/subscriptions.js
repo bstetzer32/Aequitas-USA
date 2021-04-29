@@ -17,7 +17,7 @@ router.get('/:userId', requireAuth, asyncHandler(async (req, res) => {
         },
             include: [RegionSubscription, OfficeSubscription]
     })
-    const subscriptions = subscriptionData
+    const subscriptions = {regionSubs: subscriptionData[0].RegionSubscriptions, officeSubs: subscriptionData[0].OfficeSubscriptions}
     return res.json(subscriptions)
 }))
 

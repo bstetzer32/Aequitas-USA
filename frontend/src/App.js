@@ -12,10 +12,9 @@ function App() {
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
   }, [dispatch]);
-  // useEffect(() => {
-  //   const queryIds = sessionUser ? sessionUser.id : 1
-  //   dispatch(sessionActions.getSubscriptions({id: queryIds}))
-  // },[dispatch, sessionUser])
+  useEffect(() => {
+    dispatch(sessionActions.getSubscriptions({id: sessionUser ? sessionUser.id : 1}))
+  },[dispatch, sessionUser])
 
   const home = ''
   const problems = 'Problem '
