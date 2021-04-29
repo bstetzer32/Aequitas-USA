@@ -15,7 +15,7 @@ function Subscriptions({name}) {
                                     <i className="fas fa-landmark"></i>
                                 </div>
                                 <div className='info-type info-type__text'>
-                                    Region Name Here
+                                    <h4>Region Name Here</h4>
                                 </div>
                             </div>
 

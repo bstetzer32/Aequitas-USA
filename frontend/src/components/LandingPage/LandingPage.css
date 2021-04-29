@@ -122,8 +122,13 @@ div {
 
 .tile-info__type {
     display: flex;
+    align-items: center;
 }
 
 .info-type {
-    margin: 10px;
+    margin: 5px;
+}
+
+.info-type__icon {
+    font-size: 10px;
 }
