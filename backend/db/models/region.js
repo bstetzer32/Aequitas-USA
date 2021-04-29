@@ -15,6 +15,9 @@ module.exports = (sequelize, DataTypes) => {
     Region.hasMany(models.Office, {
       foreignKey: "region"
     })
+    Region.hasMany(models.RegionSubscription, {
+      foreignKey: "regionId"
+    })
     // Region.hasMany(models.Problem, {
     //   foreignKey: "regionId"
     // })

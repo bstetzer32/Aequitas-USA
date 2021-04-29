@@ -107,11 +107,12 @@ module.exports = (sequelize, DataTypes) => {
     //   through: "Subscriptions",
     //   foreignKey: "subscriberId",
     // });
-    // User.belongsToMany(models.RegionSubscription, {
-    //   otherKey: "regionSubscriptionId",
-    //   through: "Subscriptions",
-    //   foreignKey: "subscriberId",
-    // });
+    User.hasMany(models.RegionSubscription, {
+      foreignKey: "subscriberId",
+    });
+    User.hasMany(models.OfficeSubscription, {
+      foreignKey: "subscriberId",
+    });
     // User.belongsToMany(models.SolutionSubscription, {
     //   otherKey: "solutionSubscriptionId",
     //   through: "Subscriptions",

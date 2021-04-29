@@ -6,10 +6,13 @@ const { restoreUser } = require('../../utils/auth.js');
 const router = require('express').Router();
 const sessionRouter = require('./session.js');
 const usersRouter = require('./users.js');
+const subscriptionRouter = require('./subscriptions.js')
 
 router.use('/session', sessionRouter);
 
 router.use('/users', usersRouter);
+
+router.use('/subscriptions', subscriptionRouter);
 
 router.get('/set-token-cookie', asyncHandler(async (req, res) => {
   const user = await User.findOne({

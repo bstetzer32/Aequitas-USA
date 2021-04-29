@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
+import VerifyFormModal from "../VerifyForm";
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
@@ -22,7 +23,7 @@ function ProfileButton({ user }) {
             </ul>
       </li>
           <li onClick={logout}>Log Out</li>
-          <li><b>Verify Your Account</b></li>
+          <VerifyFormModal />
       </div>
       
   )

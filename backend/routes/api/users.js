@@ -5,7 +5,7 @@ const { setTokenCookie, requireAuth } = require('../../utils/auth');
 const { User } = require('../../db/models');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
-const { fetchOfficialData } = require('../../utils/civicdatatest');
+const { fetchOfficialData } = require('../../utils/fetchOfficialData');
 
 const validateSignup = [
   check('email')
@@ -28,7 +28,24 @@ const validateSignup = [
 ];
 
 const validateVerify = [
-  
+  check('addressLineOne')
+    .exists({ checkFalsy: true })
+    .withMessage('Please provide a valid address.'),
+  check('city')
+    .exists({ checkFalsy: true })
+    .withMessage('Please provide a valid city.'),
+  check('state')
+    .exists({ checkFalsy: true })
+    .withMessage('Please provide a valid state.'),
+  check('zip')
+    .exists({ checkFalsy: true })
+    .isLength({ min: 5, max: 5 })
+    .withMessage('Please provide a valid state.'),
+  check('password')
+    .exists({ checkFalsy: true })
+    .isLength({ min: 6 })
+    .withMessage('Please enter your password.'),
+  handleValidationErrors,
 ]
 
 
@@ -49,12 +66,14 @@ router.post(
   }),
 );
 
-router.get(
+router.post(
   '/verify',
+  // validateVerify,
   asyncHandler(async (req, res) => {
-    // console.log(req)
-    const data = await fetchOfficialData()
-    // console.log(data)
+    console.log(req.body)
+    const { citizenId, addressLineOne, city, state, zip } = req.body
+
+    const data = await fetchOfficialData({citizenId, addressLineOne, city, state, zip})
     return res.json({
       data,
     });

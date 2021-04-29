@@ -1,5 +1,6 @@
 import ColOne from './ColOne'
 import ColTwo from './ColTwo'
+import ColThree from './ColThree'
 import './LandingPage.css'
 
 
@@ -20,9 +21,7 @@ export default function LandingPage ({type}) {
         <div className="landing-page-container__splash splash">
             <ColOne type={type} a={a}/>
             <ColTwo type={type} a={a}/>
-            <div className= "col col-3">
-                column 3
-            </div>
+            <ColThree type={type} a={a}/>
         </div>
     </div>
     )

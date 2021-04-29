@@ -61,10 +61,10 @@ export const signup = (user) => async (dispatch) => {
 };
 
 export const verify = (user) => async (dispatch) => {
-  const { id, addressLineOne, addressLineTwo, state, zip, password } = user;
+  const { citizenId, addressLineOne, city, state, zip } = user;
   const response = await csrfFetch("/api/users/verify", {
-    method: "PUT",
-    body: JSON.stringify({ citizenId: id, addressLineOne, addressLineTwo, state, zip, password }),
+    method: "POST",
+    body: JSON.stringify({ citizenId, addressLineOne, city, state, zip }),
   });
   const data = await response.json();
   dispatch(setUser(data.user));
