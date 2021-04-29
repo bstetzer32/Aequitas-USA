@@ -1,6 +1,10 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const OfficeSubscription = sequelize.define('OfficeSubscription', {
+    leader: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
+    },
     officeId: {
       allowNull: false,
       type: DataTypes.INTEGER

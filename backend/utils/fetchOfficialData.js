@@ -232,7 +232,7 @@ function fetchOfficialData ({citizenId, addressLineOne, city, state, zip}) {
             var arr1 = []
             
             existingOffices1.forEach(office => {
-                arr1.push({subscriberId: citizenId, officeId: office.id})
+                arr1.push({subscriberId: citizenId, officeId: office.id, leader: true})
             })
 
             var databaseLeaders = await OfficeSubscription.bulkCreate(arr1) 

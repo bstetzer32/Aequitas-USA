@@ -8,6 +8,10 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      leader: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: false
+      },
       subscriberId: {
         allowNull: false,
         unique: 'actionsUnique',

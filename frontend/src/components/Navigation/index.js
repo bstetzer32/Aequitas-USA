@@ -6,6 +6,7 @@ import LoginFormModal from '../LoginFormModal';
 import DropdownMenu from './DropdownMenu'
 import './Navigation.css';
 import SignupFormModal from '../SignupFormModal';
+// import '../images/aelogo.png'
 
 function Navigation({ isLoaded }){
   const sessionUser = useSelector(state => state.session.user);
@@ -29,7 +30,8 @@ function Navigation({ isLoaded }){
 
   return (
     <div className='header-container'>
-      <div className='logo-text'>Aequitas-USA</div>
+      <div><img alt='logo' src='https://imgur.com/ldLHZpq.png'></img></div>
+      <div></div>
       <div className='icon-container'>
         <DropdownMenu buttonClass='fas fa-user-circle'>
           {isLoaded && sessionLinks} 
