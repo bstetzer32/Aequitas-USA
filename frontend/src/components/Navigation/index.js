@@ -9,6 +9,7 @@ import SignupFormModal from '../SignupFormModal';
 
 function Navigation({ isLoaded }){
   const sessionUser = useSelector(state => state.session.user);
+  
 
   let sessionLinks;
   if (sessionUser) {

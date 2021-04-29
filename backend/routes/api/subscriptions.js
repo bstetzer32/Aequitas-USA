@@ -8,16 +8,17 @@ const { handleValidationErrors } = require('../../utils/validation');
 
 const router = express.Router();
 
-router.get('/', asyncHandler(async (req, res) => {
-    console.log(req)
+router.get('/:userId', requireAuth, asyncHandler(async (req, res) => {
+    
     const {userId} = req.params
-    const officeSubscriptions = await User.findAll({
+    const subscriptionData = await User.scope('loginUser').findAll({
         where: {
-            id: 1
+            id: userId
         },
             include: [RegionSubscription, OfficeSubscription]
     })
-    return res.json(officeSubscriptions)
+    const subscriptions = subscriptionData
+    return res.json(subscriptions)
 }))
 
 module.exports = router;
