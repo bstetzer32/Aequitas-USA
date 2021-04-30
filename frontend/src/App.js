@@ -13,7 +13,7 @@ function App() {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
   }, [dispatch]);
   useEffect(() => {
-    dispatch(sessionActions.getSubscriptions({id: sessionUser ? sessionUser.id : 1}))
+    dispatch(sessionActions.getSubscriptions({id: sessionUser ? sessionUser.id : 7}))
   },[dispatch, sessionUser])
 
   const home = ''

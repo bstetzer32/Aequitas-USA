@@ -2,7 +2,9 @@ import ColOne from './ColOne'
 import ColTwo from './ColTwo'
 import ColThree from './ColThree'
 import './LandingPage.css'
-import { Route, Switch } from "react-router-dom";
+import Feed from './utils/Feed';
+import InfiniteListWithVerticalScroll from './utils/ScrollBox';
+// import { Route, Switch } from "react-router-dom";
 
 
 const date = new Date();
@@ -27,7 +29,7 @@ export default function LandingPage ({region}) {
                     <ColThree/>
                 </div>
             </div>
-
+            <InfiniteListWithVerticalScroll />
         </>
     )
 }

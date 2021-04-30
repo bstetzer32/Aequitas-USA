@@ -13,12 +13,6 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       type: DataTypes.STRING
     },
-    images: {
-      type: DataTypes.ARRAY(DataTypes.STRING(100))
-    },
-    references: {
-      type: DataTypes.ARRAY(DataTypes.STRING(100))
-    },
     status: {
       allowNull: false,
       type: DataTypes.BOOLEAN,

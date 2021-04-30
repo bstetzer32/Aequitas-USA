@@ -14,7 +14,7 @@ function Subscriptions({name}) {
                     <h2>Your Government</h2>
                 </div>
                 <div className='government__tiles'>
-                    {regionSubs?.map(region => <GovtTile region={region}  />)}
+                    {regionSubs?.map((region, i) => <GovtTile region={region} key={`region-${i}`}  />)}
                 </div>
             </div>
     )

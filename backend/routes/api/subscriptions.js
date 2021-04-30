@@ -12,14 +12,19 @@ const router = express.Router();
 router.get('/:userId', asyncHandler(async (req, res) => {
     
     const {userId} = req.params
-    const subscriptionData = await User.scope('loginUser').findAll({
+    if (!userId) {
+        return res.json({})
+    }
+
+    const subscriptionData = await User.findOne({
         where: {
             id: userId
         },
             include: [{model: RegionSubscription, include: Region}, {model: OfficeSubscription, include: Office}]
     })
-    const regions = subscriptionData[0].RegionSubscriptions.map(region => region.Region)
-    const offices = subscriptionData[0].OfficeSubscriptions.map(office => office.Office)
+    // console.log(subscriptionData)
+    const regions = subscriptionData.RegionSubscriptions.map(region => region.Region)
+    const offices = subscriptionData.OfficeSubscriptions.map(office => office.Office)
     const subscriptions = {regionSubs: regions, officeSubs: offices}
     return res.json(subscriptions)
 }))
