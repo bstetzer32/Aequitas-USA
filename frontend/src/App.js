@@ -41,7 +41,7 @@ function App() {
             <LandingPage type={leaders} />
           </Route>
           <Route path="/regions">
-            <LandingPage type={regions} />
+            <LandingPage region={regions} />
           </Route>
           <Route path="/topics">
             <LandingPage type={topics} />

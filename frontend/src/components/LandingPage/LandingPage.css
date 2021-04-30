@@ -19,6 +19,8 @@ div {
     background-color: #00e1ff;
     width: 400px;
     margin: 25px;
+    max-height: 650px;
+    object-fit: contain
 }
 
 .col-main, .col-2 {
@@ -49,6 +51,7 @@ div {
 
 .main-description {
     margin: 10px;
+    font-size: 16px;
 }
 
 .tile-banner {
@@ -58,7 +61,7 @@ div {
 }
 
 .tile-banner__main-text {
-    font-size: 30px;
+    font-size: 20px;
     margin: 5px;
 }
 
@@ -68,16 +71,19 @@ div {
 }
 
 .tile-banner__secondary-text {
-    font-size: 20px;
+    font-size: 16px;
     margin: 5px;
 }
 
 .tile-banner__secondary-icon {
     margin: 5px;
-    font-size: 10px;
+    font-size: 8px;
 }
 
 .date-banner {
+    position: relative;
+    bottom: 0;
+    right: 0;
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -94,8 +100,7 @@ div {
     font-size: 7px;
 }
 
-.government {
-}
+.government {}
 
 .government__header {
     display: flex;
@@ -109,7 +114,6 @@ div {
     width: 400px;
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: space-between
 }
 
@@ -121,6 +125,7 @@ div {
     /* border: 1px solid black; */
     margin: 5px;
     display: flex;
+    justify-content: space-between;
 }
 
 .government-tile__info {

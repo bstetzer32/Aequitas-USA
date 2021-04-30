@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
@@ -25,12 +25,12 @@ function Navigation({ isLoaded }){
       </>
     );
   }
-
+// 
 
 
   return (
     <div className='header-container'>
-      <div><img alt='logo' src='https://imgur.com/ldLHZpq.png'></img></div>
+      <div><Link to='/'><img alt='logo' src='https://imgur.com/ldLHZpq.png'></img></Link></div>
       <div></div>
       <div className='icon-container'>
         <DropdownMenu buttonClass='fas fa-user-circle'>
@@ -40,7 +40,7 @@ function Navigation({ isLoaded }){
             <li><NavLink to="/problems">Problems</NavLink></li>
             <li><NavLink to="/solutions">Solutions</NavLink></li>
             <li><NavLink to="/leaders">Leaders</NavLink></li>
-            <li><NavLink to="/regions">Regions</NavLink></li>
+            <li><NavLink to="/regions/:id">Regions</NavLink></li>
             <li><NavLink to="/topics">Topics</NavLink></li>
         </DropdownMenu>
       </div>

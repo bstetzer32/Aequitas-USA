@@ -2,6 +2,7 @@ import ColOne from './ColOne'
 import ColTwo from './ColTwo'
 import ColThree from './ColThree'
 import './LandingPage.css'
+import { Route, Switch } from "react-router-dom";
 
 
 const date = new Date();
@@ -15,14 +16,18 @@ const a = {
     img: 'https://i.stack.imgur.com/y9DpT.jpg'
 }
 
-export default function LandingPage ({type}) {
+export default function LandingPage ({region}) {
     return (
-    <div className="landing-page-container">
-        <div className="landing-page-container__splash splash">
-            <ColOne type={type} a={a}/>
-            <ColTwo type={type} a={a}/>
-            <ColThree type={type} a={a}/>
-        </div>
-    </div>
+        <>
+            <div className="landing-page-container">
+                <h1>{region}</h1>
+                <div className="landing-page-container__splash splash">
+                    <ColOne type={region} a={a}/>
+                    <ColTwo type={region} a={a}/>
+                    <ColThree/>
+                </div>
+            </div>
+
+        </>
     )
 }
