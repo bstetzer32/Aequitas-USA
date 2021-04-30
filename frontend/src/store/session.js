@@ -85,8 +85,9 @@ export const getSubscriptions = (subs) => async (dispatch) => {
   const {id} = subs;
   const response = await csrfFetch(`/api/subscriptions/${id}`);
   const data = await response.json();
-  data.regionSubs = data.regionSubs?.map(sub => sub.id);
-  data.officeSubs = data.officeSubs?.map(sub => sub.id);
+  // console.log(data)
+  // data.regionSubs = data.regionSubs?.map(sub => sub.regions);
+  // data.officeSubs = data.officeSubs?.map(sub => sub.regions);
   dispatch(setSubs(data));
   return response;
 };
