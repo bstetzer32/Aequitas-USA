@@ -12,12 +12,12 @@ module.exports = {
      for (let i = 0; i < 5100; i++) {
        problemUpload.push({
          title: faker.lorem.words(),
-         summary: faker.lorem.sentence(),
+         summary: faker.lorem.words(),
          description: faker.lorem.sentence(),
          status: i % 2 ? true : false,
-         citizenId: (i % 3) + 4,
-         regionId: (i % 51) + 51,
-         topicId: (i % 7) + 8
+         citizenId: (i % 3) + 1,
+         regionId: (i % 51) + 1,
+         topicId: (i % 7) + 1
         })
       }
       return queryInterface.bulkInsert('Problems', problemUpload, {});

@@ -1,10 +1,10 @@
 import React from "react";
 
-export default function ColOne({a, type}) {
+export default function ColOne({info, type}) {
     return (
         <div className="col col-1 col-main">
                 <div>
-                    <img className='col-main__img-main' alt='main' src={a.img}></img>
+                    <img className='col-main__img-main' alt='main' src={info?.img}></img>
                 </div>
                 <div className='tile-banner'>
                     <div>
@@ -12,18 +12,18 @@ export default function ColOne({a, type}) {
                         id="tile-banner__main-icon"></i>
                     </div>
                     <div className='tile-banner__main-text'>
-                    {type}{a.title}
+                    {type}{info?.title}
                     </div>
                 </div>
                 <div className="main-description">
-                    {a.summary}
+                    {info?.summary}
                 </div>
                 <div className='tile-banner'>
                     <div className='tile-banner__secondary-icon'>
                         <i className="fas fa-map-marked-alt"></i>
                     </div>
                     <div className='tile-banner__secondary-text'>
-                    {a.region}
+                    {info?.region}
                     </div>
                 </div>
                 <div className='tile-banner'>
@@ -31,7 +31,7 @@ export default function ColOne({a, type}) {
                         <i className="fas fa-book"></i>
                     </div>
                     <div className='tile-banner__secondary-text'>
-                    {a.topic}
+                    {info?.topic}
                     </div>
                 </div>
                 <div className='tile-banner'>
@@ -39,12 +39,12 @@ export default function ColOne({a, type}) {
                         <i className="fas fa-highlighter"></i>
                     </div>
                     <div className='tile-banner__secondary-text'>
-                        {`${a.highlight}%`}
+                        {`${info?.highlight}%`}
                     </div>
                 </div>
                 <div className='date-banner'>
                     <div className='date-banner__text'>
-                        {a.date}
+                        {info?.date}
                     </div>
                     <div className='date-banner__icon'>
                         <i className="fas fa-calendar-alt"></i>

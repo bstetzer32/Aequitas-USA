@@ -1,7 +1,7 @@
 import React from "react";
 import './ProbSolvTile.css'
 
-export default function ProbSolvTile({a, type}) {
+export default function ProbSolvTile({info, type}) {
     return (
             <div className="prob-solv-tile">
                 <div className="prob-solv-tile__info">
@@ -10,7 +10,7 @@ export default function ProbSolvTile({a, type}) {
                             <i className="fas fa-exclamation-circle"></i>
                         </div>
                         <div className="prob-solv-tile__info__title__text">
-                            {type}{a.title}
+                            {type}{info?.title}
                         </div>
                     </div>
                     <div className="prob-solv-tile__info__location">
@@ -18,7 +18,7 @@ export default function ProbSolvTile({a, type}) {
                             <i className="fas fa-map-marked-alt"></i>
                         </div>
                         <div className="prob-solv-tile__info__location__text">
-                            {a.region}
+                            {info?.region}
                         </div>
                     </div>
                     <div className="prob-solv-tile__info__highlight">
@@ -26,7 +26,7 @@ export default function ProbSolvTile({a, type}) {
                             <i className="fas fa-book"></i>
                         </div>
                         <div className="prob-solv-tile__info__topic__text">
-                            {a.topic}
+                            {info?.topic}
                         </div>
                     </div>
                     <div className="prob-solv-tile__info__highlight">
@@ -34,7 +34,7 @@ export default function ProbSolvTile({a, type}) {
                             <i className="fas fa-highlighter"></i>
                         </div>
                         <div className="prob-solv-tile__info__highlight__text">
-                            {`${a.highlight}%`}
+                            {`${info?.highlight}%`}
                         </div>
                     </div>
                     <div className="prob-solv-tile__info__date">
@@ -42,12 +42,12 @@ export default function ProbSolvTile({a, type}) {
                             <i className="fas fa-calendar-alt"></i>
                         </div>
                         <div className="prob-solv-tile__info__date__text">
-                            {a.date}
+                            {info?.date}
                         </div>
                     </div>
                 </div>
                 <div className="prob-solv-tile__img">
-                    <img className='prob-solv-tile__img' alt='tile__img' src={a.img}></img>
+                    <img className='prob-solv-tile__img' alt='tile__img' src={info?.img}></img>
                 </div>
             </div>
         )

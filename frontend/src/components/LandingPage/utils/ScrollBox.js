@@ -1,5 +1,5 @@
 import useInfiniteScroll from 'react-infinite-scroll-hook';
-import React, {useEffect, useMemo} from "react";
+import React, {useEffect, useMemo, useState} from "react";
 import Feed from './Feed'
 import { useLoadItems } from './ScrollUtils';
 import { useDispatch, useSelector} from "react-redux";
@@ -15,11 +15,11 @@ export default function InfiniteListWithVerticalScroll() {
   const { loading, hasNextPage, error, loadMore } = useLoadItems()
   const dispatch = useDispatch();
   const items = useSelector(state => state.feed);
-  useEffect(() => {
-    const fetchData = async () => await dispatch(feedActions.getItems(context, 20))
-    fetchData()
+  // useEffect(() => {
+  //   const fetchData = async () => await dispatch(feedActions.getItems(context, 20))
+  //   fetchData()
 
-  }, [context, dispatch])
+  // }, [context, dispatch])
 
   const [sentryRef, { rootRef }] = useInfiniteScroll({
     loading,
@@ -30,10 +30,10 @@ export default function InfiniteListWithVerticalScroll() {
   });
 
   return (
-    <Feed
+<div ref={rootRef}>    <Feed
       // This where we set our scrollable root component.
       
-    ><div ref={rootRef}>
+    >
       <ul>
         {items.map((item) => (
           <li key={item.key}>{item.value}</li>
@@ -44,7 +44,8 @@ export default function InfiniteListWithVerticalScroll() {
           </li>
         )}
       </ul>
+      </Feed>
       </div>
-    </Feed>
+    
   );
 }

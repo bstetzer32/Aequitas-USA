@@ -85,12 +85,12 @@ module.exports = (sequelize, DataTypes) => {
     User.hasMany(models.Office, {
       foreignKey: "incumbantId",
     })
-    // User.hasMany(models.Problem, {
-    //   foreignKey: "citizenId",
-    // })
-    // User.hasMany(models.Solution, {
-    //   foreignKey: "citizenId",
-    // })
+    User.hasMany(models.Problem, {
+      foreignKey: "citizenId",
+    })
+    User.hasMany(models.Solution, {
+      foreignKey: "citizenId",
+    })
     // User.hasMany(models.Vote, {
     //   foreignKey: "citizenId",
     // })

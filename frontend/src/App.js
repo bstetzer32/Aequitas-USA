@@ -3,25 +3,27 @@ import { useDispatch, useSelector } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 import LandingPage from "./components/LandingPage"
 import * as sessionActions from "./store/session";
+import * as subActions from "./store/subscriptions";
 import Navigation from "./components/Navigation";
 
 function App() {
+  const pathname = window.location.pathname //returns the current url minus the domain name
+  console.log(pathname)
   const sessionUser = useSelector(state => state.session.user);
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
+  const id = sessionUser ? sessionUser.id : 1
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
-  }, [dispatch]);
-  useEffect(() => {
-    dispatch(sessionActions.getSubscriptions({id: sessionUser ? sessionUser.id : 7}))
-  },[dispatch, sessionUser])
+    dispatch(subActions.getUserSubscriptions({id}));
+  }, [dispatch, id]);
 
   const home = ''
-  const problems = 'Problem '
-  const solutions = 'Solution '
-  const leaders = 'Leader '
-  const regions = 'Region '
-  const topics = 'Topic '
+  const problems = 'problem'
+  const solutions = 'solution'
+  const leaders = 'leader'
+  const regions = 'region'
+  const topics = 'topic'
 
   return (
     <>
@@ -31,19 +33,19 @@ function App() {
           <Route exact path="/">
             <LandingPage type={home} />
           </Route>
-          <Route path="/problems">
+          <Route path="/problems/:id">
             <LandingPage type={problems} />
           </Route>
-          <Route path="/solutions">
+          <Route path="/solutions/:id">
             <LandingPage type={solutions} />
           </Route>
-          <Route path="/leaders">
+          <Route path="/leaders/:id">
             <LandingPage type={leaders} />
           </Route>
-          <Route path="/regions">
-            <LandingPage region={regions} />
+          <Route path="/regions/:id">
+            <LandingPage type={regions} />
           </Route>
-          <Route path="/topics">
+          <Route path="/topics/:id">
             <LandingPage type={topics} />
           </Route>
         </Switch>

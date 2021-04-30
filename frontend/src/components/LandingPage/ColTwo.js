@@ -1,13 +1,12 @@
 import React from "react";
 import ProbSolvTile from './utils/ProbSolvTile'
 
-export default function ColTwo({a, type}) {
+export default function ColTwo({info, type}) {
     return (
             <div className= "col col-2">
-                <ProbSolvTile type={type} a={a}/>
-                <ProbSolvTile type={type} a={a}/>
-                <ProbSolvTile type={type} a={a}/>
-                <ProbSolvTile type={type} a={a}/>
+                {info.map((info, i) => <ProbSolvTile type={type} key={`tile-${i}`}info={info[i]}/>)}
+                
+
             </div>
         )
 }

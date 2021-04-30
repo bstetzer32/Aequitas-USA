@@ -20,7 +20,7 @@ module.exports = {
          thesis: faker.lorem.sentence(),
          proposal: faker.lorem.sentence(),
         //  status: i % 2 ? true : false,
-         citizenId: (i % 3) + 4,
+         citizenId: (i % 3) + 1,
          problemId: (i % 5100) + 5101
         })
       }

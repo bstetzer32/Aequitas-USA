@@ -33,21 +33,21 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Problem.associate = function(models) {
     // associations can be defined here
-    // Problem.belongsTo(models.User, {
-    //   foreignKey: "citizenId"
-    // })
-    // Problem.belongsTo(models.Region, {
-    //   foreignKey: "regionId"
-    // })
-    // Problem.belongsTo(models.Topic, {
-    //   foreignKey: "topicsId"
-    // })
+    Problem.belongsTo(models.User, {
+      foreignKey: "citizenId"
+    })
+    Problem.belongsTo(models.Region, {
+      foreignKey: "regionId"
+    })
+    Problem.belongsTo(models.Topic, {
+      foreignKey: "topicId"
+    })
     // Problem.hasMany(models.Commitee, {
     //   foreignKey: "problemId"
     // })
-    // Problem.hasMany(models.Solution, {
-    //   foreignKey: "problemId"
-    // })
+    Problem.hasMany(models.Solution, {
+      foreignKey: "problemId"
+    })
     // Problem.hasMany(models.Highlight, {
     //   foreignKey: "problemId"
     // })

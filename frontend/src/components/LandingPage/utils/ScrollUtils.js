@@ -43,7 +43,7 @@ export function useLoadItems() {
   async function loadMore() {
     setLoading(true);
     try {
-      await dispatch(feedActions.getItems(context, ARRAY_SIZE))
+      await dispatch(feedActions.getItems(context, 200))
       // const { data, hasNextPage: newHasNextPage } = await loadItems(
       //   items.length, items
       // );

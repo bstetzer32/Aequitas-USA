@@ -23,14 +23,14 @@ router.get('/:userId', asyncHandler(async (req, res) => {
             include: [{model: RegionSubscription, include: Region}, {model: OfficeSubscription, include: Office}]
     })
     // console.log(subscriptionData)
-    const regions = subscriptionData.RegionSubscriptions.map(region => region.Region)
-    const offices = subscriptionData.OfficeSubscriptions.map(office => office.Office)
+    const regions = subscriptionData ? subscriptionData.RegionSubscriptions.map(region => region.Region) : []
+    const offices = subscriptionData ? subscriptionData.OfficeSubscriptions.map(office => office.Office) : []
     const subscriptions = {regionSubs: regions, officeSubs: offices}
     return res.json(subscriptions)
 }))
 
-router.post('/feed', asyncHandler(async (req, res) => {
-    const {govt, regions, offices} = req.params
+router.get('/region/:regionId', asyncHandler(async (req, res) => {
+    const {regionId} = req.params
     const govtData = await Region.findAll({where: {
         id: {
             [Op.in]: govt
