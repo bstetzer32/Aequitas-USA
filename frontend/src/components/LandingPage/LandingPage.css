@@ -11,15 +11,18 @@ div {
 .landing-page-container__splash, .splash {
     display: flex;
     justify-content: space-around;
-    align-items: center;
+    align-items: start;
     margin-top: 25px;
 }
 
 .col {
     background-color: #00e1ff;
     width: 400px;
-    height: 650px;
     margin: 25px;
+}
+
+.col-main, .col-2 {
+    height: 650px;
 }
 
 .col-main__img-main {
@@ -37,9 +40,11 @@ div {
 
 .col-3 {
     background-color: rgb(255, 77, 77);
+    max-height: 650px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    align-items: flex-start;
+    /* justify-content: space-between; */
 }
 
 .main-description {
@@ -89,7 +94,8 @@ div {
     font-size: 7px;
 }
 
-.subscriptions {}
+.government {
+}
 
 .government__header {
     display: flex;
@@ -98,31 +104,35 @@ div {
 }
 
 .government__tiles {
-    background-color: cyan;
+    background-color: white;
     height: 550px;
     width: 400px;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: space-between
 }
+
 /* .government__tiles > div {
     padding: 35px;
 } */
 
 .government-tile {
-    border: 1px solid black;
+    /* border: 1px solid black; */
     margin: 5px;
     display: flex;
 }
 
 .government-tile__info {
-
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
-
-
 
 .tile-info__type {
     display: flex;
     align-items: center;
+    height: 25px;
 }
 
 .info-type {
@@ -130,5 +140,19 @@ div {
 }
 
 .info-type__icon {
-    font-size: 10px;
+    font-size: 7px;
+}
+
+.tile-info__population, .tile-info__offices {
+    display: flex;
+    align-items: center;
+    height: 15px;
+}
+
+.info-population, .info-offices {
+    margin: 5px;
+}
+
+.info-population__icon, .info-offices__icon {
+    font-size: 5px;
 }

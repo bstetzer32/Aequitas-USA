@@ -42,13 +42,14 @@ function fetchOfficialData ({citizenId, addressLineOne, city, state, zip}) {
                 regions.push(el)
             }
         }
+        console.log(positions, regions)
         regions.map(region => {
             if (region.officeIndices) {
                 if (!positions[region.officeIndices[0]].levels) {
                     delete region.officeIndices
                     delete positions[region.officeIndices]
                 } else {
-                region.level = positions[region.officeIndices[0]].levels[0];
+                region.level = positions[region.officeIndices[region.officeIndices.length - 1]].levels[0];
                 }
                 if (region.level === 'administrativeArea2') {
                     region.name = region.name + ' ' + state

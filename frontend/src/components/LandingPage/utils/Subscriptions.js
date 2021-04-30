@@ -1,4 +1,6 @@
 import React from "react";
+import GovtTile from "./GovtTile";
+
 
 function Subscriptions({name}) {
   
@@ -8,19 +10,13 @@ function Subscriptions({name}) {
                     <h2>Your Government</h2>
                 </div>
                 <div className='government__tiles'>
-                    <div className='government-tile'>
-                        <div className='government-tile__info'>
-                            <div className='tile-info__type'>
-                                <div className='info-type info-type__icon'>
-                                    <i className="fas fa-landmark"></i>
-                                </div>
-                                <div className='info-type info-type__text'>
-                                    <h4>Region Name Here</h4>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
+                    <GovtTile />
+                    <GovtTile />
+                    <GovtTile />
+                    <GovtTile />
+                    <GovtTile />
+                    <GovtTile />
+                    <GovtTile />
                 </div>
             </div>
     )
