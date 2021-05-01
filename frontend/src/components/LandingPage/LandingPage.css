@@ -20,7 +20,9 @@ div {
     width: 400px;
     margin: 25px;
     max-height: 650px;
-    object-fit: contain
+    object-fit: contain;
+    border-radius: 10px;
+    filter: drop-shadow(0 0 1rem aqua);
 }
 
 .col-main, .col-2 {
@@ -28,8 +30,8 @@ div {
 }
 
 .col-main__img-main {
-    width: 400px;
-    height: 300px;
+    width: 200px;
+    height: 150px;
     object-fit: cover;
 }
 
@@ -38,6 +40,7 @@ div {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    overflow: scroll
 }
 
 .col-3 {

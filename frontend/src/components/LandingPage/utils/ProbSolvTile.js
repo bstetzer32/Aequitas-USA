@@ -1,7 +1,11 @@
 import React from "react";
 import './ProbSolvTile.css'
+import {useSelector, useDispatch} from 'react-redux'
 
-export default function ProbSolvTile({info, type}) {
+export default function ProbSolvTile({i, type}) {
+    const feed = useSelector(state => state.feed)
+    const dateString = new Date(feed[i].createdAt)
+    const date = dateString.toLocaleString('en-US', {year: 'numeric', month: 'long', day: 'numeric'})
     return (
             <div className="prob-solv-tile">
                 <div className="prob-solv-tile__info">
@@ -10,7 +14,7 @@ export default function ProbSolvTile({info, type}) {
                             <i className="fas fa-exclamation-circle"></i>
                         </div>
                         <div className="prob-solv-tile__info__title__text">
-                            {type}{info?.title}
+                            {type}{feed[i].title}
                         </div>
                     </div>
                     <div className="prob-solv-tile__info__location">
@@ -18,7 +22,7 @@ export default function ProbSolvTile({info, type}) {
                             <i className="fas fa-map-marked-alt"></i>
                         </div>
                         <div className="prob-solv-tile__info__location__text">
-                            {info?.region}
+                            {feed[i].region}
                         </div>
                     </div>
                     <div className="prob-solv-tile__info__highlight">
@@ -26,7 +30,7 @@ export default function ProbSolvTile({info, type}) {
                             <i className="fas fa-book"></i>
                         </div>
                         <div className="prob-solv-tile__info__topic__text">
-                            {info?.topic}
+                            {feed[i].topic}
                         </div>
                     </div>
                     <div className="prob-solv-tile__info__highlight">
@@ -34,7 +38,7 @@ export default function ProbSolvTile({info, type}) {
                             <i className="fas fa-highlighter"></i>
                         </div>
                         <div className="prob-solv-tile__info__highlight__text">
-                            {`${info?.highlight}%`}
+                            {`${feed[i].highlight}%`}
                         </div>
                     </div>
                     <div className="prob-solv-tile__info__date">
@@ -42,12 +46,12 @@ export default function ProbSolvTile({info, type}) {
                             <i className="fas fa-calendar-alt"></i>
                         </div>
                         <div className="prob-solv-tile__info__date__text">
-                            {info?.date}
+                            {date.toLocaleString({year: 'numeric', month: 'long', day: 'numeric'})}
                         </div>
                     </div>
                 </div>
                 <div className="prob-solv-tile__img">
-                    <img className='prob-solv-tile__img' alt='tile__img' src={info?.img}></img>
+                    <img className='prob-solv-tile__img' alt='tile__img' src={feed[i].img ? feed[i].img : 'https://i.stack.imgur.com/y9DpT.jpg'}></img>
                 </div>
             </div>
         )

@@ -10,6 +10,7 @@ import './LandingPage.css'
 import { Route, Switch, useParams } from "react-router-dom";
 import * as subActions from "../../store/subscriptions";
 import * as feedActions from "../../store/feed";
+import * as Scroll from 'react-scroll'
 
 
 const date = new Date();
@@ -58,7 +59,6 @@ export default function LandingPage ({type}) {
     return (
         <>
             <div className="landing-page-container">
-                <h1>{type === '' ? 'Home' : type}</h1>
                 <div className="landing-page-container__splash splash">
                     <ColOne type={type} info={feed[0]}/>
                     <ColTwo type={type} info={feed}/>

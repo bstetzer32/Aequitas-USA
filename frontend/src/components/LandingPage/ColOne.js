@@ -3,9 +3,6 @@ import React from "react";
 export default function ColOne({info, type}) {
     return (
         <div className="col col-1 col-main">
-                <div>
-                    <img className='col-main__img-main' alt='main' src={info?.img}></img>
-                </div>
                 <div className='tile-banner'>
                     <div>
                         <i className="fas fa-exclamation-circle"
@@ -14,6 +11,9 @@ export default function ColOne({info, type}) {
                     <div className='tile-banner__main-text'>
                     {type}{info?.title}
                     </div>
+                <div>
+                    <img className='col-main__img-main' alt='main' src={info?.img ? info.img : 'https://i.stack.imgur.com/y9DpT.jpg'}></img>
+                </div>
                 </div>
                 <div className="main-description">
                     {info?.summary}

@@ -5,6 +5,7 @@
     grid-template-rows: 1fr;
     border: 1px solid red;
     box-sizing: border-box;
+    margin-bottom: 5px;
 }
 
 /* .prob-solv-tile__info {

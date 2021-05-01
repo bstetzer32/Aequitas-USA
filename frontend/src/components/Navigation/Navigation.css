@@ -32,7 +32,7 @@
     border-bottom: 1px solid #dddddd;
 }
 
-.menu li a, .menu a, .menu button, #log-in-div, #profile-dropdown-logged > li {
+.menu li a, .menu a, .menu button, #log-in-div, #profile-dropdown-logged>li {
     text-decoration: none;
     color: #333333;
     padding: 15px 20px;
@@ -75,8 +75,8 @@
     align-items: center;
     flex-direction: row;
     justify-content: space-around;
-    background-color: rgb(255, 255, 255);
-    height: 150px;
+    background-color: rgba(128, 0, 85, 0.777);
+     height: 150px;
     margin: 0;
     padding: 0;
     border-radius: 10px;
