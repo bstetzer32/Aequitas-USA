@@ -3,11 +3,18 @@ const asyncHandler = require('express-async-handler');
 const { Op } = require('sequelize')
 
 const { setTokenCookie, requireAuth } = require('../../utils/auth');
-const { User, RegionSubscription, OfficeSubscription, Region, Office } = require('../../db/models');
+const { User, RegionSubscription, OfficeSubscription, Region, Office, Topic } = require('../../db/models');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 
 const router = express.Router();
+
+router.get('/', asyncHandler(async (req, res) => {
+    const topics = await Topic.findAll();
+    const regions = await Region.findAll();
+    const pageSubs = {regions, topics};
+    return res.json(pageSubs)
+}))
 
 router.get('/:userId', asyncHandler(async (req, res) => {
     
