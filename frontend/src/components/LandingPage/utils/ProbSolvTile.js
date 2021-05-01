@@ -4,6 +4,8 @@ import {useSelector, useDispatch} from 'react-redux'
 
 export default function ProbSolvTile({i, type}) {
     const feed = useSelector(state => state.feed)
+    const pageNames = useSelector(state => state.subscription.pageNames)
+    console.log(pageNames)
     const dateString = new Date(feed[i].createdAt)
     const date = dateString.toLocaleString('en-US', {year: 'numeric', month: 'long', day: 'numeric'})
     return (
@@ -22,7 +24,7 @@ export default function ProbSolvTile({i, type}) {
                             <i className="fas fa-map-marked-alt"></i>
                         </div>
                         <div className="prob-solv-tile__info__location__text">
-                            {feed[i].region}
+                            {pageNames?.regions[feed[i].regionId - 1].name}
                         </div>
                     </div>
                     <div className="prob-solv-tile__info__highlight">
@@ -30,7 +32,7 @@ export default function ProbSolvTile({i, type}) {
                             <i className="fas fa-book"></i>
                         </div>
                         <div className="prob-solv-tile__info__topic__text">
-                            {feed[i].topic}
+                            {pageNames?.topics[feed[i].topicId - 1].name}
                         </div>
                     </div>
                     <div className="prob-solv-tile__info__highlight">

@@ -1,6 +1,8 @@
 import React from "react";
+import {useSelector, useDispatch} from 'react-redux'
 
-export default function ColOne({info, type}) {
+export default function ColOne({info, type}) {    
+    const pageNames = useSelector(state => state.subscription.pageNames)
     return (
         <div className="col col-1 col-main">
                 <div className='tile-banner'>
@@ -23,7 +25,7 @@ export default function ColOne({info, type}) {
                         <i className="fas fa-map-marked-alt"></i>
                     </div>
                     <div className='tile-banner__secondary-text'>
-                    {info?.region}
+                    {pageNames?.regions[info?.regionId - 1]?.name}
                     </div>
                 </div>
                 <div className='tile-banner'>
@@ -31,7 +33,7 @@ export default function ColOne({info, type}) {
                         <i className="fas fa-book"></i>
                     </div>
                     <div className='tile-banner__secondary-text'>
-                    {info?.topic}
+                    {pageNames?.topics[info?.topicId - 1]?.name}
                     </div>
                 </div>
                 <div className='tile-banner'>

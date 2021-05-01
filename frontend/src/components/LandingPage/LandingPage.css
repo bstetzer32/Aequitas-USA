@@ -16,13 +16,14 @@ div {
 }
 
 .col {
-    background-color: #00e1ff;
-    width: 400px;
-    margin: 25px;
+    background-color: #bef7ff;
+    width: 420px;
+    margin: 10px;
     max-height: 650px;
     object-fit: contain;
     border-radius: 10px;
     filter: drop-shadow(0 0 1rem aqua);
+    overflow: scroll
 }
 
 .col-main, .col-2 {
@@ -36,15 +37,12 @@ div {
 }
 
 .col-2 {
-    background-color: white;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    overflow: scroll
 }
 
 .col-3 {
-    background-color: rgb(255, 77, 77);
     max-height: 650px;
     display: flex;
     flex-direction: column;
@@ -112,7 +110,7 @@ div {
 }
 
 .government__tiles {
-    background-color: white;
+    background-color: rgb(255, 255, 255);
     height: 550px;
     width: 400px;
     display: flex;

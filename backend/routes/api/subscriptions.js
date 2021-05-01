@@ -12,8 +12,16 @@ const router = express.Router();
 router.get('/', asyncHandler(async (req, res) => {
     const topics = await Topic.findAll();
     const regions = await Region.findAll();
-    const pageSubs = {regions, topics};
-    return res.json(pageSubs)
+    const pageNames = {};
+    pageNames.topics = []
+    pageNames.regions = []
+    topics.forEach(topic => {
+        pageNames.topics.push({id: topic.id, name: topic.name})
+    });
+    regions.forEach(region => {
+        pageNames.regions.push({id: region.id, name: region.name})
+    })
+    return res.json(pageNames)
 }))
 
 router.get('/:userId', asyncHandler(async (req, res) => {
@@ -32,7 +40,7 @@ router.get('/:userId', asyncHandler(async (req, res) => {
     // console.log(subscriptionData)
     const regions = subscriptionData ? subscriptionData.RegionSubscriptions.map(region => region.Region) : []
     const offices = subscriptionData ? subscriptionData.OfficeSubscriptions.map(office => office.Office) : []
-    const subscriptions = {regionSubs: regions, officeSubs: offices}
+    const subscriptions = { regionSubs: regions, officeSubs: offices}
     return res.json(subscriptions)
 }))
 

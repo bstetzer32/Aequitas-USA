@@ -10,7 +10,6 @@ import './LandingPage.css'
 import { Route, Switch, useParams } from "react-router-dom";
 import * as subActions from "../../store/subscriptions";
 import * as feedActions from "../../store/feed";
-import * as Scroll from 'react-scroll'
 
 
 const date = new Date();
@@ -37,11 +36,11 @@ export default function LandingPage ({type}) {
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(feedActions.resetItems())
-    },[location])
+    },[dispatch, location])
+    const context = sessionUser? sessionUser.id : 1
     useEffect(() => {
         if (id === undefined) {
-            console.log(sessionSubs)
-            const context = sessionUser? sessionUser.id : 1
+            // console.log(sessionSubs)
             dispatch(feedActions.getItems(context, 0))
             setOffset(current => current + 20)
         } else {
@@ -49,7 +48,7 @@ export default function LandingPage ({type}) {
             setOffset(current => current + 20)
 
         }
-    },[dispatch, id, sessionSubs, sessionUser, type])
+    },[context, dispatch, id, sessionSubs, type])
     useEffect(() => {
         console.log(feed)
     },[feed])

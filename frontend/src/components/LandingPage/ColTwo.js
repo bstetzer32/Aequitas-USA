@@ -1,6 +1,5 @@
 import React from "react";
 import ProbSolvTile from './utils/ProbSolvTile'
-import * as Scroll from 'react-scroll'
 import {useSelector, useDispatch} from 'react-redux'
 
 export default function ColTwo({type}) {
