@@ -7,12 +7,15 @@ const router = require('express').Router();
 const sessionRouter = require('./session.js');
 const usersRouter = require('./users.js');
 const subscriptionRouter = require('./subscriptions.js')
+const feedRouter = require('./feed')
 
 router.use('/session', sessionRouter);
 
 router.use('/users', usersRouter);
 
 router.use('/subscriptions', subscriptionRouter);
+
+router.use('/feed', feedRouter)
 
 router.get('/set-token-cookie', asyncHandler(async (req, res) => {
   const user = await User.findOne({

@@ -11,31 +11,60 @@ div {
 .landing-page-container__splash, .splash {
     display: flex;
     justify-content: space-around;
-    align-items: center;
+    align-items: flex-start;
     margin-top: 25px;
 }
 
 .col {
-    background-color: #00e1ff;
-    width: 400px;
+    background-color: #bef7ff00;
+    width: 420px;
+    margin: 10px;
+    max-height: 650px;
+    object-fit: contain;
+    border-radius: 10px;
+    filter: drop-shadow(0 0 0.7rem aqua);
+    overflow: scroll
+}
+
+.col img {
+    border-radius: 10px;
+}
+
+.col::-webkit-scrollbar {
+    width: 0.5em;
+}
+
+.col::-webkit-scrollbar-corner {
+    background-color: rgba(0, 0, 255, 0)
+}
+
+.col-main, .col-2 {
     height: 650px;
-    margin: 25px;
 }
 
 .col-main__img-main {
-    width: 400px;
-    height: 300px;
+    width: 200px;
+    height: 150px;
     object-fit: cover;
 }
+
 .col-2 {
-    background-color: white;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
 
+.col-3 {
+    max-height: 650px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    /* justify-content: space-between; */
+}
+
 .main-description {
     margin: 10px;
+    font-size: 16px;
 }
 
 .tile-banner {
@@ -45,7 +74,7 @@ div {
 }
 
 .tile-banner__main-text {
-    font-size: 30px;
+    font-size: 20px;
     margin: 5px;
 }
 
@@ -55,16 +84,19 @@ div {
 }
 
 .tile-banner__secondary-text {
-    font-size: 20px;
+    font-size: 16px;
     margin: 5px;
 }
 
 .tile-banner__secondary-icon {
     margin: 5px;
-    font-size: 10px;
+    font-size: 8px;
 }
 
 .date-banner {
+    position: relative;
+    bottom: 0;
+    right: 0;
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -79,4 +111,68 @@ div {
 .date-banner__icon {
     margin: 5px;
     font-size: 7px;
+}
+
+/* .government {} */
+
+.government__header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.government__tiles {
+    background-color: rgba(255, 255, 255, 0.055);
+    filter: drop-shadow(0 0 1rem rgba(255, 255, 255, 0.055));
+    height: 550px;
+    width: 400px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between
+}
+
+/* .government__tiles > div {
+    padding: 35px;
+} */
+
+.government-tile {
+    /* border: 1px solid black; */
+    margin: 5px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.government-tile__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.tile-info__type {
+    display: flex;
+    align-items: center;
+    height: 25px;
+}
+
+.info-type {
+    margin: 5px;
+}
+
+.info-type__icon {
+    font-size: 7px;
+}
+
+.tile-info__population, .tile-info__offices {
+    display: flex;
+    align-items: center;
+    height: 15px;
+}
+
+.info-population, .info-offices {
+    margin: 5px;
+}
+
+.info-population__icon, .info-offices__icon {
+    font-size: 5px;
 }

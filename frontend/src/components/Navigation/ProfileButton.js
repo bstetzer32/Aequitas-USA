@@ -19,11 +19,11 @@ function ProfileButton({ user }) {
             <ul id="userInfo">
                 <li><b>Username:</b> {user.username}</li>
                 <li><b>Email:</b> {user.email}</li>
-                <li><b>Verified:</b> {user.authenticated.toString()}</li>
+                <li><b>Status:</b> {user.authenticated ? 'Verified Citizen' : 'Unverified'}</li>
             </ul>
       </li>
           <li onClick={logout}>Log Out</li>
-          <VerifyFormModal />
+          {!user.authenticated && (<VerifyFormModal />)}
       </div>
       
   )

@@ -1,6 +1,10 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const OfficeSubscription = sequelize.define('OfficeSubscription', {
+    leader: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
+    },
     officeId: {
       allowNull: false,
       type: DataTypes.INTEGER
@@ -17,11 +21,12 @@ module.exports = (sequelize, DataTypes) => {
     ]});
   OfficeSubscription.associate = function(models) {
     // associations can be defined here
-    // OfficeSubscription.belongsToMany(models.User, {
-    //   otherKey: "subscriberId",
-    //   through: "Subscriptions",
-    //   foreignKey: "officeSubscriptionId",
-    // });
+    OfficeSubscription.belongsTo(models.Office, {
+      foreignKey: "officeId"
+    })
+    OfficeSubscription.belongsTo(models.User, {
+      foreignKey: "subscriberId"
+    })
   };
   return OfficeSubscription;
 };

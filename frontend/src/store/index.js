@@ -1,11 +1,15 @@
 import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
 import sessionReducer from './session'
+import feedReducer from './feed'
+import subscriptionReducer from './subscriptions'
 
 
 const rootReducer = combineReducers({
   // add reducer functions here
   session: sessionReducer,
+  feed: feedReducer,
+  subscription: subscriptionReducer
 });
 
 let enhancer;

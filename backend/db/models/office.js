@@ -28,9 +28,9 @@ module.exports = (sequelize, DataTypes) => {
     Office.hasMany(models.Leadership, {
       foreignKey: "officeId"
     })
-    // Office.hasMany(models.Commitee, {
-    //   foreignKey: "officeId"
-    // })
+    Office.hasMany(models.OfficeSubscription, {
+      foreignKey: "officeId"
+    })
   };
   return Office;
 };

@@ -1,8 +1,9 @@
 import { csrfFetch } from './csrf';
+import {getUserSubscriptions} from './subscriptions'
 
 const SET_USER = 'session/setUser';
 const REMOVE_USER = 'session/removeUser';
-const SET_SUBS = 'session/setSubs';
+// const SET_SUBS = 'session/setSubs';
 
 const setUser = (user) => {
   return {
@@ -11,12 +12,12 @@ const setUser = (user) => {
   };
 };
 
-const setSubs = (subs) => {
-  return {
-    type: SET_SUBS,
-    payload: subs,
-  };
-};
+// const setSubs = (subs) => {
+//   return {
+//     type: SET_SUBS,
+//     payload: subs,
+//   };
+// };
 
 export const removeUser = () => {
   return {
@@ -76,22 +77,23 @@ export const verify = (user) => async (dispatch) => {
     method: "POST",
     body: JSON.stringify({ citizenId, addressLineOne, city, state, zip }),
   });
-  dispatch(getSubscriptions({id: Number.parseInt(citizenId)}))
+  dispatch(getUserSubscriptions({id: Number.parseInt(citizenId)}))
   dispatch(restoreUser());
   return response;
 };
 
-export const getSubscriptions = (subs) => async (dispatch) => {
-  const {id} = subs;
-  const response = await csrfFetch(`/api/subscriptions/${id}`);
-  const data = await response.json();
-  data.regionSubs = data.regionSubs?.map(sub => sub.id);
-  data.officeSubs = data.officeSubs?.map(sub => sub.id);
-  dispatch(setSubs(data));
-  return response;
-};
+// export const getSubscriptions = (subs) => async (dispatch) => {
+//   const {id} = subs;
+//   const response = await csrfFetch(`/api/subscriptions/${id}`);
+//   const data = await response.json();
+//   // console.log(data)
+//   // data.regionSubs = data.regionSubs?.map(sub => sub.regions);
+//   // data.officeSubs = data.officeSubs?.map(sub => sub.regions);
+//   dispatch(setSubs(data));
+//   return response;
+// };
 
-const initialState = { user: null, subs: null };
+const initialState = { user: null };
 
 const sessionReducer = (state = initialState, action) => {
   let newState;
@@ -100,10 +102,10 @@ const sessionReducer = (state = initialState, action) => {
       newState = Object.assign({}, state);
       newState.user = action.payload;
       return newState;
-    case SET_SUBS:
-      newState = Object.assign({}, state);
-      newState.subs = action.payload;
-      return newState;
+    // case SET_SUBS:
+    //   newState = Object.assign({}, state);
+    //   newState.subs = action.payload;
+    //   return newState;
     case REMOVE_USER:
       newState = Object.assign({}, state);
       newState.user = null;

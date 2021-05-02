@@ -6,6 +6,7 @@
     background: #ffffff;
     border-radius: 8px;
     position: absolute;
+    z-index: 1;
     top: 60px;
     right: 0;
     width: 300px;
@@ -28,11 +29,11 @@
     margin: 0;
 }
 
-.menu li {
+.menu li, .menu button, .menu div {
     border-bottom: 1px solid #dddddd;
 }
 
-.menu li a, .menu a, .menu button, #log-in-div, #profile-dropdown-logged > li {
+.menu li a, .menu a, .menu button, #log-in-div, #profile-dropdown-logged>li {
     text-decoration: none;
     color: #333333;
     padding: 15px 20px;
@@ -70,15 +71,21 @@
 }
 
 .header-container {
+    position: relative;
     width: 100%;
     display: flex;
     align-items: center;
     flex-direction: row;
     justify-content: space-between;
-    background-color: rgb(77, 77, 255);
-    height: 6em;
+    background-color: rgba(124, 235, 255, 0.247);
+    height: 150px;
     margin: 0;
+    padding: 0;
     border-radius: 10px;
+}
+
+.header-logo {
+    margin-left: 25px;
 }
 
 .logo-text {
@@ -90,8 +97,8 @@
 .icon-container {
     display: flex;
     width: 10%;
-    justify-content: space-between;
-    margin-right: 10px;
+    justify-content: space-around;
+    margin-right: 25px;
 }
 
 .fas, .fa-user-circle, .fa-bars {

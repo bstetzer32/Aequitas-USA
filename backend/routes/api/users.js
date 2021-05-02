@@ -70,7 +70,6 @@ router.post(
   '/verify',
   // validateVerify,
   asyncHandler(async (req, res) => {
-    console.log(req.body)
     const { citizenId, addressLineOne, city, state, zip } = req.body
 
     const data = await fetchOfficialData({citizenId, addressLineOne, city, state, zip})

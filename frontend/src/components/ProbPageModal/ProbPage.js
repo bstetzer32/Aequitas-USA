@@ -1,8 +1,13 @@
 import React from "react";
-import {useSelector} from 'react-redux'
+import {  useSelector } from "react-redux";
+// import { Redirect } from "react-router-dom";
+// import * as sessionActions from "../../store/session";
+import './Prob.css';
 
-export default function ColOne({info, type}) {    
-    const pageNames = useSelector(state => state.subscription.pageNames)
+function ProbPage({i, type}) {
+  const feed = useSelector(state => state.feed)
+  const info = feed[i]
+  const pageNames = useSelector(state => state.subscription.pageNames)
     return (
         <div className="col col-1 col-main">
                 <div className='tile-banner'>
@@ -58,3 +63,5 @@ export default function ColOne({info, type}) {
             </div>
     )
 }
+
+export default ProbPage;

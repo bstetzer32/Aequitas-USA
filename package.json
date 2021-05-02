@@ -22,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/bstetzer32/authenticate-me/issues"
   },
-  "homepage": "https://github.com/bstetzer32/authenticate-me#readme"
+  "homepage": "https://github.com/bstetzer32/authenticate-me#readme",
+  "dependencies": {
+    "react-infinite-scroll-hook": "^4.0.1"
+  }
 }
