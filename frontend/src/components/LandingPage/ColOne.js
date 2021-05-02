@@ -11,7 +11,7 @@ export default function ColOne({info, type}) {
                         id="tile-banner__main-icon"></i>
                     </div>
                     <div className='tile-banner__main-text'>
-                    {type}{info?.title}
+                    {info?.title}
                     </div>
                 <div>
                     <img className='col-main__img-main' alt='main' src={info?.img ? info.img : 'https://i.stack.imgur.com/y9DpT.jpg'}></img>

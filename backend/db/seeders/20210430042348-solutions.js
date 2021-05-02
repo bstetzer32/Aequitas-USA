@@ -14,14 +14,14 @@ module.exports = {
       }], {});
     */
     const solutionUpload = []
-     for (let i = 0; i < 510000; i++) {
+     for (let i = 0; i < 25500; i++) {
        solutionUpload.push({
-        //  title: faker.lorem.words(),
+         title: faker.lorem.words(),
          thesis: faker.lorem.sentence(),
          proposal: faker.lorem.sentence(),
         //  status: i % 2 ? true : false,
          citizenId: (i % 3) + 1,
-         problemId: (i % 5100) + 5101
+         problemId: (i % 255) + 1
         })
       }
       return queryInterface.bulkInsert('Solutions', solutionUpload, {});

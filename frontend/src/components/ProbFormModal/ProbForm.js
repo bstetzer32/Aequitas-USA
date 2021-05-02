@@ -14,7 +14,6 @@ function ProbFormPage() {
   const [description, setDescription] = useState("");
   const [region, setRegion] = useState("");
   const [topic, setTopic] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState([]);
 
   const handleSubmit = (e) => {
@@ -38,29 +37,6 @@ function ProbFormPage() {
       </ul>
       <label>
         <h2>Title</h2>
-        <input
-          type="text"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          required
-        />
-      </label>
-      <label>
-        Summary
-        <textarea
-          value={summary}
-          onChange={(e) => setSummary(e.target.value)}
-          required
-        />
-      </label>
-      <label>
-        Description
-        <textarea
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-          required
-        />
-      </label>
       <label>
         Region
         <select
@@ -81,12 +57,26 @@ function ProbFormPage() {
           {pageNames.topics.map((topic, i) => <option value={topic.id} key={`topic-${i}`} >{topic.name}</option>)}
         </select>
       </label>
-      <label>
-        Confirm Password
         <input
-          type="password"
-          value={confirmPassword}
-          onChange={(e) => setConfirmPassword(e.target.value)}
+          type="text"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          required
+        />
+      </label>
+      <label>
+        Summary
+        <textarea
+          value={summary}
+          onChange={(e) => setSummary(e.target.value)}
+          required
+        />
+      </label>
+      <label>
+        Description
+        <textarea
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
           required
         />
       </label>

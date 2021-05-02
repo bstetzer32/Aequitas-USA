@@ -15,7 +15,7 @@ export default function ProbSolvTile({i, type}) {
                     <div className="prob-solv-tile__info__title">
                         <ProbPageModal i={i} />
                         <div className="prob-solv-tile__info__title__text">
-                            {type}{feed[i].title}
+                            {feed[i].title}
                         </div>
                     </div>
                     <div className="prob-solv-tile__info__location">

@@ -7,11 +7,11 @@ module.exports = (sequelize, DataTypes) => {
     },
     summary: {
       allowNull: false,
-      type: DataTypes.STRING(100)
+      type: DataTypes.STRING(1000)
     },
     description: {
       allowNull: false,
-      type: DataTypes.STRING
+      type: DataTypes.STRING(10000)
     },
     status: {
       allowNull: false,

@@ -11,7 +11,7 @@ module.exports = {
       },
       name: {
         allowNull: false,
-        type: Sequelize.STRING(100),
+        type: Sequelize.STRING(200),
         unique: true,
         primaryKey: true,
       },

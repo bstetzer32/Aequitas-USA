@@ -14,11 +14,11 @@ module.exports = {
       },
       summary: {
         allowNull: false,
-        type: Sequelize.STRING(100)
+        type: Sequelize.STRING(1000)
       },
       description: {
         allowNull: false,
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(10000),
         validate: {
           min: 500,
           max: 5000
