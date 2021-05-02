@@ -8,11 +8,15 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      title: {
+        allowNull: false,
+        type: Sequelize.STRING(100)
+      },
       thesis: {
         allowNull: false,
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(1000),
         validate: {
-          max: 100,
+          max: 1000,
           min:10
         }
       },

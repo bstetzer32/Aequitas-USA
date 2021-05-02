@@ -7,11 +7,12 @@ import * as subActions from "./store/subscriptions";
 import Navigation from "./components/Navigation";
 
 function App() {
-  const pathname = window.location.pathname //returns the current url minus the domain name
+  // const pathname = window.location.pathname //returns the current url minus the domain name
   const sessionUser = useSelector(state => state.session.user);
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
   const id = sessionUser ? sessionUser.id : 1
+  console.log(id)
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
     dispatch(subActions.getPageNames());

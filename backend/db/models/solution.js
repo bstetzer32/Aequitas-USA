@@ -1,17 +1,21 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const Solution = sequelize.define('Solution', {
+      title: {
+        allowNull: false,
+        type: DataTypes.STRING(100)
+      },
       thesis: {
         allowNull: false,
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(1000),
         validate: {
-          max: 100,
+          max: 1000,
           min:10
         }
       },
       proposal: {
         allowNull: false,
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(10000),
         validate: {
           max: 10000,
           min:1000
