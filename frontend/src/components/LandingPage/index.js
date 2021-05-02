@@ -1,4 +1,4 @@
-import React, { useEffect }from "react";
+import React, { useEffect, useState }from "react";
 import {useLocation} from "react-router-dom"
 import ColOne from './ColOne'
 import ColTwo from './ColTwo'
@@ -26,6 +26,7 @@ import * as feedActions from "../../store/feed";
 export default function LandingPage ({type}) {
 
     const location = useLocation();
+    const [prevLocation, setPrevLocation] = useState('location')
     const feed = useSelector(state => state.feed)
     
     const sessionUser = useSelector(state => state.session.user);
@@ -38,20 +39,23 @@ export default function LandingPage ({type}) {
     },[dispatch, location])
     const context = sessionUser? sessionUser.id : 1
     useEffect(() => {
-        if (id === undefined) {
-            // console.log(sessionSubs)
+        if (location === prevLocation) {
+            
+        }
+        else if (id === undefined) {
             dispatch(feedActions.getItems(context, 0))
+            setPrevLocation(location)
         } else {
             dispatch(feedActions.getPageItems(type, id, 0))
+            setPrevLocation(location)
 
         }
-    },[context, dispatch, id, sessionSubs, type, location])
-    useEffect(() => {
-        console.log(feed)
-    },[feed])
+    },[context, dispatch, id, sessionSubs, type, location, prevLocation])
+    // useEffect(() => {
+    //     console.log(feed)
+    // },[feed])
 
     const subscriptions = useSelector(state => state.subscription);
-    console.log(subscriptions)
     return (
         <>
             <div className="landing-page-container">

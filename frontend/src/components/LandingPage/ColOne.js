@@ -52,6 +52,9 @@ export default function ColOne({info, type}) {
                         <i className="fas fa-calendar-alt"></i>
                     </div>
                 </div>
+                <div className="main-description">
+                    {info?.description}
+                </div>
             </div>
     )
 }

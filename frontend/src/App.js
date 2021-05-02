@@ -8,7 +8,6 @@ import Navigation from "./components/Navigation";
 
 function App() {
   const pathname = window.location.pathname //returns the current url minus the domain name
-  console.log(pathname)
   const sessionUser = useSelector(state => state.session.user);
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);

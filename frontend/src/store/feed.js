@@ -22,7 +22,6 @@ export const getItems = (context, offset) => async (dispatch) => {
     body: JSON.stringify({ context, offset }),
   });
   const data = await response.json();
-  console.log(data)
   dispatch(setItems(data.feedData))
   return response;
 };
@@ -33,7 +32,6 @@ export const getPageItems = (type, id, offset) => async (dispatch) => {
     body: JSON.stringify({ offset }),
   });
   const data = await response.json();
-  console.log(data.feedData)
   dispatch(setItems(data.feedData))
   return response;
 };
@@ -46,7 +44,6 @@ const feedReducer = (state = initialState, action) => {
   let newState;
   switch (action.type) {
     case GET_ITEMS:
-        console.log(action)
         newState = action.payload.length ? [...state, ...action.payload] : [...state];
         const result = []
         const map = new Map()

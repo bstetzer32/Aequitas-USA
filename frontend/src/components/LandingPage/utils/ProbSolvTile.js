@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 export default function ProbSolvTile({i, type}) {
     const feed = useSelector(state => state.feed)
     const pageNames = useSelector(state => state.subscription.pageNames)
-    console.log(pageNames)
     const dateString = new Date(feed[i].createdAt)
     const date = dateString.toLocaleString('en-US', {year: 'numeric', month: 'long', day: 'numeric'})
     return (

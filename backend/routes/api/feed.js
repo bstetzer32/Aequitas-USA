@@ -24,7 +24,6 @@ router.post('/region/:regionId', asyncHandler(async (req, res) => {
             regionId: regionId
         
     }, limit: 20, offset})
-    console.log(feedData)
     return res.json({feedData})
 }))
 

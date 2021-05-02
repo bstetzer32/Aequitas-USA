@@ -14,7 +14,6 @@ export default function ColTwo({type}) {
     const context = sessionUser? sessionUser.id : 1
     const loadMore = () => {
                 if (id === undefined) {
-            // console.log(sessionSubs)
             dispatch(feedActions.getItems(context, offset))
             setOffset(current => current + 20)
         } else {
@@ -23,7 +22,6 @@ export default function ColTwo({type}) {
 
         }
     }
-    console.log(info)
     return (
             <div className= "col col-2" id='feed-scroll'>
                 {info.map((info, i) => <ProbSolvTile type={type} key={`tile-${i}`}i={i+1}/>)}
