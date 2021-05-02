@@ -2,6 +2,7 @@ import React from "react";
 import './ProbSolvTile.css'
 import {useSelector} from 'react-redux'
 import { Link } from "react-router-dom";
+import ProbPageModal from '../../ProbPageModal'
 
 export default function ProbSolvTile({i, type}) {
     const feed = useSelector(state => state.feed)
@@ -12,11 +13,7 @@ export default function ProbSolvTile({i, type}) {
             <div className="prob-solv-tile">
                 <div className="prob-solv-tile__info">
                     <div className="prob-solv-tile__info__title">
-                        <Link to={`/problems/${feed[i].id}`}>
-                        <div className="prob-solv-tile__info__title__icon">
-                            <i className="fas fa-exclamation-circle"></i>
-                        </div>
-                        </Link>
+                        <ProbPageModal i={i} />
                         <div className="prob-solv-tile__info__title__text">
                             {type}{feed[i].title}
                         </div>

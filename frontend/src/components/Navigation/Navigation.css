@@ -29,7 +29,7 @@
     margin: 0;
 }
 
-.menu li, .menu button {
+.menu li, .menu button, .menu div {
     border-bottom: 1px solid #dddddd;
 }
 

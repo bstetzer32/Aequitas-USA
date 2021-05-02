@@ -30,12 +30,10 @@ router.post('/region/:regionId', asyncHandler(async (req, res) => {
 router.post('/topic/:topicId', asyncHandler(async (req, res) => {
     const {offset} = req.body;
     const {topicId} = req.params
-    if (!context.regions) {
-        return res.json({})
-    }
+
     const feedData = await Problem.findAll({where: {
         
-            regionId: regionId
+            topicId: topicId
         
     }, limit: 20, offset})
     return res.json({feedData})

@@ -39,8 +39,6 @@ function Navigation({ isLoaded }){
         </DropdownMenu>
         <DropdownMenu buttonClass='fas fa-bars'>
             <ProbFormModal />
-            <li><NavLink to="/problems">Problems</NavLink></li>
-            <li><NavLink to="/solutions">Solutions</NavLink></li>
             {/* <li><NavLink to="/leaders">Leaders</NavLink></li> */}
             <li><NavLink to="/regions">Regions</NavLink></li>
             <li><NavLink to="/topics">Topics</NavLink></li>
