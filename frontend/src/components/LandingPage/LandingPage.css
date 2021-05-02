@@ -11,19 +11,27 @@ div {
 .landing-page-container__splash, .splash {
     display: flex;
     justify-content: space-around;
-    align-items: start;
+    align-items: flex-start;
     margin-top: 25px;
 }
 
 .col {
-    background-color: #bef7ff;
+    background-color: #bef7ff00;
     width: 420px;
     margin: 10px;
     max-height: 650px;
     object-fit: contain;
     border-radius: 10px;
-    filter: drop-shadow(0 0 1rem aqua);
+    filter: drop-shadow(0 0 0.7rem aqua);
     overflow: scroll
+}
+
+.col::-webkit-scrollbar {
+    width: 0.5em;
+}
+
+.col::-webkit-scrollbar-corner {
+    background-color: rgba(0, 0, 255, 0)
 }
 
 .col-main, .col-2 {
@@ -110,9 +118,11 @@ div {
 }
 
 .government__tiles {
-    background-color: rgb(255, 255, 255);
+    background-color: rgba(255, 255, 255, 0.055);
+    filter: drop-shadow(0 0 1rem rgba(255, 255, 255, 0.055));
     height: 550px;
     width: 400px;
+    border-radius: 15px;
     display: flex;
     flex-direction: column;
     justify-content: space-between

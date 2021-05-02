@@ -15,7 +15,7 @@ function App() {
   const id = sessionUser ? sessionUser.id : 1
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
-    dispatch(subActions.getPageNames())
+    dispatch(subActions.getPageNames());
     dispatch(subActions.getUserSubscriptions({id}));
   }, [dispatch, id]);
 

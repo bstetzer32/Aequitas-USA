@@ -6,6 +6,7 @@ import LoginFormModal from '../LoginFormModal';
 import DropdownMenu from './DropdownMenu'
 import './Navigation.css';
 import SignupFormModal from '../SignupFormModal';
+import ProbFormModal from '../ProbFormModal';
 // import '../images/aelogo.png'
 
 function Navigation({ isLoaded }){
@@ -30,17 +31,18 @@ function Navigation({ isLoaded }){
 
   return (
     <div className='header-container'>
-      <div><Link to='/'><img alt='logo' src='https://imgur.com/ldLHZpq.png'></img></Link></div>
+      <div className='header-logo'><Link to='/'><img alt='logo' src='https://imgur.com/ldLHZpq.png'></img></Link></div>
       <div></div>
       <div className='icon-container'>
         <DropdownMenu buttonClass='fas fa-user-circle'>
           {isLoaded && sessionLinks} 
         </DropdownMenu>
         <DropdownMenu buttonClass='fas fa-bars'>
+            <ProbFormModal />
             <li><NavLink to="/problems">Problems</NavLink></li>
             <li><NavLink to="/solutions">Solutions</NavLink></li>
-            <li><NavLink to="/leaders">Leaders</NavLink></li>
-            <li><NavLink to="/regions/:id">Regions</NavLink></li>
+            {/* <li><NavLink to="/leaders">Leaders</NavLink></li> */}
+            <li><NavLink to="/regions">Regions</NavLink></li>
             <li><NavLink to="/topics">Topics</NavLink></li>
         </DropdownMenu>
       </div>

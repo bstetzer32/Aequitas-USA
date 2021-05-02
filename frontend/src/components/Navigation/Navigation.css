@@ -6,6 +6,7 @@
     background: #ffffff;
     border-radius: 8px;
     position: absolute;
+    z-index: 1;
     top: 60px;
     right: 0;
     width: 300px;
@@ -28,7 +29,7 @@
     margin: 0;
 }
 
-.menu li {
+.menu li, .menu button {
     border-bottom: 1px solid #dddddd;
 }
 
@@ -70,16 +71,21 @@
 }
 
 .header-container {
-    width: 110%;
+    position: relative;
+    width: 100%;
     display: flex;
     align-items: center;
     flex-direction: row;
-    justify-content: space-around;
-    background-color: rgba(128, 0, 85, 0.777);
-     height: 150px;
+    justify-content: space-between;
+    background-color: rgba(124, 235, 255, 0.247);
+    height: 150px;
     margin: 0;
     padding: 0;
     border-radius: 10px;
+}
+
+.header-logo {
+    margin-left: 25px;
 }
 
 .logo-text {
@@ -92,7 +98,7 @@
     display: flex;
     width: 10%;
     justify-content: space-around;
-    margin-right: 10px;
+    margin-right: 25px;
 }
 
 .fas, .fa-user-circle, .fa-bars {

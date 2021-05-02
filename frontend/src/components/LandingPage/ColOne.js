@@ -1,5 +1,5 @@
 import React from "react";
-import {useSelector, useDispatch} from 'react-redux'
+import {useSelector} from 'react-redux'
 
 export default function ColOne({info, type}) {    
     const pageNames = useSelector(state => state.subscription.pageNames)
