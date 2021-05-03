@@ -57,6 +57,7 @@ export default function ProbSolvTile({i, j, type}) {
                 </div>
                 <div className="prob-solv-tile__img">
                     {type !== 'problem' ? <img className='prob-solv-tile__img' alt='tile__img' src={info?.img ? info.img : 'https://i.stack.imgur.com/y9DpT.jpg'}></img> : <img className='prob-solv-tile__img' alt='tile__img' src={probInfo?.img ? probInfo.img : 'https://i.stack.imgur.com/y9DpT.jpg'}></img>}
+                    
                 </div>
             </div>
         )
