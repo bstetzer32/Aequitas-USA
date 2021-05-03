@@ -38,7 +38,7 @@ function Navigation({ isLoaded }){
           {isLoaded && sessionLinks} 
         </DropdownMenu>
         <DropdownMenu buttonClass='fas fa-bars'>
-            <ProbFormModal />
+            {sessionUser? <ProbFormModal /> : null}
             {/* <li><NavLink to="/leaders">Leaders</NavLink></li> */}
             <li><NavLink to="/regions">Regions</NavLink></li>
             <li><NavLink to="/topics">Topics</NavLink></li>

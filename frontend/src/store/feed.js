@@ -62,7 +62,8 @@ const feedReducer = (state = initialState, action) => {
                     topicId: item.topicId,
                     createdAt: item.createdAt,
                     updatedAt: item.updatedAt,
-                    solutions: item.Solutions
+                    solutions: item.Solutions,
+                    img: item.img
                 })
             }
         }

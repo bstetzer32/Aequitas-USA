@@ -22,7 +22,7 @@ module.exports = {
       },
       proposal: {
         allowNull: false,
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(10000),
         validate: {
           max: 10000,
           min:10

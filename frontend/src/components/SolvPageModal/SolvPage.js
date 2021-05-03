@@ -18,14 +18,14 @@ function SolvPage({i, j}) {
                         id="tile-banner__main-icon"></i>
                     </div>
                     <div className='tile-banner__main-text'>
-                    {info?.solutions[j].title}
+                    {info?.solutions[j] ? info?.solutions[j].title : null}
                     </div>
                 <div>
-                    <img className='col-main__img-main' alt='main' src={info?.img ? info.img : 'https://i.stack.imgur.com/y9DpT.jpg'}></img>
+                    <img className='col-main__img-main' alt='main' src={ 'https://i.stack.imgur.com/y9DpT.jpg'}></img>
                 </div>
                 </div>
                 <div className="main-description">
-                    {info?.solutions[j].thesis}
+                    {info?.solutions[j] ? info?.solutions[j].thesis : null}
                 </div>
                 <div className='tile-banner'>
                     <div className='tile-banner__secondary-icon'>
@@ -60,7 +60,7 @@ function SolvPage({i, j}) {
                     </div>
                 </div>
                 <div className="main-description">
-                    {info?.solutions[j].proposal}
+                    {info?.solutions[j] ? info?.solutions[j].proposal : null}
                 </div>
             </div>
     )

@@ -11,7 +11,7 @@ function NoOffices({region}) {
     return (
         <div className='office-no'>
             <h3>Doesnt look like any users from {region?.name} have verified their account. Offices in {region?.name} will populate when a denizen of this region verifies their account.</h3>
-            {user.authenticated ? 
+            {user?.authenticated ? 
                 <><h3>
                     Are you from {region?.name}? click below to verify your account
                 </h3> 

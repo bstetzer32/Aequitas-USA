@@ -56,6 +56,9 @@ module.exports = {
           }
         }
       },
+      img: {
+        type: Sequelize.STRING(1000)
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
