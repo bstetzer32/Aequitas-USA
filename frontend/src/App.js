@@ -57,7 +57,7 @@ function App() {
           </div>
           <div>
             <a href='https://www.linkedin.com/in/ben-stetzer-9334881ba/'>LinkedIn</a>
-            <a href='https://www.linkedin.com/in/ben-stetzer-9334881ba/'>GitHub</a>
+            <a href='https://github.com/bstetzer32'>GitHub</a>
           </div>
         </footer>
     </>
