@@ -3,8 +3,9 @@ import './ProbSolvTile.css'
 import {useSelector} from 'react-redux'
 import { Link } from "react-router-dom";
 import ProbPageModal from '../../ProbPageModal'
+import SolvPageModal from '../../SolvPageModal'
 
-export default function ProbSolvTile({i, type}) {
+export default function ProbSolvTile({i, j, type}) {
     const feed = useSelector(state => state.feed)
     const pageNames = useSelector(state => state.subscription.pageNames)
     const dateString = new Date(feed[i].createdAt)
@@ -13,9 +14,9 @@ export default function ProbSolvTile({i, type}) {
             <div className="prob-solv-tile">
                 <div className="prob-solv-tile__info">
                     <div className="prob-solv-tile__info__title">
-                        <ProbPageModal i={i} title={feed[i].title} />
+                        {type === 'problem' ? <ProbPageModal i={i} title={feed[i].title} /> : feed[i].solutions ? <SolvPageModal i={i} j={j} title={feed[i].solutions[0]?.title}/> : null}
                     </div>
-                        <Link to={`/regions/${feed[i].regionId}`}>
+                        <Link to={`/regions/${type === 'problem' ? feed[i].regionId : feed[i]}`}>
                     <div className="prob-solv-tile__info__location on-hover">
                         <div className="prob-solv-tile__info__location__icon">
                             <i className="fas fa-map-marked-alt"></i>
@@ -35,14 +36,14 @@ export default function ProbSolvTile({i, type}) {
                         </div>
                     </div>
                         </Link>
-                    <div className="prob-solv-tile__info__highlight">
+{type === 'problem' ? <div className="prob-solv-tile__info__highlight">
                         <div className="prob-solv-tile__info__highlight__icon">
                             <i className="fas fa-highlighter"></i>
                         </div>
                         <div className="prob-solv-tile__info__highlight__text">
                             {`${`${Math.floor(Math.random() * 10000) +1000}`}`}
                         </div>
-                    </div>
+                    </div> : null}
                     <div className="prob-solv-tile__info__date">
                         <div className="prob-solv-tile__info__date__icon">
                             <i className="fas fa-calendar-alt"></i>

@@ -1,11 +1,17 @@
 import React from "react";
+import {useParams} from 'react-router-dom'
 import {useSelector} from 'react-redux'
+import ProbFormModal from '../ProbFormModal'
+import ProbSolvTile from "./utils/ProbSolvTile";
 
-export default function ColOne({info, type}) {    
+export default function ColOne({info, type}) {
+    const {id} = useParams()
+
+    const region = useSelector(state => state.subscription.pageNames?.regions[id -1]);    
     const pageNames = useSelector(state => state.subscription.pageNames)
     const dateString = new Date(info?.createdAt)
     const date = dateString.toLocaleString('en-US', {year: 'numeric', month: 'long', day: 'numeric'})
-    return (
+    if (info) {return (
         <div className="col col-1 col-main">
                 <div className='tile-banner'>
                     <div>
@@ -57,6 +63,14 @@ export default function ColOne({info, type}) {
                 <div className="main-description">
                     {info?.description}
                 </div>
-            </div>
+                {info.solutions.map((x, i) => <ProbSolvTile j={i} i={0} />
+                )}
+            </div> 
+    )} else return (
+        <div className="col col-1 col-main">
+            <h2>Doesn't look like there are any problems in {region?.name}.</h2>
+            <h2>Disagree with us? Submit your problem below.</h2>
+            <ProbFormModal/>
+        </div>
     )
 }

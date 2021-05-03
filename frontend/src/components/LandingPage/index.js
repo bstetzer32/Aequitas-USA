@@ -1,5 +1,5 @@
 import React, { useEffect, useState }from "react";
-import {useLocation} from "react-router-dom"
+import {useLocation, Route, Switch} from "react-router-dom"
 import ColOne from './ColOne'
 import ColTwo from './ColTwo'
 import ColThree from './ColThree'
@@ -32,7 +32,7 @@ export default function LandingPage ({type}) {
     const sessionUser = useSelector(state => state.session.user);
     const sessionSubs = useSelector(state => state.subscription);
     const {id} = useParams()
-    console.log (sessionUser, sessionSubs)
+    // console.log (sessionUser, sessionSubs)
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(feedActions.resetItems())

@@ -46,8 +46,8 @@ export const getUserSubscriptions = (subs) => async (dispatch) => {
   return response;
 };
 export const getPageSubscriptions = (subs) => async (dispatch) => {
-  const {page, id} = subs;
-  const response = await csrfFetch(`/api/${page}/${id}`);
+  const id = subs;
+  const response = await csrfFetch(`/api/subscriptions/region/${id}`);
   const data = await response.json();
   dispatch(setPageSubs(data));
   return response;
