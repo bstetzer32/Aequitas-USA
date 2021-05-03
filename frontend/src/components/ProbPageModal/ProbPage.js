@@ -4,9 +4,11 @@ import ProbSolvTile from "../LandingPage/utils/ProbSolvTile";
 // import { Redirect } from "react-router-dom";
 // import * as sessionActions from "../../store/session";
 import './Prob.css';
+import ProbFormPage from "../SolvFormModal/SolvForm";
 
 function ProbPage({i, type}) {
   const feed = useSelector(state => state.feed)
+  const sessionUser = useSelector(state => state.session.user);
   const info = feed[i]
     const dateString = new Date(info?.createdAt)
     const date = dateString.toLocaleString('en-US', {year: 'numeric', month: 'long', day: 'numeric'})
@@ -66,7 +68,8 @@ function ProbPage({i, type}) {
                 <div>
                     <h3>Solutions</h3>
                 </div>
-                {info.solutions?.map((x, i) => <ProbSolvTile j={i} i={0} />
+                {sessionUser?.authenticated ? <ProbFormPage id={info.id}/> : null}
+                {info.solutions?.map((x, j) => <ProbSolvTile j={j} i={i} key={`problem-${i}-solution${j}`}/>
                 )}
             </div>
     )

@@ -7,6 +7,7 @@ import SolvPageModal from '../../SolvPageModal'
 
 export default function ProbSolvTile({i, j, type}) {
     const feed = useSelector(state => state.feed)
+    const info = feed[i].solutions[j]
     const pageNames = useSelector(state => state.subscription.pageNames)
     const dateString = new Date(feed[i].createdAt)
     const date = dateString.toLocaleString('en-US', {year: 'numeric', month: 'long', day: 'numeric'})
@@ -14,7 +15,7 @@ export default function ProbSolvTile({i, j, type}) {
             <div className="prob-solv-tile">
                 <div className="prob-solv-tile__info">
                     <div className="prob-solv-tile__info__title">
-                        {type === 'problem' ? <ProbPageModal i={i} title={feed[i].title} /> : feed[i].solutions ? <SolvPageModal i={i} j={j} title={feed[i].solutions[0]?.title}/> : null}
+                        {type === 'problem' ? <ProbPageModal i={i} title={feed[i].title} /> : feed[i].solutions ? <SolvPageModal i={i} j={j} title={feed[i].solutions[j]?.title}/> : null}
                     </div>
                         <Link to={`/regions/${type === 'problem' ? feed[i].regionId : feed[i]}`}>
                     <div className="prob-solv-tile__info__location on-hover">
@@ -54,7 +55,7 @@ export default function ProbSolvTile({i, j, type}) {
                     </div>
                 </div>
                 <div className="prob-solv-tile__img">
-                    <img className='prob-solv-tile__img' alt='tile__img' src={feed[i].img ? feed[i].img : 'https://i.stack.imgur.com/y9DpT.jpg'}></img>
+                    <img className='prob-solv-tile__img' alt='tile__img' src={info?.img ? info.img : 'https://i.stack.imgur.com/y9DpT.jpg'}></img>
                 </div>
             </div>
         )

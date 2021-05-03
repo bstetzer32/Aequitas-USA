@@ -1,5 +1,5 @@
 import React, { useEffect, useState }from "react";
-import {useLocation, Route, Switch} from "react-router-dom"
+import {useLocation} from "react-router-dom"
 import ColOne from './ColOne'
 import ColTwo from './ColTwo'
 import ColThree from './ColThree'

@@ -3,10 +3,11 @@ import {useParams} from 'react-router-dom'
 import {useSelector} from 'react-redux'
 import ProbFormModal from '../ProbFormModal'
 import ProbSolvTile from "./utils/ProbSolvTile";
+import ProbFormPage from "../SolvFormModal/SolvForm";
 
 export default function ColOne({info, type}) {
     const {id} = useParams()
-
+    const sessionUser = useSelector(state => state.session.user);
     const region = useSelector(state => state.subscription.pageNames?.regions[id -1]);    
     const pageNames = useSelector(state => state.subscription.pageNames)
     const dateString = new Date(info?.createdAt)
@@ -63,7 +64,8 @@ export default function ColOne({info, type}) {
                 <div className="main-description">
                     {info?.description}
                 </div>
-                {info.solutions.map((x, i) => <ProbSolvTile j={i} i={0} />
+                {sessionUser?.authenticated ? <ProbFormPage i={0} id={info.id} key={`solv-form${0}`}/> : null}
+                {info.solutions?.map((x, j) => <ProbSolvTile j={j} i={0} key={`solv-${j}`} />
                 )}
             </div> 
     )} else return (

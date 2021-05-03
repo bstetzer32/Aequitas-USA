@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Modal } from '../../context/Modal';
-import ProbForm from './ProbForm';
+import ProbForm from './SolvForm';
 
 function ProbFormModal() {
   const [showModal, setShowModal] = useState(false);

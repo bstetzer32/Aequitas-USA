@@ -30,6 +30,9 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       type: DataTypes.INTEGER
     },
+    img: {
+      type: DataTypes.STRING(1000)
+    }
   }, {});
   Problem.associate = function(models) {
     // associations can be defined here

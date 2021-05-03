@@ -16,6 +16,7 @@ function ProbFormPage() {
   const [description, setDescription] = useState("");
   const [region, setRegion] = useState(0);
   const [topic, setTopic] = useState(0);
+  const [img, setImg] = useState('');
   const [errors, setErrors] = useState([]);
 
   const handleSubmit = (e) => {
@@ -49,7 +50,8 @@ function ProbFormPage() {
       status: false,
       citizenId: sessionUser.id,
       regionId: region,
-      topicId: topic
+      topicId: topic,
+      img
     }
     dispatch(problemActions.postProduct(problem))
     history.push('/')
@@ -114,6 +116,15 @@ function ProbFormPage() {
         <textarea
           value={description}
           onChange={(e) => setDescription(e.target.value)}
+          required
+        />
+      </label>
+      <label>
+        <h2>Image URL</h2>
+        <input
+          type="text"
+          value={img}
+          onChange={(e) => setImg(e.target.value)}
           required
         />
       </label>
