@@ -3,13 +3,15 @@ import thunk from "redux-thunk";
 import sessionReducer from './session'
 import feedReducer from './feed'
 import subscriptionReducer from './subscriptions'
+import problemReducer from './problem'
 
 
 const rootReducer = combineReducers({
   // add reducer functions here
   session: sessionReducer,
   feed: feedReducer,
-  subscription: subscriptionReducer
+  subscription: subscriptionReducer,
+  problem: problemReducer,
 });
 
 let enhancer;

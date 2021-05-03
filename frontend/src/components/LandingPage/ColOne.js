@@ -43,7 +43,7 @@ export default function ColOne({info, type}) {
                         <i className="fas fa-highlighter"></i>
                     </div>
                     <div className='tile-banner__secondary-text'>
-                        {`${info?.highlight}%`}
+                        {`${Math.floor(Math.random() * 10000) +1000}`}
                     </div>
                 </div>
                 <div className='date-banner'>

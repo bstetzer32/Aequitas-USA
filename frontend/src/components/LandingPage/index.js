@@ -30,7 +30,7 @@ export default function LandingPage ({type}) {
     const feed = useSelector(state => state.feed)
     
     const sessionUser = useSelector(state => state.session.user);
-    const sessionSubs = useSelector(state => state.subscriptions);
+    const sessionSubs = useSelector(state => state.subscription);
     const {id} = useParams()
     console.log (sessionUser, sessionSubs)
     const dispatch = useDispatch();

@@ -40,7 +40,7 @@ export default function ProbSolvTile({i, type}) {
                             <i className="fas fa-highlighter"></i>
                         </div>
                         <div className="prob-solv-tile__info__highlight__text">
-                            {`${feed[i].highlight}%`}
+                            {`${`${Math.floor(Math.random() * 10000) +1000}`}`}
                         </div>
                     </div>
                     <div className="prob-solv-tile__info__date">

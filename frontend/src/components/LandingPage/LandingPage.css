@@ -23,7 +23,14 @@ div {
     object-fit: contain;
     border-radius: 10px;
     filter: drop-shadow(0 0 0.7rem rgba(0, 255, 255, 0.493));
-    overflow: scroll
+    overflow: scroll;
+    border: 3px solid rgba(61, 61, 61, 0.336);
+    padding: 10px;
+}
+
+.col div {
+    overflow: visible;
+    white-space: normal;
 }
 
 .col img {
