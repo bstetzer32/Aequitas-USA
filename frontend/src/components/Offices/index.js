@@ -26,7 +26,7 @@ function Offices() {
     useEffect(() => {
         dispatch(subscriptionAcions.getPageSubscriptions(regionId))
     },[dispatch, regionId])
-    console.log(regionId)
+    // console.log(regionId)
     const offices = useSelector(state => state.subscription.pageSubs)
     const region = useSelector(state => state.subscription.pageNames?.regions[parseInt(regionId) - 1]);
     return (

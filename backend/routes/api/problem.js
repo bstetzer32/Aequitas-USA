@@ -7,7 +7,7 @@ const { Op } = require('sequelize')
 const router = express.Router();
 
 router.post('/', asyncHandler(async (req, res) => {
-    console.log(req.body)
+    // console.log(req.body)
     const problem = await Problem.create(req.body.product)
     // con
     return res.json({problem})

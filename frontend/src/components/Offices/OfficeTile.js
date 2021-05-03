@@ -3,7 +3,7 @@ import React from "react";
 
 function OfficeTile({office}) {
     const leader = office.User
-    console.log(office)
+    // console.log(office)
     return (
         <div className='office-tile'>
             <h3 className='office-tile__name'>{office?.name}</h3>

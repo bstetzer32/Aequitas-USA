@@ -5,7 +5,7 @@ import * as solutionActions from "../../store/solution";
 import './SolvForm.css';
 
 function SolvFormPage({id}) {
-  console.log(id)
+  // console.log(id)
   const history = useHistory()
   const sessionUser = useSelector(state => state.session.user);
   const dispatch = useDispatch();
