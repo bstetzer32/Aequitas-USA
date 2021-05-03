@@ -45,14 +45,6 @@ export default function ColOne({info, type}) {
                     {pageNames?.topics[info?.topicId - 1]?.name}
                     </div>
                 </div>
-                <div className='tile-banner'>
-                    <div className='tile-banner__secondary-icon'>
-                        <i className="fas fa-highlighter"></i>
-                    </div>
-                    <div className='tile-banner__secondary-text'>
-                        {`${Math.floor(Math.random() * 10000) +1000}`}
-                    </div>
-                </div>
                 <div className='date-banner'>
                     <div className='date-banner__text'>
                         {date.toLocaleString({year: 'numeric', month: 'long', day: 'numeric'})}
