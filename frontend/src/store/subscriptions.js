@@ -2,6 +2,7 @@ import { csrfFetch } from './csrf';
 const SET_USER_SUBS = 'session/setUserSubs';
 const SET_PAGE_SUBS = 'session/setPageSubs';
 const SET_PAGE_NAMES = 'session/setPageNames';
+const CLEAR_USER_SUBS = 'session/clearUserSubs';
 
 const setPageNames = (names) => {
   return{
@@ -16,6 +17,12 @@ const setUserSubs = (subs) => {
     payload: subs,
   };
 };
+export const clearUserSubs = () => {
+  return {
+    type: CLEAR_USER_SUBS
+  }
+}
+
 const setPageSubs = (subs) => {
   return {
     type: SET_PAGE_SUBS,
@@ -50,6 +57,10 @@ const initialState = { pageNames: null, userSubs: null, pageSubs: null };
 const subscriptionReducer = (state = initialState, action) => {
   let newState;
   switch (action.type) {
+    case CLEAR_USER_SUBS: 
+      newState = Object.assign({}, state);
+      newState.userSubs = null
+      return newState
     case SET_PAGE_NAMES:
       newState = Object.assign({}, state);
       newState.pageNames = action.payload;

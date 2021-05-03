@@ -3,6 +3,8 @@ import {useSelector} from 'react-redux'
 
 export default function ColOne({info, type}) {    
     const pageNames = useSelector(state => state.subscription.pageNames)
+    const dateString = new Date(info?.createdAt)
+    const date = dateString.toLocaleString('en-US', {year: 'numeric', month: 'long', day: 'numeric'})
     return (
         <div className="col col-1 col-main">
                 <div className='tile-banner'>
@@ -46,7 +48,7 @@ export default function ColOne({info, type}) {
                 </div>
                 <div className='date-banner'>
                     <div className='date-banner__text'>
-                        {info?.date}
+                        {date.toLocaleString({year: 'numeric', month: 'long', day: 'numeric'})}
                     </div>
                     <div className='date-banner__icon'>
                         <i className="fas fa-calendar-alt"></i>

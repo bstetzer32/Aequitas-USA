@@ -37,6 +37,12 @@ function ProbFormPage() {
       </ul>
       <label>
         <h2>Title</h2>
+        <input
+          type="text"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          required
+        />
       <label>
         Region
         <select
@@ -57,12 +63,6 @@ function ProbFormPage() {
           {pageNames.topics.map((topic, i) => <option value={topic.id} key={`topic-${i}`} >{topic.name}</option>)}
         </select>
       </label>
-        <input
-          type="text"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          required
-        />
       </label>
       <label>
         Summary

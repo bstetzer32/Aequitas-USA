@@ -33,7 +33,7 @@
     border-bottom: 1px solid #dddddd;
 }
 
-.menu li a, .menu a, .menu button, #log-in-div, #profile-dropdown-logged>li {
+.menu li a, .menu a, .menu button, #log-in-div, #sign-up-div, #demo-div, #profile-dropdown-logged>li {
     text-decoration: none;
     color: #333333;
     padding: 15px 20px;

@@ -55,7 +55,7 @@ export default function LandingPage ({type}) {
     //     console.log(feed)
     // },[feed])
 
-    const subscriptions = useSelector(state => state.subscription);
+    useSelector(state => state.subscription);
     return (
         <>
             <div className="landing-page-container">
