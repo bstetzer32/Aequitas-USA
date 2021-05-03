@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from 'react-router-dom'
 import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
 import VerifyFormModal from "../VerifyForm";
@@ -22,6 +23,7 @@ function ProfileButton({ user }) {
                 <li><b>Status:</b> {user.authenticated ? 'Verified Citizen' : 'Unverified'}</li>
             </ul>
       </li>
+      <Link to={`/users/${user.id}`}>Your Problems</Link>
           <li onClick={logout}>Log Out</li>
           {!user.authenticated && (<VerifyFormModal />)}
       </div>

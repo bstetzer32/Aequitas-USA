@@ -1,0 +1,28 @@
+.office-container {
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.office-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.office-tile div, .office-tile__name, .office-tile__leader, .office-tile__email {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.office-tile__name {}
+
+.office-no {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}

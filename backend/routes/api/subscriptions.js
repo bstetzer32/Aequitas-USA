@@ -52,4 +52,10 @@ router.get('/region/:regionId', asyncHandler(async (req, res) => {
     return res.json(govtData)
 }))
 
+router.get('/user/:userId', asyncHandler(async (req, res) => {
+    const {userId} = req.params
+    const problems = await Problem.findAll({where: { citiznd: userId}})
+    return res.json(problems)
+}))
+
 module.exports = router;

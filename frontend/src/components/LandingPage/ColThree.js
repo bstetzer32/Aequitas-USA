@@ -9,6 +9,7 @@ import {useDispatch} from 'react-redux'
 import * as sessionActions from '../../store/session'
 import Regions from "../Regions";
 import Topics from "../Topics";
+import UserProbs from "../UserProbs";
 
 export default function ColThree() {
     const sessionUser = useSelector(state => state.session.user);
@@ -27,6 +28,9 @@ export default function ColThree() {
                     </Route>
                     <Route path='/topics'>
                         <Topics />
+                    </Route>
+                    <Route path='/users'>
+                        <UserProbs />
                     </Route>
                     <Route >
                 {sessionUser ? <Subscriptions/> : 
