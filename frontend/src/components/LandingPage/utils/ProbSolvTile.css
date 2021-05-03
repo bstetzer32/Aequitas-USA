@@ -8,9 +8,10 @@
     border-radius: 10px;
 }
 
-/* .prob-solv-tile__info {
-    
-} */
+.prob-solv-tile__info a {
+    text-decoration: none;
+    color: inherit
+}
 
 .prob-solv-tile__info__title {
     display: flex;
@@ -20,6 +21,7 @@
 .prob-solv-tile__info__title__icon {
     margin: 7px;
     font-size: 10px;
+    border-radius: 50%;
 }
 
 .prob-solv-tile__info__title__text {
@@ -39,6 +41,7 @@
 
 .prob-solv-tile__info__location__text {
     font-size: 14px;
+    text-decoration: none;
 }
 
 .prob-solv-tile__info__topic {

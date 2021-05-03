@@ -1,5 +1,6 @@
 import { csrfFetch } from './csrf';
 import {getUserSubscriptions} from './subscriptions'
+import {clearUserSubs} from './subscriptions'
 
 const SET_USER = 'session/setUser';
 const REMOVE_USER = 'session/removeUser';
@@ -48,11 +49,27 @@ export const login = (user) => async (dispatch) => {
   return response;
 };
 
+export const demologin = () => async (dispatch) => {
+  const credential = 'demo@user.io'
+  const password = 'password'
+  const response = await csrfFetch('/api/session', {
+    method: 'POST',
+    body: JSON.stringify({
+      credential,
+      password,
+    }),
+  });
+  const data = await response.json();
+  dispatch(setUser(data.user));
+  return response;
+};
+
 export const logout = () => async (dispatch) => {
   const response = await csrfFetch('/api/session', {
     method: 'DELETE',
   });
   dispatch(removeUser());
+  dispatch(clearUserSubs())
   return response;
 };
 

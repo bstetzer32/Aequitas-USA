@@ -11,8 +11,8 @@ const router = express.Router();
 
 router.post('/', asyncHandler(async (req, res) => {
     const {context, offset} = req.body;
-    const feedData = await Problem.findAll({limit: 20, offset})
-    console.log(feedData)
+    const feedData = await Problem.findAll({limit: 20, offset, order:[['updatedAt', 'DESC']]})
+    // console.log(feedData)
     return res.json({feedData})
 }))
 

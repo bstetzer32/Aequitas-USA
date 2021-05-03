@@ -20,7 +20,7 @@ function SendEmail () {
         };
 
         emailjs.send("service_rxuikoi","template_sphrrc9", templateParams, 'user_sXFtmGNeamEzTqj2H1al0');
-        console.log('email sent!')
+        // console.log('email sent!')
     };
 
     return (

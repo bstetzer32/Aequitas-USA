@@ -8,7 +8,8 @@ const sessionRouter = require('./session.js');
 const usersRouter = require('./users.js');
 const subscriptionRouter = require('./subscriptions.js')
 const feedRouter = require('./feed')
-
+const problemRouter = require('./problem')
+router.use('/problem', problemRouter)
 router.use('/session', sessionRouter);
 
 router.use('/users', usersRouter);

@@ -12,7 +12,7 @@ function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
   const id = sessionUser ? sessionUser.id : 1
-  console.log(id)
+  // console.log(id)
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
     dispatch(subActions.getPageNames());

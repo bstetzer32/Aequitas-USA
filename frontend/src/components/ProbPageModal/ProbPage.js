@@ -7,6 +7,8 @@ import './Prob.css';
 function ProbPage({i, type}) {
   const feed = useSelector(state => state.feed)
   const info = feed[i]
+    const dateString = new Date(info?.createdAt)
+    const date = dateString.toLocaleString('en-US', {year: 'numeric', month: 'long', day: 'numeric'})
   const pageNames = useSelector(state => state.subscription.pageNames)
     return (
         <div className="col col-1 col-main">
@@ -46,12 +48,12 @@ function ProbPage({i, type}) {
                         <i className="fas fa-highlighter"></i>
                     </div>
                     <div className='tile-banner__secondary-text'>
-                        {`${info?.highlight}%`}
+                        {`${`${Math.floor(Math.random() * 10000) +1000}`}`}
                     </div>
                 </div>
                 <div className='date-banner'>
                     <div className='date-banner__text'>
-                        {info?.date}
+                        {date.toLocaleString({year: 'numeric', month: 'long', day: 'numeric'})}
                     </div>
                     <div className='date-banner__icon'>
                         <i className="fas fa-calendar-alt"></i>

@@ -1,6 +1,13 @@
 /* TODO Add site wide styles */
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 body {
-    background-color: rgba(0, 128, 128, 0.777)
+    background-color: rgba(0, 128, 128, 0.041)
+}
+
+
+
+.on-hover:hover {
+    cursor: pointer;
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
 }

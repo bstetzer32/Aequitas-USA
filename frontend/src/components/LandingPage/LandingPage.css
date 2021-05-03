@@ -22,8 +22,15 @@ div {
     max-height: 650px;
     object-fit: contain;
     border-radius: 10px;
-    filter: drop-shadow(0 0 0.7rem aqua);
-    overflow: scroll
+    filter: drop-shadow(0 0 0.7rem rgba(0, 255, 255, 0.493));
+    overflow: scroll;
+    border: 3px solid rgba(61, 61, 61, 0.336);
+    padding: 10px;
+}
+
+.col div {
+    overflow: visible;
+    white-space: normal;
 }
 
 .col img {
@@ -36,6 +43,10 @@ div {
 
 .col::-webkit-scrollbar-corner {
     background-color: rgba(0, 0, 255, 0)
+}
+
+.col-main {
+    text-align: center;
 }
 
 .col-main, .col-2 {
@@ -55,7 +66,7 @@ div {
 }
 
 .col-3 {
-    max-height: 650px;
+    height: 650px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -175,4 +186,43 @@ div {
 
 .info-population__icon, .info-offices__icon {
     font-size: 5px;
+}
+
+.entry-landing, .entry-landing div, .entry-landing ul {
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    font-size: 50px;
+}
+
+.no-subs {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.no-subs__header {
+    margin: 15px;
+}
+
+.entry-landing {
+    height: 650px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.entry-landing div {
+    min-width: 350px;
+    border-radius: 15px;
+    border: 1px solid black;
+    text-align: center;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+}
+
+.entry-landing div:hover {
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
 }
