@@ -22,7 +22,7 @@ export const getItems = (context, offset) => async (dispatch) => {
     body: JSON.stringify({ context, offset }),
   });
   const data = await response.json();
-  console.log(data)
+  // console.log(data)
   dispatch(setItems(data.feedData))
   return response;
 };

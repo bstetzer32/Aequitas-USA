@@ -7,6 +7,7 @@ import SolvPageModal from '../../SolvPageModal'
 
 export default function ProbSolvTile({i, j, type}) {
     const feed = useSelector(state => state.feed)
+    const probInfo = feed[i]
     const info = feed[i].solutions[j]
     const pageNames = useSelector(state => state.subscription.pageNames)
     const dateString = new Date(feed[i].createdAt)
@@ -55,7 +56,8 @@ export default function ProbSolvTile({i, j, type}) {
                     </div>
                 </div>
                 <div className="prob-solv-tile__img">
-                    <img className='prob-solv-tile__img' alt='tile__img' src={info?.img ? info.img : 'https://i.stack.imgur.com/y9DpT.jpg'}></img>
+                    {type !== 'problem' ? <img className='prob-solv-tile__img' alt='tile__img' src={info?.img ? info.img : 'https://i.stack.imgur.com/y9DpT.jpg'}></img> : <img className='prob-solv-tile__img' alt='tile__img' src={probInfo?.img ? probInfo.img : 'https://i.stack.imgur.com/y9DpT.jpg'}></img>}
+                    
                 </div>
             </div>
         )

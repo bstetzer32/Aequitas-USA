@@ -2,7 +2,7 @@ import React from "react";
 import {Link} from 'react-router-dom'
 
 function RegionTile({region}) {
-    console.log(region)
+    // console.log(region)
     return (
         
                         <Link to={`/regions/${region.id}`}><div className='office-tile'>

@@ -51,6 +51,15 @@ function App() {
           </Route>
         </Switch>
       )}
+        <footer>
+          <div>
+        Aequitas-USA is a portfolio broject by Ben Stetzer. It is a website inspired by Medium that is designed to connect citizens of a country (in this verion, the USA) to connect with the leaders of the offices in their regions (county, state, federal) and interact with them by posing problems and solutions.
+          </div>
+          <div>
+            <a href='https://www.linkedin.com/in/ben-stetzer-9334881ba/'>LinkedIn</a>
+            <a href='https://www.linkedin.com/in/ben-stetzer-9334881ba/'>GitHub</a>
+          </div>
+        </footer>
     </>
   );
 }
