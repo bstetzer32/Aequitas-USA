@@ -38,6 +38,14 @@ export default function ProbSolvTile({i, j, type}) {
                         </div>
                     </div>
                         </Link>
+{type === 'problem' ? <div className="prob-solv-tile__info__highlight">
+                        <div className="prob-solv-tile__info__highlight__icon">
+                            <i className="fas fa-highlighter"></i>
+                        </div>
+                        <div className="prob-solv-tile__info__highlight__text">
+                            {`${`${Math.floor(Math.random() * 10000) +1000}`}`}
+                        </div>
+                    </div> : null}
                     <div className="prob-solv-tile__info__date">
                         <div className="prob-solv-tile__info__date__icon">
                             <i className="fas fa-calendar-alt"></i>
@@ -49,7 +57,7 @@ export default function ProbSolvTile({i, j, type}) {
                 </div>
                 <div className="prob-solv-tile__img">
                     {type !== 'problem' ? <img className='prob-solv-tile__img' alt='tile__img' src={info?.img ? info.img : 'https://i.stack.imgur.com/y9DpT.jpg'}></img> : <img className='prob-solv-tile__img' alt='tile__img' src={probInfo?.img ? probInfo.img : 'https://i.stack.imgur.com/y9DpT.jpg'}></img>}
-
+                    
                 </div>
             </div>
         )
