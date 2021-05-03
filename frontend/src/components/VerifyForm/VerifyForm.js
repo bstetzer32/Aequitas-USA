@@ -37,7 +37,7 @@ function VerifyFormPage({setModal}) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <h1>Sign Up</h1>
+      <h1>Verify Your Address</h1>
       <ul>
         {errors.map((error, idx) => <li key={idx}>{error}</li>)}
       </ul>

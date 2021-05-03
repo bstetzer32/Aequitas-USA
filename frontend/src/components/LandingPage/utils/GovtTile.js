@@ -15,7 +15,7 @@ export default function GovtTile({region}) {
                             </div>
                             <div className='tile-info__offices'>
                                 <div className='info-offices info-offices__text'>
-                                    <Link to={`/region/${region.id}/offices`}><h5>Offices</h5></Link>
+                                    <Link to={`/regions/${region.id}`}><h5>Offices</h5></Link>
                                 </div>
                                 <div className='info-offices info-offices__icon'>
                                     <i className="fas fa-landmark"></i>

@@ -31,22 +31,22 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
-          <Route exact path="/">
+          <Route path="/">
             <LandingPage type={home} />
           </Route>
-          <Route path="/problems/:id">
+          <Route exact path="/problems/:id">
             <LandingPage type={problems} />
           </Route>
-          <Route path="/solutions/:id">
+          <Route exact path="/solutions/:id">
             <LandingPage type={solutions} />
           </Route>
-          <Route path="/leaders/:id">
+          <Route exact path="/leaders/:id">
             <LandingPage type={leaders} />
           </Route>
-          <Route path="/regions/:id">
+          <Route exact path="/regions/:id">
             <LandingPage type={regions} />
           </Route>
-          <Route path="/topics/:id">
+          <Route exact path="/topics/:id">
             <LandingPage type={topics} />
           </Route>
         </Switch>

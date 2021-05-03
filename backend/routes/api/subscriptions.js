@@ -45,11 +45,11 @@ router.get('/:userId', asyncHandler(async (req, res) => {
 
 router.get('/region/:regionId', asyncHandler(async (req, res) => {
     const {regionId} = req.params
-    const govtData = await Region.findAll({where: {
-        id: {
-            [Op.in]: govt
-        }
-    }})
+    const region = await Region.findOne({where: { id: regionId}})
+    const govtData = await Office.findAll({where: {
+        region: region.name
+    }, include: User.scope('leader')})
+    return res.json(govtData)
 }))
 
 module.exports = router;

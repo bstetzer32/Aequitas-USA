@@ -21,12 +21,6 @@ module.exports = (sequelize, DataTypes) => {
           min:1000
         }
       },
-      images: {
-        type: DataTypes.ARRAY(DataTypes.STRING(100))
-      },
-      references: {
-        type: DataTypes.ARRAY(DataTypes.STRING(100))
-      },
       citizenId: {
         allowNull: false,
         type: DataTypes.INTEGER
@@ -41,9 +35,9 @@ module.exports = (sequelize, DataTypes) => {
     // Solution.belongsTo(models.User, {
     //   foreignKey: "citizenId"
     // })
-    // Solution.belongsTo(models.Problem, {
-    //   foreignKey: "problemId"
-    // })
+    Solution.belongsTo(models.Problem, {
+      foreignKey: "problemId"
+    })
     // Solution.hasMany(models.Vote, {
     //   foreignKey: "solutionId"
     // })

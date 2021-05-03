@@ -7,6 +7,7 @@ import SignupFormModal from '../SignupFormModal'
 import Offices from '../Offices'
 import {useDispatch} from 'react-redux'
 import * as sessionActions from '../../store/session'
+import Regions from "../Regions";
 
 export default function ColThree() {
     const sessionUser = useSelector(state => state.session.user);
@@ -19,6 +20,9 @@ export default function ColThree() {
                 <Switch>
                     <Route path='/regions/:regionId'>
                         <Offices />
+                    </Route>
+                    <Route path='/regions'>
+                        <Regions />
                     </Route>
                     <Route >
                 {sessionUser ? <Subscriptions/> : 

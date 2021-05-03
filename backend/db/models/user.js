@@ -62,6 +62,9 @@ module.exports = (sequelize, DataTypes) => {
       currentUser: {
         attributes: { exclude: ['hashedPassword']},
       },
+      leader: {
+        attributes: {exclude: ['username', 'hashedPassword', 'createdAt', 'updatedAt', 'city', 'state', 'zipCode']},
+      },
       loginUser: {
         attributes: {},
       },

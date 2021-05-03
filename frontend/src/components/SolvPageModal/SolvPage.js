@@ -1,11 +1,10 @@
 import React from "react";
 import {  useSelector } from "react-redux";
-import ProbSolvTile from "../LandingPage/utils/ProbSolvTile";
 // import { Redirect } from "react-router-dom";
 // import * as sessionActions from "../../store/session";
-import './Prob.css';
+import './Solv.css';
 
-function ProbPage({i, type}) {
+function SolvPage({i, j}) {
   const feed = useSelector(state => state.feed)
   const info = feed[i]
     const dateString = new Date(info?.createdAt)
@@ -15,18 +14,18 @@ function ProbPage({i, type}) {
         <div className="col col-1 col-main">
                 <div className='tile-banner'>
                     <div>
-                        <i className="fas fa-exclamation-circle"
+                        <i className="fas fa-scroll"
                         id="tile-banner__main-icon"></i>
                     </div>
                     <div className='tile-banner__main-text'>
-                    {type}{info?.title}
+                    {info?.solutions[j].title}
                     </div>
                 <div>
                     <img className='col-main__img-main' alt='main' src={info?.img ? info.img : 'https://i.stack.imgur.com/y9DpT.jpg'}></img>
                 </div>
                 </div>
                 <div className="main-description">
-                    {info?.summary}
+                    {info?.solutions[j].thesis}
                 </div>
                 <div className='tile-banner'>
                     <div className='tile-banner__secondary-icon'>
@@ -44,14 +43,14 @@ function ProbPage({i, type}) {
                     {pageNames?.topics[info?.topicId - 1]?.name}
                     </div>
                 </div>
-                <div className='tile-banner'>
+                {/* <div className='tile-banner'>
                     <div className='tile-banner__secondary-icon'>
                         <i className="fas fa-highlighter"></i>
                     </div>
                     <div className='tile-banner__secondary-text'>
                         {`${`${Math.floor(Math.random() * 10000) +1000}`}`}
                     </div>
-                </div>
+                </div> */}
                 <div className='date-banner'>
                     <div className='date-banner__text'>
                         {date.toLocaleString({year: 'numeric', month: 'long', day: 'numeric'})}
@@ -61,15 +60,10 @@ function ProbPage({i, type}) {
                     </div>
                 </div>
                 <div className="main-description">
-                    {info?.description}
+                    {info?.solutions[j].proposal}
                 </div>
-                <div>
-                    <h3>Solutions</h3>
-                </div>
-                {info.solutions?.map((x, i) => <ProbSolvTile j={i} i={0} />
-                )}
             </div>
     )
 }
 
-export default ProbPage;
+export default SolvPage;

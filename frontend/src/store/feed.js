@@ -22,6 +22,7 @@ export const getItems = (context, offset) => async (dispatch) => {
     body: JSON.stringify({ context, offset }),
   });
   const data = await response.json();
+  console.log(data)
   dispatch(setItems(data.feedData))
   return response;
 };
@@ -60,7 +61,8 @@ const feedReducer = (state = initialState, action) => {
                     regionId: item.regionId,
                     topicId: item.topicId,
                     createdAt: item.createdAt,
-                    updatedAt: item.updatedAt
+                    updatedAt: item.updatedAt,
+                    solutions: item.Solutions
                 })
             }
         }

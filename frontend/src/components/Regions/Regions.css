@@ -18,7 +18,7 @@
     text-align: center;
 }
 
-/* .office-tile__name {} */
+.office-tile__name {}
 
 .office-no {
     display: flex;
