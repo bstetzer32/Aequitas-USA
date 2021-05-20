@@ -8,7 +8,7 @@ import SolvPageModal from '../../SolvPageModal'
 export default function ProbSolvTile({i, j, type}) {
     const feed = useSelector(state => state.feed)
     const probInfo = feed[i]
-    const info = feed[i].solutions[j]
+    const info = probInfo.solutions ? probInfo.solutions[j] : []
     const pageNames = useSelector(state => state.subscription.pageNames)
     const dateString = new Date(feed[i].createdAt)
     const date = dateString.toLocaleString('en-US', {year: 'numeric', month: 'long', day: 'numeric'})
@@ -18,7 +18,7 @@ export default function ProbSolvTile({i, j, type}) {
                     <div className="prob-solv-tile__info__title">
                         {type === 'problem' ? <ProbPageModal i={i} title={feed[i].title} /> : feed[i].solutions ? <SolvPageModal i={i} j={j} title={feed[i].solutions[j]?.title}/> : null}
                     </div>
-                        <Link to={`/regions/${type === 'problem' ? feed[i].regionId : feed[i]}`}>
+                        <Link to={`/regions/${type === 'problem' ? feed[i].regionId : feed[i].regionId}`}>
                     <div className="prob-solv-tile__info__location on-hover">
                         <div className="prob-solv-tile__info__location__icon">
                             <i className="fas fa-map-marked-alt"></i>
