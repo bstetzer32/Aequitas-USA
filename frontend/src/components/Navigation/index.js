@@ -40,7 +40,6 @@ function Navigation({ isLoaded }){
         <DropdownMenu buttonClass='fas fa-bars'>
             {sessionUser? <ProbFormModal /> : null}
             {/* <li><NavLink to="/leaders">Leaders</NavLink></li> */}
-            <li><NavLink to="/regions">Regions</NavLink></li>
             <li><NavLink to="/topics">Topics</NavLink></li>
         </DropdownMenu>
       </div>
