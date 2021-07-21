@@ -23,8 +23,6 @@
     + ```GET /api/problems/:id```
 - Users can subscribe to a problem.
     + ```POST /api/problems/:id/subscribe```
-- Citizens can highlight a problem.
-    + ```POST /api/problems/:id/highlight```
 ## Solutions
 - Citizens can propose a solution.
     + ```POST /api/problems/:id/solution```
@@ -44,3 +42,8 @@
     + ```GET /api/region/:id```
 - Users can subscribe to topic pages.
     + ```POST /api/topic/:id/subscribe```
+## Highlights
+- Citizens can highlight a problem.
+    + ```POST /api/problems/:id/highlight```
+- Citizens can un-highlight a problem.
+    + ```DELETE /api/problems/:id/highlight```
