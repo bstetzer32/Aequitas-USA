@@ -19,6 +19,18 @@ export const postProduct = (product) => async (dispatch) => {
     return data
 }
 
+export const highlightProduct = (productId, userId) => async (dispatch) => {
+  const response = await csrfFetch(`/api/problem/${productId}`, {
+    method: "POST",
+    body: JSON.stringify({
+      userId,
+    }),
+  });
+  const data = await response.json();
+  dispatch(postedProduct());
+  return data;
+};
+
 
 const problemReducer = (state = null, action) => {
   switch (action.type) {
