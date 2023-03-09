@@ -25,5 +25,8 @@
   "homepage": "https://github.com/bstetzer32/authenticate-me#readme",
   "dependencies": {
     "react-infinite-scroll-hook": "^4.0.1"
+  },
+  "engines": {
+    "node": "16.x"
   }
 }
