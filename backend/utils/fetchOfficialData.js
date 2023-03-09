@@ -9,30 +9,29 @@ const { User, Office, OfficeSubscription, RegionSubscription, Region } = require
 function fetchOfficialData ({citizenId, addressLineOne, city, state, zip}) {
     async function fetchData() {
         const civicDataFetch = await fetch(`https://www.googleapis.com/civicinfo/v2/representatives?key=AIzaSyDkAj7-ZbjTU2-pLN5bJed7Jph_1LmlsW8&address=${addressLineOne}${city}${state}${zip}`)
-        const civicData = await civicDataFetch.json()
-        
+        const civicData = await civicDataFetch.json();
         const {divisions, offices: positions, officials} = civicData;
-        const existingOffices = await Office.findAll()
-        const existingLeaderIds = existingOffices.map(office => office.incumbantId)
-        const existingOfficeNames = existingOffices.map(office => office.name)
+        const existingOffices = await Office.findAll();
+        const existingLeaderIds = existingOffices.map(office => office.incumbantId);
+        const existingOfficeNames = existingOffices.map(office => office.name);
         const existingLeaders = await User.findAll({where: {
             id: {
                 [Op.in]: existingLeaderIds
             }
-        }})
-        const existingRegionIds = existingOffices.map(office => office.region)
-        const existingRegionUpload = await Region.findAll()
-        const existingRegionUploadNames = existingRegionUpload.map(region => region.name)
+        }});
+        const existingRegionIds = existingOffices.map(office => office.region);
+        const existingRegionUpload = await Region.findAll();
+        const existingRegionUploadNames = existingRegionUpload.map(region => region.name);
         const existingRegions = await Region.findAll({where: {
             name: {
                 [Op.in]: existingRegionIds
             }
         }})
-        const existingRegionNames = existingRegions.map(region => region.name)
-        const existingLeaderNames = existingLeaders.map(leader => leader.username)
-        let regions = []
-        const offices = {}
-        let leaders = []
+        const existingRegionNames = existingRegions.map(region => region.name);
+        const existingLeaderNames = existingLeaders.map(leader => leader.username);
+        let regions = [];
+        const offices = {};
+        let leaders = [];
         for (const division in divisions) {
             if (Object.hasOwnProperty.call(divisions, division)) {
                 const el = divisions[division];
@@ -50,13 +49,13 @@ function fetchOfficialData ({citizenId, addressLineOne, city, state, zip}) {
                 if (region.level === 'administrativeArea2') {
                     region.name = region.name + ' ' + state
                     region.officeIndices.forEach(officeIndex => {
-                        positions[officeIndex].region = region.name
-                        delete positions[officeIndex].levels 
-                        delete positions[officeIndex].divisionId
-                        delete positions[officeIndex].roles 
+                        positions[officeIndex].region = region.name;
+                        delete positions[officeIndex].levels;
+                        delete positions[officeIndex].divisionId;
+                        delete positions[officeIndex].roles;
                         if (positions[officeIndex].officialIndices.length === 1) {
-                            offices[positions[officeIndex].officialIndices[0]] = positions[officeIndex]
-                            delete offices[positions[officeIndex].officialIndices[0]].officialIndices
+                            offices[positions[officeIndex].officialIndices[0]] = positions[officeIndex];
+                            delete offices[positions[officeIndex].officialIndices[0]].officialIndices;
                         } else {
                             positions[officeIndex].officialIndices.forEach((position, i) => {
                                 offices[positions[officeIndex].officialIndices[i]] = {
@@ -64,18 +63,18 @@ function fetchOfficialData ({citizenId, addressLineOne, city, state, zip}) {
                                     region: positions[officeIndex].region
                                 }
                             });
-                            delete positions[officeIndex].officialIndices
+                            delete positions[officeIndex].officialIndices;
                         } 
                     });
                 } else if (region.officeIndices) {
                     region.officeIndices.forEach(officeIndex => {
-                        positions[officeIndex].region = region.name   
-                        delete positions[officeIndex].levels 
-                        delete positions[officeIndex].divisionId 
-                        delete positions[officeIndex].roles    
+                        positions[officeIndex].region = region.name;
+                        delete positions[officeIndex].levels;
+                        delete positions[officeIndex].divisionId;
+                        delete positions[officeIndex].roles;
                         if (positions[officeIndex].officialIndices.length === 1) {
-                            offices[positions[officeIndex].officialIndices[0]] = positions[officeIndex]
-                            delete offices[positions[officeIndex].officialIndices[0]].officialIndices
+                            offices[positions[officeIndex].officialIndices[0]] = positions[officeIndex];
+                            delete offices[positions[officeIndex].officialIndices[0]].officialIndices;
                         } else {
                             positions[officeIndex].officialIndices.forEach((position, i) => {
                                 offices[positions[officeIndex].officialIndices[i]] = {
@@ -83,37 +82,37 @@ function fetchOfficialData ({citizenId, addressLineOne, city, state, zip}) {
                                     region: positions[officeIndex].region
                                 }
                             });
-                            delete positions[officeIndex].officialIndices
+                            delete positions[officeIndex].officialIndices;
                         } 
                     });
                 }
-                delete region.officeIndices
-                return region
+                delete region.officeIndices;
+                return region;
             }
         });
         let filteredOfficials = officials.filter(official => official.phones && official.phones[0])
         filteredOfficials.forEach(official => {
-            const name = official.name.split(' ')
-            const firstName = name[0]
-            let lastName
+            const name = official.name.split(' ');
+            const firstName = name[0];
+            let lastName;
             if(name[name.length - 1].includes('.') || name[name.length - 1].includes('II')){
-                lastName = name[name.length - 2]
+                lastName = name[name.length - 2];
             } else {
-                lastName = name[name.length - 1]
+                lastName = name[name.length - 1];
             }
-            const phone = official.phones[0].split('')
-            const phoneNumber = phone.filter(num => ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'].includes(num))
-            const userTag = phoneNumber.join('')
-            const username = firstName + lastName + userTag
-            const randomNumber = Math.floor(Math.random() * 1000000)
+            const phone = official.phones[0].split('');
+            const phoneNumber = phone.filter(num => ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'].includes(num));
+            const userTag = phoneNumber.join('');
+            const username = firstName + lastName + userTag;
+            const randomNumber = Math.floor(Math.random() * 1000000);
             let email;
             if (official.emails) {
-                email = official.emails[0]
+                email = official.emails[0];
             } else {
-                email = `${username}@placeholder-email.com`
+                email = `${username}@placeholder-email.com`;
             }
-            const password = faker.internet.password()
-            const hashedPassword = bcrypt.hashSync(password)
+            const password = faker.internet.password();
+            const hashedPassword = bcrypt.hashSync(password);
             leaders.push({ 
                 firstName,
                 lastName,
@@ -123,45 +122,45 @@ function fetchOfficialData ({citizenId, addressLineOne, city, state, zip}) {
                 authenticated: false
             }) 
         });
-        regions = regions.filter(region => region.level !== undefined)
-        subscriptionRegions = []
+        regions = regions.filter(region => region.level !== undefined);
+        subscriptionRegions = [];
         regions.forEach(region => {
-            subscriptionRegions.push(region.name)
+            subscriptionRegions.push(region.name);
         });
-        let regionOfficeCreate = [...regions]
-        regionOfficeCreate = regionOfficeCreate.map(region => region.name)
-        regions = regions.filter(region => !existingRegionUploadNames.includes(region.name))
-        const officeArray = Object.values(offices)
+        let regionOfficeCreate = [...regions];
+        regionOfficeCreate = regionOfficeCreate.map(region => region.name);
+        regions = regions.filter(region => !existingRegionUploadNames.includes(region.name));
+        const officeArray = Object.values(offices);
 
-        let officeArrayNames = officeArray.map(office => office.name)
+        let officeArrayNames = officeArray.map(office => office.name);
         let dataReturn = {};
         try {
-            var databaseRegions = await Region.bulkCreate(regions, {updateOnDuplicate: ["name"], returning: true})
-            dataReturn.regions = databaseRegions
+            var databaseRegions = await Region.bulkCreate(regions, {updateOnDuplicate: ["name"], returning: true});
+            dataReturn.regions = databaseRegions;
         } catch (error) {
-            console.log(error)
+            console.log(error);
         }
-        const allUsers = await User.findAll()
-        const allUserNames = allUsers.map(user => user.username)
-        let leaderCreate = leaders.filter(leader => !allUserNames.includes(leader.username))
+        const allUsers = await User.findAll();
+        const allUserNames = allUsers.map(user => user.username);
+        let leaderCreate = leaders.filter(leader => !allUserNames.includes(leader.username));
         try {
             var databaseLeaders = await User.bulkCreate(leaderCreate);
-            dataReturn.leaders = databaseLeaders
+            dataReturn.leaders = databaseLeaders;
 
         } catch (error) {
-            console.log(error)
+            console.log(error);
         }
-        const officeCreate = officeArray.filter(office => !existingOfficeNames.includes(office.name))
+        const officeCreate = officeArray.filter(office => !existingOfficeNames.includes(office.name));
         officeCreate.forEach((office, i) => {
-            office.incumbantId = databaseLeaders[i].dataValues.id
+            office.incumbantId = databaseLeaders[i].dataValues.id;
         });
         try {
-            var databaseOffices = await Office.bulkCreate(officeCreate)
-            dataReturn.offices = databaseOffices
+            var databaseOffices = await Office.bulkCreate(officeCreate);
+            dataReturn.offices = databaseOffices;
         } catch (error) {
-            console.log(error)
+            console.log(error);
         } 
-        let existingRegions1
+        let existingRegions1;
         try {
             existingRegions1 = await Region.findAll({where: {
                 name: {
@@ -169,64 +168,64 @@ function fetchOfficialData ({citizenId, addressLineOne, city, state, zip}) {
                 }
             }})
         } catch (error) {
-            console.log(error)
+            console.log(error);
         } 
-        let existingOffices1
+        let existingOffices1;
         try {
             existingOffices1 = await Office.findAll({where: {
                 name: {
                     [Op.in]: officeArrayNames
                 }
-            }})
+            }});
         } catch (error) {
-            console.log(error)
+            console.log(error);
         }
         try {
 
-            var arr = []
+            var arr = [];
             
             existingRegions1.forEach(region => {
-                arr.push({subscriberId: citizenId, regionId: region.id, leader: true})
+                arr.push({subscriberId: citizenId, regionId: region.id, leader: true});
             })
 
-            var databaseLeaders = await RegionSubscription.bulkCreate(arr) 
-            dataReturn.databaseLeaders = databaseLeaders
+            var databaseLeaders = await RegionSubscription.bulkCreate(arr);
+            dataReturn.databaseLeaders = databaseLeaders;
         } catch (error) {
-            console.log(error)
+            console.log(error);
         } 
         try {
 
-            var arr1 = []
+            var arr1 = [];
             
             existingOffices1.forEach(office => {
                 arr1.push({subscriberId: citizenId, officeId: office.id, leader: true})
-            })
+            });
 
-            var databaseLeaders = await OfficeSubscription.bulkCreate(arr1) 
-            dataReturn.databaseLeaders = databaseLeaders
+            var databaseLeaders = await OfficeSubscription.bulkCreate(arr1);
+            dataReturn.databaseLeaders = databaseLeaders;
             try {
-                const user = await User.findByPk(citizenId)
-                user.addressLineOne = addressLineOne
-                user.city = city
-                user.state = state
-                user.zipCode = zip
-                user.authenticated = true
-                var authUser = await user.save()
-                return authUser
+                const user = await User.findByPk(citizenId);
+                user.addressLineOne = addressLineOne;
+                user.city = city;
+                user.state = state;
+                user.zipCode = zip;
+                user.authenticated = true;
+                var authUser = await user.save();
+                return authUser;
             } catch (error) {
-                console.log(error)
+                console.log(error);
             }
         } catch (error) {
-            console.log(error)
+            console.log(error);
         } 
 
         finally {
-            return dataReturn
+            return dataReturn;
 
         }
     }
-    const fetchOfficialDataReturn = fetchData()
-    return fetchOfficialDataReturn
+    const fetchOfficialDataReturn = fetchData();
+    return fetchOfficialDataReturn;
 }
 
     module.exports = {fetchOfficialData}
